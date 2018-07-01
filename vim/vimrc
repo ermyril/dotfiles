@@ -1,0 +1,169 @@
+set nocompatible              " be iMproved, required
+
+so ~/.dotfiles/vim/plugins.vim
+
+syntax enable
+
+language messages C
+
+set backspace=indent,eol,start				"Make backspace behave like every other editor
+let mapleader = ','					"The default leader is \, but a comma is much better
+set number						"Activate line numbers
+set linespace=15					"Macvim-specific line-height
+set autowriteall 					"Automatically write the fole then switching buffers.
+
+"set ttymouse=xterm2                                     
+set mouse=a                                             "Activate mouse support
+
+" setting timeouts
+" got this from this reddit post 
+" https://www.reddit.com/r/vim/comments/s4a3a/my_terminal_vim_is_slower_than_macvim/
+set ttimeout
+set ttimeoutlen=250
+set notimeout
+set lazyredraw
+set ttyfast
+
+
+" Tabbing
+set tabstop=8
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+
+" Persistent undo - don't forget to create ~/.vim/undo directory
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+set undoreload=10000
+
+
+"-------------Visuals-------------"
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+"colorscheme atom-dark
+colorscheme OceanicNext
+
+set guifont=Fira_Code:h14				"Set the default font
+"set macligatures					"Pretty symbols
+set t_CO=256						"Use 256 colors in ter
+set linespace=15					
+set guioptions-=e					"disable system tabs
+
+set guioptions-=l					"Disable gui scrollbar
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+
+hi LineNr guibg=bg					"Background of line number panel
+hi vertsplit guifg=bg guibg=#232526			"split bar theme
+
+"set insert mode indication via line
+:autocmd InsertEnter,InsertLeave * set cul!
+"-------------Search-------------"
+set hlsearch
+set incsearch
+
+
+
+
+",------------Split Management------------"
+set splitbelow
+set splitright
+
+nmap <C-J> <C-W><C-J>
+nmap <C-K> <C-W><C-K>
+nmap <C-H> <C-W><C-H>
+nmap <C-L> <C-W><C-L>
+
+",------------Tabs Management------------"
+
+
+
+
+"------------Mappings------------"
+
+"Make it easy to edit .vimrc file
+nmap <Leader>ev :tabedit $MYVIMRC<cr> 
+nmap <Leader>es :e ~/.vim/snippets/
+nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
+
+"Add simple highlight removal
+nmap <Leader><Space> :nohlsearch<cr>
+
+"Laravel Specific Mappings
+nmap <Leader>lr :e routes/web.php<cr>
+nmap <Leader><Leader>c :CtrlP<cr>app/http/Controller
+nmap <Leader><Leader>m :CtrlP<cr>app/
+nmap <Leader><Leader>v :CtrlP<cr>resources/views/
+
+
+
+"------------Plugins-----------"
+
+"/
+"/ CtrlP
+"/
+
+let g:ctrlp_custom_ignore = 'node_modules\|vendor\|DS_Store\|git'
+
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:30'
+
+"BufTags from CtrlP
+nmap <Leader>m :CtrlPBufTag<cr>
+
+"Most Recently from CtrlP
+nmap <Leader>mr :CtrlPMR,<cr>
+
+
+"/
+"/ NERDTree
+"/
+let NERDTreeHijackNetrw = 0
+
+"Make NERDTree easier to toggle.
+nmap <Leader>t :NERDTreeToggle<cr>
+
+"/
+"/ CTags
+"/
+nmap <Leader>f :tag<space>
+
+
+"/
+"/ SuperTab, YCM, UltiSnips
+"/
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
+
+"------------Auto-Commands-----------"
+
+"Automatically source the .vimrc file on save.
+
+augroup autosoursing
+	autocmd!
+	autocmd BufWritePost .vimrc source %
+augroup END
+
+
+"/
+"/ Notes Goes Here
+"/
+
+" zz - to instantly center the line where the cursor is located.
+" zt - to top
+" zb - to bottom 
+
+
