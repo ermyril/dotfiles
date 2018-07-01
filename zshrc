@@ -159,4 +159,7 @@ export PATH="/usr/local/sbin:$PATH"
 eval $(thefuck --alias)
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 
