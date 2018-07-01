@@ -131,6 +131,13 @@ nmap <Leader>t :NERDTreeToggle<cr>
 "/
 nmap <Leader>f :tag<space>
 
+"/
+"/ EditorConfig
+"/
+let g:indent_style = 'space'
+let g:indent_size  = 4
+let g:tab_width    = 4
+
 
 "/
 "/ SuperTab, YCM, UltiSnips
