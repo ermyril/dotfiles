@@ -122,6 +122,7 @@ shift + alt - d : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-wind
 
 # rotate tree
 alt - r : chunkc tiling::desktop --rotate 90
+alt + shift - r : chunkc tiling::desktop --rotate 270
 
 # mirror tree y-axis
 alt - y : chunkc tiling::desktop --mirror vertical
