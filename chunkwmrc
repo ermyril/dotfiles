@@ -24,7 +24,7 @@ chunkc core::unload border.so
 
 ##### set custom bar offset
 
-chunkc set custom_bar_enabled        0
+chunkc set custom_bar_enabled        1
 
 chunkc set custom_bar_all_monitors   1
 
@@ -39,7 +39,7 @@ chunkc set 2_desktop_mode                monocle
 #chunkc set 6_desktop_mode                float
 
 chunkc set global_desktop_offset_top     15
-chunkc set global_desktop_offset_bottom  35
+chunkc set global_desktop_offset_bottom  15
 chunkc set global_desktop_offset_left    15
 chunkc set global_desktop_offset_right   15
 chunkc set global_desktop_offset_gap     15
@@ -104,5 +104,19 @@ chunkc core::load tiling.so
 # Fixing tiling for Emacs windows
 chunkc tiling::rule --owner Emacs --except "^$" --state tile
 
+# Fixing tiling for Emacs windows
+#chunkc tiling::rule --owner snwe --except "^$" --state tile
 
+chunkc tiling::rule --owner Telegram --desktop 3 --follow-desktop &
+chunkc tiling::rule --owner Skype --desktop 3 --follow-desktop &
+chunkc tiling::rule --owner Messages --desktop 3 --follow-desktop &
+chunkc tiling::rule --owner Slack --desktop 3 --follow-desktop &
 
+chunkc tiling::rule --owner iTunes --desktop 4 --follow-desktop &
+
+chunkc tiling::rule --owner \"System Preferences\" --subrole AXStandardWindow --state tile
+chunkc tiling::rule --owner Finder --name Copy --state float
+
+chunkc tiling::rule --owner snwe --state float
+
+#chunkwm --load-sa
