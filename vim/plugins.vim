@@ -27,6 +27,7 @@ Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'mxw/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
