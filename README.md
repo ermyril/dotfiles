@@ -6,3 +6,7 @@
 
 
 - [tmux copypaste](https://subash.com.au/vim-style-copy-paste-in-tmux/)
+
+Package-manager for zsh:
+- https://zplug.sh
+
