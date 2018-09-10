@@ -83,6 +83,7 @@ SPACESHIP_VI_MODE_COLOR="green"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  github
   sublime
   docker
   docker-compose
@@ -91,6 +92,8 @@ plugins=(
   #nvm
   #vi-mode
 )
+
+
 
 #enable if using vi-mode plugin
 export RPS1="%{$reset_color%}"
@@ -130,8 +133,8 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zrc="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias zrc="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias lyrics="~/.lyrics"
 alias ls='colorls'
 alias eject='m disk ejectall'
@@ -158,7 +161,14 @@ alias getsetup='wget http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php'
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.vimpkg/bin
 export PATH="/usr/local/sbin:$PATH"
 
+export GOPATH=$HOME/go
+
 eval $(thefuck --alias)
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 
+# Zplug (https://github.com/zplug/zplug)
+#   export ZPLUG_HOME=/usr/local/opt/zplug
+#   source $ZPLUG_HOME/init.zsh
+
+#   zplug "lukechilds/zsh-nvm"
