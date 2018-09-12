@@ -46,6 +46,9 @@ endif
 "colorscheme atom-dark
 colorscheme OceanicNext
 
+"dark background
+set background=dark
+
 set guifont=Fira_Code:h14				"Set the default font
 "set macligatures					"Pretty symbols
 set t_CO=256						"Use 256 colors in ter
