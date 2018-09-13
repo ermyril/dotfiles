@@ -43,6 +43,10 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
+if !has("gui_running") && !has("nvim")
+    set term=xterm-256color
+endif
+
 "colorscheme atom-dark
 colorscheme OceanicNext
 
@@ -51,7 +55,7 @@ set background=dark
 
 set guifont=Fira_Code:h14				"Set the default font
 "set macligatures					"Pretty symbols
-set t_CO=256						"Use 256 colors in ter
+set t_Co=256						"Use 256 colors in ter
 set linespace=15					
 set guioptions-=e					"disable system tabs
 
