@@ -157,6 +157,19 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 
+"/
+"/  NCM
+"/
+
+if has('nvim')
+    " enable ncm2 for all buffers
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+
+    " IMPORTANTE: :help Ncm2PopupOpen for more information
+    set completeopt=noinsert,menuone,noselect
+endif
+
+
 
 "------------Auto-Commands-----------"
 
@@ -165,6 +178,9 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 augroup autosoursing
 	autocmd!
 	autocmd BufWritePost .vimrc source %
+        " Probably it would be better to use $MYVIMRC instead of ~/.vimrc but
+        " i'll stick with it by now
+	autocmd BufWritePost plugins.vim source ~/.vimrc
 augroup END
 
 
