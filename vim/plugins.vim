@@ -35,22 +35,6 @@ Plugin 'mxw/vim-jsx'
 
 
 
-if has('nvim')
-    "/
-    "/ Autocompletion and nvim-specific plugins
-    "/
-
-    "Plugin 'Valloric/YouCompleteMe'
-    Plugin 'ncm2/ncm2'
-    Plugin 'roxma/nvim-yarp'
-
-    " NOTE: you need to install completion sources to get completions. Check
-    " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
-
-    Plugin 'ncm2/ncm2-bufword'
-    Plugin 'ncm2/ncm2-tmux'
-    Plugin 'ncm2/ncm2-path'
-endif
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
