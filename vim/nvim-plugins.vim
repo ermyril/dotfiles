@@ -9,10 +9,10 @@ Plug 'phpactor/phpactor', Cond(has('nvim'), {'do': 'composer install', 'for': 'p
 " LanguageServer client for NeoVim. 
 " I'm not quite sure that this will work with vundle
 " so probably you should run install.sh manually
-Plug 'autozimu/LanguageClient-neovim',Cond(has('nvim'), {
- \ 'branch': 'next',
- \ 'do': 'bash install.sh',
- \ })
+"Plug 'autozimu/LanguageClient-neovim',Cond(has('nvim'), {
+" \ 'branch': 'next',
+" \ 'do': 'bash install.sh',
+" \ })
 
 
 
@@ -36,6 +36,8 @@ Plug 'ncm2/ncm2-path',Cond(has('nvim'))
 Plug 'ncm2/ncm2-cssomni',Cond(has('nvim'))
 
 Plug 'ncm2/ncm2-tern', Cond(has('nvim'), {'do': 'npm install'})
+
+Plug 'ncm2/ncm2-vim', Cond(has('nvim'))
 
 
 

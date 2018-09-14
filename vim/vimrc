@@ -94,8 +94,8 @@ nmap <C-L> <C-W><C-L>
 
 "Make it easy to edit .vimrc file
 nmap <Leader>ev :tabedit $MYVIMRC<cr> 
-nmap <Leader>es :e ~/.vim/snippets/
-nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
+nmap <Leader>es :e ~/.dotfiles/vim/snippets/
+nmap <Leader>ep :tabedit ~/.dotfiles/vim/plugins.vim<cr>
 
 "Add simple highlight removal
 nmap <Leader><Space> :nohlsearch<cr>
@@ -172,9 +172,10 @@ if has('nvim')
     " IMPORTANTE: :help Ncm2PopupOpen for more information
     set completeopt=noinsert,menuone,noselect
 
-    let g:LanguageClient_serverCommands = {
-      \ 'javascript': ['javascript-typescript-stdio']
-      \ }
+   " todo: set up this someday
+   "let g:LanguageClient_serverCommands = {
+   "  \ 'javascript': ['javascript-typescript-stdio'],
+   "  \ }
 endif
 
 
