@@ -46,7 +46,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mxw/vim-jsx'
 
-
 " include neovim plugins
 source ~/.dotfiles/vim/nvim-plugins.vim
 
