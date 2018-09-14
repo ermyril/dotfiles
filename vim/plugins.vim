@@ -1,45 +1,57 @@
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Installing vim-plug if it's not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-vinegar'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'rking/ag.vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'tpope/vim-surround'
+" Helper function to include plugins depends on condition 
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
+" Vim-Plug config https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/bundle')
+" Make sure you use single quotes
+
+"Plug 'VundleVim/Vundle.vim'
+Plug 'tpope/vim-vinegar'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'rking/ag.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'tpope/vim-surround'
 "jsx support
-Plugin 'tpope/vim-obsession'
-Plugin 'ervandew/supertab'
-"Plugin 'garbas/vim-snipmate'
-"Plugin 'SirVer/ultisnips'
+Plug 'tpope/vim-obsession'
+Plug 'ervandew/supertab'
+"Plug 'garbas/vim-snipmate'
+"Plug 'SirVer/ultisnips'
 
 "Trying to fix bad php support
-Plugin '2072/PHP-Indenting-for-VIm'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'captbaritone/better-indent-support-for-php-with-html'
+Plug '2072/PHP-Indenting-for-VIm'
+Plug 'StanAngeloff/php.vim'
+Plug 'captbaritone/better-indent-support-for-php-with-html'
 
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'mhartington/oceanic-next'
-Plugin 'jiangmiao/auto-pairs'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'mhartington/oceanic-next'
+Plug 'jiangmiao/auto-pairs'
 
 "jsx support
-Plugin 'pangloss/vim-javascript'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'mxw/vim-jsx'
 
 
-
+" include neovim plugins
+source ~/.dotfiles/vim/nvim-plugins.vim
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
+call plug#end()
 
 
 " Brief help
