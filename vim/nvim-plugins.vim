@@ -22,6 +22,7 @@ Plug 'roxma/nvim-yarp', Cond(has('nvim'))
 
 Plug 'phpactor/ncm2-phpactor', Cond(has('nvim')) " Phpactor adapter for ncm2
 
+Plug 'ncm2/ncm2-ultisnips', Cond(has('nvim'))
 
 " /
 " / completion-sources - full list is available here https://github.com/ncm2/ncm2/wiki

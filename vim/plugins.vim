@@ -30,7 +30,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
 Plug 'ervandew/supertab'
 "Plug 'garbas/vim-snipmate'
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 "Trying to fix bad php support
 Plug '2072/PHP-Indenting-for-VIm'

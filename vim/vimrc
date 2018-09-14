@@ -161,6 +161,12 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 
+" Creating symlink to our snippets from dotfiles if there is no such folder
+if empty(glob('~/.vim/snippets'))
+  silent !ln -s ~/.dotfiles/vim/snippets ~/.vim/snippets | source $MYVIMRC
+endif
+
+
 "/
 "/  NCM
 "/
