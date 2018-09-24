@@ -46,7 +46,7 @@ alt - l : chunkc tiling::window --focus east
 #cmd - k : chunkc tiling::window --focus next
 
 # equalize size of windows
-shift + alt - 0 : chunkc tiling::desktop --equalize
+#shift + alt - 0 : chunkc tiling::desktop --equalize
 
 # swap window
 shift + alt - h : chunkc tiling::window --swap west
