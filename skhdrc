@@ -79,6 +79,7 @@ shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
 shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
 shift + alt - 9 : chunkc tiling::window --send-to-desktop 5
 shift + alt - 0 : chunkc tiling::window --send-to-desktop 6
+shift + alt - 0x1B : chunkc tiling::window --send-to-desktop 7
 
 # focus monitor
 #ctrl + alt - z  : chunkc tiling::monitor -f prev
@@ -104,6 +105,7 @@ alt - 3 : chunkc tiling::desktop --focus 3
 alt - 4 : chunkc tiling::desktop --focus 4
 alt - 9 : chunkc tiling::desktop --focus 5
 alt - 0 : chunkc tiling::desktop --focus 6
+alt - 0x1B : chunkc tiling::desktop --focus 7
 
 
 # increase/decrease region size i3 way
