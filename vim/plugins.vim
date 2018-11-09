@@ -26,11 +26,13 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 "jsx support
 Plug 'tpope/vim-obsession'
 Plug 'ervandew/supertab'
 "Plug 'garbas/vim-snipmate'
 Plug 'SirVer/ultisnips'
+Plug 'mattn/emmet-vim'
 
 "Trying to fix bad php support
 Plug '2072/PHP-Indenting-for-VIm'

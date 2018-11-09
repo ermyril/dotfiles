@@ -106,6 +106,12 @@ nmap <Leader><Leader>c :CtrlP<cr>app/http/Controller
 nmap <Leader><Leader>m :CtrlP<cr>app/
 nmap <Leader><Leader>v :CtrlP<cr>resources/views/
 
+nmap <Leader>n :tabedit<cr>
+nmap <Leader>1 :tabn 1<cr>
+nmap <Leader>2 :tabn 2<cr>
+nmap <Leader>3 :tabn 3<cr>
+nmap <Leader>4 :tabn 3<cr>
+
 
 
 "------------Plugins-----------"
@@ -183,6 +189,12 @@ if has('nvim')
    "  \ 'javascript': ['javascript-typescript-stdio'],
    "  \ }
 endif
+
+"/ 
+"/ Emmet 
+"/ 
+"
+let g:user_emmet_leader_key='<C-E>'
 
 
 
