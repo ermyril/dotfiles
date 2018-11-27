@@ -1,0 +1,27 @@
+{
+	"always_show_minimap_viewport": true,
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/User/SublimeLinter/Flat_Dark (SL).tmTheme",
+	"fallback_encoding": "Cyrillic (Windows 1251)",
+	"font_options":
+	[
+		"subpixel_antialias",
+		"gray_antialias"
+	],
+	"font_size": 15,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 3,
+	"line_padding_top": 3,
+	"open_files_in_new_window": false,
+	"overlay_scroll_bars": "enabled",
+	"show_encoding": true,
+	"theme": "Material-Theme.sublime-theme"
+}

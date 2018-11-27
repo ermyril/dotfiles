@@ -1,0 +1,33 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"Babel",
+		"Babel Snippets",
+		"Better CoffeeScript",
+		"Blade Snippets",
+		"Color Highlighter",
+		"Colorsublime",
+		"DocBlockr",
+		"EasyMotion",
+		"Ecmascript Syntax",
+		"Emmet",
+		"ES6-Toolkit",
+		"GitGutter",
+		"Laravel 5 Snippets",
+		"Laravel Blade Highlighter",
+		"Material Theme",
+		"Package Control",
+		"Phpcs",
+		"React IDE",
+		"React Templates",
+		"Sass",
+		"Slate",
+		"SublimeCodeIntel",
+		"SublimeLinter"
+	]
+}
