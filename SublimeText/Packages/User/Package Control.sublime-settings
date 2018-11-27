@@ -1,0 +1,38 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"AdvancedNewFile",
+		"Atomic Color Scheme",
+		"Babel",
+		"Babel Snippets",
+		"Blade Snippets",
+		"Color Highlighter",
+		"Colorsublime",
+		"CSScomb",
+		"CTags",
+		"DocBlockr",
+		"EasyMotion",
+		"EditorConfig",
+		"Emmet",
+		"GitGutter",
+		"Laravel 5 Snippets",
+		"Laravel Blade Highlighter",
+		"LESS",
+		"Material Theme",
+		"nginx",
+		"Oceanic Next Color Scheme",
+		"Package Control",
+		"PhpDoc",
+		"React IDE",
+		"SCSS",
+		"Six",
+		"SublimeCodeIntel",
+		"Surround",
+		"Vintage Surround"
+	]
+}

@@ -1,0 +1,46 @@
+{
+	"binary_file_patterns":
+	[
+		"*.jpg",
+		"*.jpeg",
+		"*.png",
+		"*.gif",
+		"*.ttf",
+		"*.tga",
+		"*.dds",
+		"*.ico",
+		"*.eot",
+		"*.pdf",
+		"*.swf",
+		"*.jar",
+		"*.zip",
+		"node_modules/**",
+		"bower_components/**",
+		"vendor/**"
+	],
+	"color_scheme": "Packages/Oceanic Next Color Scheme/Oceanic Next.tmTheme",
+	"fallback_encoding": "Cyrillic (Windows 1251)",
+	"font_face": "Fira Code",
+	"font_size": 11.5,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_padding_bottom": 8,
+	"line_padding_top": 8,
+	"material_theme_bright_scrollbars": true,
+	"material_theme_bullet_tree_indicator": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_small_statusbar": true,
+	"material_theme_tabs_autowidth": true,
+	"material_theme_titlebar": true,
+	"open_files_in_new_window": false,
+	"show_encoding": true,
+	"show_full_path": true,
+	"tab_size": 4,
+	"theme": "Material-Theme.sublime-theme",
+	"use_simple_full_screen": true,
+	"vintage_ctrl_keys": true,
+	"vintage_start_in_command_mode": true
+}
