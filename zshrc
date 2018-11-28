@@ -30,7 +30,7 @@ SPACESHIP_BATTERY_THRESHOLD="40"
 #SPACESHIP_VI_MODE_NORMAL="( ─ ‿‿ ─ )    "
 SPACESHIP_VI_MODE_INSERT=" ~"
 SPACESHIP_VI_MODE_NORMAL="  "
-SPACESHIP_VI_MODE_COLOR="blue"
+SPACESHIP_VI_MODE_COLOR="green"
 
 
 
@@ -160,7 +160,7 @@ alias getsetup='wget http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php'
 #PROMPT='%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f \$ '
 #RPROMPT='[%F{yellow}%?%f]'
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.vimpkg/bin
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.vimpkg/bin:$(ruby -e 'print Gem.user_dir')/bin
 export PATH="/usr/local/sbin:$PATH"
 
 export GOPATH=$HOME/go
