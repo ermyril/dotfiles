@@ -1,0 +1,5 @@
+# Aliases for MacOS
+alias gateoff='sudo spctl --master-disable'
+alias gateon='sudo spctl --master-enable'
+
+echo 'macos'

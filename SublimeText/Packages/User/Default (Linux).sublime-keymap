@@ -1,0 +1,62 @@
+[
+	// reindent code
+	{"keys": ["ctrl+shift+f"], "command": "reindent", "args": {"single_line": false}},
+	
+	// focus on sidebar
+	{ "keys": ["alt+0"], "command": "focus_side_bar" },
+
+
+	// HJKL browsing in the sidebar
+	{ "keys": ["h"], "command": "move", "args": {"by": "characters", "forward": false}, "context":
+    [ {"key": "control", "operand": "sidebar_tree"} ] },
+	{ "keys": ["j"], "command": "move", "args": {"by": "lines", "forward": true}, "context":
+    [ {"key": "control", "operand": "sidebar_tree"} ] },
+	{ "keys": ["k"], "command": "move", "args": {"by": "lines", "forward": false}, "context":
+    [ {"key": "control", "operand": "sidebar_tree"} ] },
+	{ "keys": ["l"], "command": "move", "args": {"by": "characters", "forward": true}, "context":
+    [ {"key": "control", "operand": "sidebar_tree"} ] },
+
+    // HL switching between tabs
+	{ "keys": ["alt+h"], "command": "prev_view" },
+	{ "keys": ["alt+l"], "command": "next_view" },
+
+	// HL switching between panes
+	// { "keys": ["meta+alt+h"], "command": "focus_group", "args": { "group": 0 } },
+	// { "keys": ["meta+alt+l"], "command": "focus_group", "args": { "group": 1 } },
+
+
+    // fixing half-page scrollup in vim mode 
+    {"keys": ["ctrl+u"], "command": "scroll_lines", "args": {"amount": 20.0}, "context": [{ "key": "setting.command_mode" }]},
+	{"keys": ["ctrl+d"], "command": "scroll_lines", "args": {"amount": -20.0}, "context": [{"key": "setting.command_mode"}]},
+
+	{
+		"keys": ["ctrl+shift+1"],
+		"command": "set_layout",
+		"args":
+		{
+			"cols": [0.0, 1.0],
+			"rows": [0.0, 1.0],
+			"cells": [[0, 0, 1, 1]]
+		}
+	},
+	{
+		"keys": ["ctrl+shift+2"],
+		"command": "set_layout",
+		"args":
+		{
+			"cols": [0.0, 0.5, 1.0],
+			"rows": [0.0, 1.0],
+			"cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
+		}
+	},
+	{
+		"keys": ["ctrl+shift+3"],
+		"command": "set_layout",
+		"args":
+		{
+			"cols": [0.0, 0.33, 0.66, 1.0],
+			"rows": [0.0, 1.0],
+			"cells": [[0, 0, 1, 1], [1, 0, 2, 1], [2, 0, 3, 1]]
+		}
+	},
+]

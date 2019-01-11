@@ -21,7 +21,7 @@
 	"color_scheme": "Packages/Oceanic Next Color Scheme/Oceanic Next.tmTheme",
 	"fallback_encoding": "Cyrillic (Windows 1251)",
 	"font_face": "Fira Code",
-	"font_size": 11.5,
+	"font_size": 10.5,
 	"ignored_packages":
 	[
 		"Vintage"

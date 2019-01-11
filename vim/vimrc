@@ -88,6 +88,11 @@ nmap <C-L> <C-W><C-L>
 ",------------Tabs Management------------"
 
 
+nmap <Leader>n :tabedit<cr>
+nmap <Leader>1 :tabn 1<cr>
+nmap <Leader>2 :tabn 2<cr>
+nmap <Leader>3 :tabn 3<cr>
+nmap <Leader>4 :tabn 3<cr>
 
 
 "------------Mappings------------"
@@ -106,19 +111,14 @@ nmap <Leader><Leader>c :CtrlP<cr>app/http/Controller
 nmap <Leader><Leader>m :CtrlP<cr>app/
 nmap <Leader><Leader>v :CtrlP<cr>resources/views/
 
-nmap <Leader>n :tabedit<cr>
-nmap <Leader>1 :tabn 1<cr>
-nmap <Leader>2 :tabn 2<cr>
-nmap <Leader>3 :tabn 3<cr>
-nmap <Leader>4 :tabn 3<cr>
-
-
 
 "------------Plugins-----------"
 
 "/
 "/ CtrlP
 "/
+
+let g:ctrlp_show_hidden = 1
 
 let g:ctrlp_custom_ignore = 'node_modules\|vendor\|DS_Store\|git'
 

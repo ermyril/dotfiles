@@ -135,16 +135,19 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zrc="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias lyrics="~/.lyrics"
+alias zrc='nvim ~/.zshrc'
+alias ohmyzsh='nvim ~/.oh-my-zsh'
+alias lyrics='~/.lyrics'
 alias ls='colorls'
 alias eject='m disk ejectall'
 
 
-alias gateoff='sudo spctl --master-disable'
-alias gateon='sudo spctl --master-enable'
-
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*) source ~/.dotfiles/linuxsh;;
+    Darwin*) source ~/.dotfiles/macsh;;
+    *)
+esac
 
 #aliases for work
 #
