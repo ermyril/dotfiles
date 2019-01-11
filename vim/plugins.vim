@@ -33,6 +33,7 @@ Plug 'ervandew/supertab'
 "Plug 'garbas/vim-snipmate'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
+Plug 'terryma/vim-multiple-cursors'
 
 "Trying to fix bad php support
 Plug '2072/PHP-Indenting-for-VIm'

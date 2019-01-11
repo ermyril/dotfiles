@@ -91,6 +91,8 @@ plugins=(
   docker-compose
   osx
   autojump
+  taskwarrior
+  tmux
   #nvm
   #vi-mode
 )
