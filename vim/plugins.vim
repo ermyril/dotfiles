@@ -49,6 +49,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mxw/vim-jsx'
 
+"blade syntax
+Plug 'jwalton512/vim-blade'
+
 " include neovim plugins
 source ~/.dotfiles/vim/nvim-plugins.vim
 

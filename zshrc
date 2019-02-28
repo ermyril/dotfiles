@@ -179,3 +179,7 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 #   source $ZPLUG_HOME/init.zsh
 
 #   zplug "lukechilds/zsh-nvm"
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '/home/shiasyn/yandex-cloud/path.bash.inc' ]; then source '/home/shiasyn/yandex-cloud/path.bash.inc'; fi
+
