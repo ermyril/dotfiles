@@ -53,7 +53,7 @@ colorscheme OceanicNext
 "dark background
 set background=dark
 
-set guifont=Fira_Code:h14				"Set the default font
+"set guifont=Fira_Code:h14				"Set the default font
 "set macligatures					"Pretty symbols
 set t_Co=256						"Use 256 colors in ter
 set linespace=15					
@@ -92,7 +92,8 @@ nmap <Leader>n :tabedit<cr>
 nmap <Leader>1 :tabn 1<cr>
 nmap <Leader>2 :tabn 2<cr>
 nmap <Leader>3 :tabn 3<cr>
-nmap <Leader>4 :tabn 3<cr>
+nmap <Leader>4 :tabn 4<cr>
+nmap <Leader>5 :tabn 5<cr>
 
 
 "------------Mappings------------"
@@ -135,6 +136,7 @@ nmap <Leader>mr :CtrlPMR,<cr>
 "/ NERDTree
 "/
 let NERDTreeHijackNetrw = 0
+let NERDTreeShowHidden = 1
 
 "Make NERDTree easier to toggle.
 nmap <Leader>t :NERDTreeToggle<cr>
