@@ -161,6 +161,9 @@ fi
 alias getrestore='wget http://www.1c-bitrix.ru/download/scripts/restore.php'
 alias getsetup='wget http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php'
 
+# get laravel container
+alias getlaravel='curl -LO https://raw.githubusercontent.com/bitnami/bitnami-docker-laravel/master/docker-compose.yml'
+
 
 #PROMPT='%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f \$ '
 #RPROMPT='[%F{yellow}%?%f]'
