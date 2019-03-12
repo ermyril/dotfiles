@@ -93,7 +93,7 @@ plugins=(
   autojump
   taskwarrior
   tmux
-  #nvm
+  nvm
   #vi-mode
 )
 
