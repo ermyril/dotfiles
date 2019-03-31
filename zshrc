@@ -170,11 +170,14 @@ alias getlaravel='curl -LO https://raw.githubusercontent.com/bitnami/bitnami-doc
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.vimpkg/bin:$(ruby -e 'print Gem.user_dir')/bin
 export PATH="/usr/local/sbin:$PATH"
+export PATH="~/.emacs.d/bin:$PATH"
 
 export GOPATH=$HOME/go
 
 eval $(thefuck --alias)
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+#eval $(nvm use default)
 
 
 # Zplug (https://github.com/zplug/zplug)
@@ -182,6 +185,7 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 #   source $ZPLUG_HOME/init.zsh
 
 #   zplug "lukechilds/zsh-nvm"
+#
 
 # The next line updates PATH for Yandex Cloud CLI.
 if [ -f '/home/shiasyn/yandex-cloud/path.bash.inc' ]; then source '/home/shiasyn/yandex-cloud/path.bash.inc'; fi
