@@ -141,6 +141,7 @@ alias zrc='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias lyrics='~/.lyrics'
 alias ls='colorls'
+alias ll='colorls -al'
 alias eject='m disk ejectall'
 
 
@@ -172,6 +173,7 @@ export GOPATH=$HOME/go
 
 eval $(thefuck --alias)
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 
 # Zplug (https://github.com/zplug/zplug)
