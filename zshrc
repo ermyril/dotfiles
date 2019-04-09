@@ -93,7 +93,7 @@ plugins=(
   autojump
   taskwarrior
   tmux
-  #nvm
+  nvm
   #vi-mode
 )
 
@@ -162,12 +162,16 @@ fi
 alias getrestore='wget http://www.1c-bitrix.ru/download/scripts/restore.php'
 alias getsetup='wget http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php'
 
+# get laravel container
+alias getlaravel='curl -LO https://raw.githubusercontent.com/bitnami/bitnami-docker-laravel/master/docker-compose.yml'
+
 
 #PROMPT='%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f \$ '
 #RPROMPT='[%F{yellow}%?%f]'
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.vimpkg/bin:$(ruby -e 'print Gem.user_dir')/bin
 export PATH="/usr/local/sbin:$PATH"
+export PATH="~/.emacs.d/bin:$PATH"
 
 export GOPATH=$HOME/go
 
@@ -175,12 +179,15 @@ eval $(thefuck --alias)
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+#eval $(nvm use default)
+
 
 # Zplug (https://github.com/zplug/zplug)
 #   export ZPLUG_HOME=/usr/local/opt/zplug
 #   source $ZPLUG_HOME/init.zsh
 
 #   zplug "lukechilds/zsh-nvm"
+#
 
 # The next line updates PATH for Yandex Cloud CLI.
 if [ -f '/home/shiasyn/yandex-cloud/path.bash.inc' ]; then source '/home/shiasyn/yandex-cloud/path.bash.inc'; fi
