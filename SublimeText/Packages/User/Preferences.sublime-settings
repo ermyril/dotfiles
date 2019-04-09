@@ -37,6 +37,7 @@
 	"material_theme_small_statusbar": true,
 	"material_theme_tabs_autowidth": true,
 	"material_theme_titlebar": true,
+	"neovintageous_build_version": 11100,
 	"open_files_in_new_window": false,
 	"show_encoding": true,
 	"show_full_path": true,
@@ -45,5 +46,6 @@
 	"use_simple_full_screen": true,
 	"vintage_ctrl_keys": true,
 	"vintage_start_in_command_mode": true,
-	"vintageous_use_ctrl_keys": true
+	"vintageous_use_ctrl_keys": true,
+	"vintageous_use_super_keys": null
 }
