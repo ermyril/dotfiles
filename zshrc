@@ -143,6 +143,8 @@ alias lyrics='~/.lyrics'
 alias ls='colorls'
 alias ll='colorls -al'
 alias eject='m disk ejectall'
+alias mv='mv -v'
+alias rm='rm -v'
 
 
 unameOut="$(uname -s)"
