@@ -143,6 +143,8 @@ alias lyrics='~/.lyrics'
 alias ls='colorls'
 alias ll='colorls -al'
 alias eject='m disk ejectall'
+alias mv='mv -v'
+alias rm='rm -v'
 
 
 unameOut="$(uname -s)"
@@ -184,6 +186,7 @@ export GOPATH=$HOME/go
 
 eval $(thefuck --alias)
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 #eval $(nvm use default)
 
