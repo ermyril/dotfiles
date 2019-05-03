@@ -2,3 +2,6 @@
 alias gateoff='sudo spctl --master-disable'
 alias gateon='sudo spctl --master-enable'
 
+# Show/hide hidden files in the Finder
+alias showfiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hidefiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
