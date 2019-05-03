@@ -141,6 +141,7 @@ alias zrc='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias lyrics='~/.lyrics'
 alias ls='colorls'
+alias ll='colorls -al'
 alias eject='m disk ejectall'
 
 
@@ -151,10 +152,17 @@ case "${unameOut}" in
     *)
 esac
 
-#aliases for work
+# aliases for work
 #
 if [ -f ~/.zshalias ]; then
     source ~/.zshalias
+fi
+
+
+# handy functions
+#
+if [ -f ~/.dotfiles/zshfunc ]; then
+    source ~/.dotfiles/zshfunc
 fi
 
 # get bitrix restore
@@ -190,3 +198,7 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 # The next line updates PATH for Yandex Cloud CLI.
 if [ -f '/home/shiasyn/yandex-cloud/path.bash.inc' ]; then source '/home/shiasyn/yandex-cloud/path.bash.inc'; fi
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

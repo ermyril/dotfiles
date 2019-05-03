@@ -1,0 +1,51 @@
+# get value of specific parameter from .env file
+getenv(){
+    param=$1
+    echo $(cat .env | grep -m 1 -Ei $param | awk -F '=' '{print $2}')
+}
+
+# get container id (for a directory with docker-compose.yml)
+getcontainerid(){
+    container=$1 # db or app
+    echo $(docker ps | grep $( pwd | awk -F \/ '{print $NF}' | sed 's/\.//g')_$container | awk '{print $1}')
+}
+alias gcid='getcontainerid'
+
+#   original script
+#
+#
+#
+#   #!/bin/bash
+
+#   DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+#   # get value of specific parameter from .env file
+#   getenv(){
+#       param=$1
+#       echo $(cat .env | grep -m 1 -Ei $param | awk -F '=' '{print $2}')
+#   }
+
+#   getcontainerid(){
+#       container=$1 # db or app
+#       echo $(docker ps | grep $( echo $DIR | awk -F \/ '{print $NF}' | sed 's/\.//g')_$container | awk '{print $1}')
+#   }
+
+
+#   #echo $(getcontainerid db)
+
+#   ##mysqldump -u $(getenv db_username) \
+#   ##    -p$(getenv db_password) \
+#   ##    $(getenv db_database) \
+#   ##    -r $(getenv app_name)$(date +'_%d-%m-%Y.sql')
+
+
+#   ## получение id контейнера для текущего проекта
+#   # docker ps | grep $(echo $DIR | awk -F \/ '{print $NF}' | sed 's/\.//g')_db | awk '{print $1}'
+
+#   # развернуть дамп в докер
+#   # cat dump.sql | docker exec -i $(getcontainerid db) mysql -u $(getenv db_username) -p$(getenv db_password) $(getenv db_database)
+
+
+#   # применить миграции
+#   #docker exec -i $(getcontainerid app) php artisan migrate
+
