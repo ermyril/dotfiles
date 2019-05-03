@@ -84,16 +84,16 @@ SPACESHIP_VI_MODE_COLOR="green"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  github
-  sublime
-  docker
-  docker-compose
-  osx
-  autojump
-  taskwarrior
-  tmux
-  nvm
+ git
+#github
+#sublime
+ docker
+#docker-compose
+#osx
+ autojump
+#taskwarrior
+ tmux
+#nvm
   #vi-mode
 )
 
@@ -199,9 +199,15 @@ export PATH="$HOME/.cargo/bin:$PATH"
 #
 
 # The next line updates PATH for Yandex Cloud CLI.
-if [ -f '/home/shiasyn/yandex-cloud/path.bash.inc' ]; then source '/home/shiasyn/yandex-cloud/path.bash.inc'; fi
+# if [ -f '/home/shiasyn/yandex-cloud/path.bash.inc' ]; then source '/home/shiasyn/yandex-cloud/path.bash.inc'; fi
 
-
+# this hack is for evading slowdown in nvm usage
+# https://github.com/nvm-sh/nvm/issues/860#issuecomment-242157535
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh --no-use" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+NODE_VERSION="v11.13.0"
+export PATH="${PATH}:${NVM_DIR}/versions/node/${NODE_VERSION}/bin"
+
+
