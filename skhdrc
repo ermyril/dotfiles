@@ -132,7 +132,7 @@ alt + shift - 0x2F : chunkc tiling::desktop --rotate 270
 alt - y : chunkc tiling::desktop --mirror vertical
 
 # mirror tree x-axis
-alt - x : chunkc tiling::desktop --mirror horizontal
+alt - z : chunkc tiling::desktop --mirror horizontal
 
 # toggle desktop offset
 alt - a : chunkc tiling::desktop --toggle offset
