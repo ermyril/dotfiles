@@ -197,6 +197,13 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 #   zplug "lukechilds/zsh-nvm"
 #
+#
+
+getcontainerid(){
+    container=$1 # db or app
+    echo $(docker ps | grep $( echo pwd | awk -F \/ '{print $NF}' | sed 's/\.//g')_$container | awk '{print $1}')
+}
+
 
 # The next line updates PATH for Yandex Cloud CLI.
 # if [ -f '/home/shiasyn/yandex-cloud/path.bash.inc' ]; then source '/home/shiasyn/yandex-cloud/path.bash.inc'; fi
