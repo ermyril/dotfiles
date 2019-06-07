@@ -210,4 +210,5 @@ export NVM_DIR="$HOME/.nvm"
 NODE_VERSION="v11.13.0"
 export PATH="${PATH}:${NVM_DIR}/versions/node/${NODE_VERSION}/bin"
 
-
+# adding doom bin folder to 
+export PATH="${PATH}:$HOME/.emacs.d/bin"
