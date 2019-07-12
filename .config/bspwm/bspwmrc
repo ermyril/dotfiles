@@ -1,4 +1,8 @@
 #! /bin/sh
+
+#add bspwm scripts to path to be able to execute therm 
+export PATH=$HOME/.config/bspwm/bin:$PATH
+
 gap=3
 PANEL_HEIGHT=30
 export gap
@@ -44,8 +48,15 @@ bspc config split_ratio         0.52
 #bspc monitor DP1 -d I II III IV V 
 #bspc monitor DP3 -d VI VII VIII IX X
 
-###This creates and names desktops for multiple monitors.
-workspaces_multimonitor &
+###create and name desktops for multiple monitors.
+M=$(bspc query -M | wc -l)
+if [[ "$M" == 1 ]]; then
+    bspc monitor -d I II III IV V VI VII VIII IX X
+elif [[ "$M" == 2 ]]; then
+    bspc monitor $(bspc query -M | awk NR==1) -d I II III IV V
+    bspc monitor $(bspc query -M | awk NR==2) -d VI VII VIII IX X
+fi
+
 
 bspc rule -a screenkey --unmanage
 bspc rule -a gcolor2 state=floating center=true
@@ -107,7 +118,7 @@ bspc rule -a Sublime_text desktop=^9
 
 ###External rules
 ##Pseudo automatic mode: always splits focused window when opening new window
-bspc config external_rules_command /usr/bin/pseudo_automatic_mode
+#bspc config external_rules_command /usr/bin/pseudo_automatic_mode
 ##Adjust new window: splits biggest windows to keep windows about the same size
 #bspc config external_rules_command /usr/bin/adjust-new-window
 
@@ -115,10 +126,11 @@ bspc config external_rules_command /usr/bin/pseudo_automatic_mode
 
 ##Autostart apps
 #Keybindings daemon
-#sxhkd &
+sxhkd &
 #Source autostartfile. Uncomment this if you use bspwm-git
 #. $HOME/.config/bspwm/autostart
 
 #limepanel &
+kitty &
 
 $HOME/.config/polybar/launch.sh

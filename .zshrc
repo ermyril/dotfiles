@@ -1,5 +1,12 @@
 # If you come from bash you might have to change your $PATH.
+# TODO: cleanup this mess
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.vimpkg/bin:$(ruby -e 'print Gem.user_dir')/bin
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -178,15 +185,10 @@ alias getlaravel='curl -LO https://raw.githubusercontent.com/bitnami/bitnami-doc
 #PROMPT='%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f \$ '
 #RPROMPT='[%F{yellow}%?%f]'
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.vimpkg/bin:$(ruby -e 'print Gem.user_dir')/bin
-export PATH="/usr/local/sbin:$PATH"
-export PATH="~/.emacs.d/bin:$PATH"
 
 export GOPATH=$HOME/go
 
 eval $(thefuck --alias)
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 
 #eval $(nvm use default)
 
@@ -217,5 +219,3 @@ export NVM_DIR="$HOME/.nvm"
 NODE_VERSION="v11.13.0"
 export PATH="${PATH}:${NVM_DIR}/versions/node/${NODE_VERSION}/bin"
 
-# adding doom bin folder to 
-export PATH="${PATH}:$HOME/.emacs.d/bin"

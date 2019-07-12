@@ -1,4 +1,9 @@
-﻿# bspwm hotkeys
+﻿#
+# check out this repo for all additional scripts used here
+# https://github.com/Chrysostomus/bspwm-scripts/
+#
+ 
+# bspwm hotkeys
 #
 # Cleanly quit bspwm
 super + shift + q
