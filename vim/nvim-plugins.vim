@@ -16,7 +16,6 @@ Plug 'phpactor/phpactor', Cond(has('nvim'), {'do': 'composer install', 'for': 'p
 
 
 
-
 Plug 'ncm2/ncm2', Cond(has('nvim')) " completion engine for nvim
 Plug 'roxma/nvim-yarp', Cond(has('nvim')) 
 
@@ -40,5 +39,8 @@ Plug 'ncm2/ncm2-tern', Cond(has('nvim'), {'do': 'npm install'})
 
 Plug 'ncm2/ncm2-vim', Cond(has('nvim'))
 
+
+" Nice icons  
+Plug 'ryanoasis/vim-devicons', Cond(has('nvim'))
 
 
