@@ -132,6 +132,12 @@ else
   export EDITOR='nvim'
 fi
 
+# Run nvim instead of vim if it present
+if hash nvim 2>/dev/null; then
+    alias vim='nvim'
+fi
+
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -149,7 +155,6 @@ alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias lyrics='~/.lyrics'
 alias ls='colorls'
 alias ll='colorls -al'
-alias eject='m disk ejectall'
 alias mv='mv -v'
 alias rm='rm -v'
 

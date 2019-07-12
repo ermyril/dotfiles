@@ -42,7 +42,8 @@ yabai -m config left_padding                 0
 yabai -m config right_padding                0
 yabai -m config window_gap                   10
 
-yabai -m rule --add app=Emacs space=5
+yabai -m rule --add app=Emacs manage=on space=5
+yabai -m rule --add app=slack manage=on space=3
 yabai -m rule --add app=Kitty space=6
 yabai -m rule --add app=iTunes space=4
 yabai -m rule --add app=Telegram space=3
