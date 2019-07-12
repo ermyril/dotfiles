@@ -34,7 +34,7 @@ alt + ctrl + space
 # Toggle compositing
 super + ctrl + space
 	{pkill compton ,\
-	compton -b }
+	compton -b --backend=glx }
 
 # Remove receptacles
 #   super + BackSpace
