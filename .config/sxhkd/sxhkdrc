@@ -1,15 +1,50 @@
 ﻿# bspwm hotkeys
 #
+# check out this repo if you'll ever need additional scripts
+# https://github.com/Chrysostomus/bspwm-scripts/
+#
+ 
+
+# _____________________________________________________________    
+#
+# BASIC BINDINGS
+# _____________________________________________________________    
+
+
 # Cleanly quit bspwm
 super + shift + q
-	bspc quit 1 && pkill lemonpanel && pkill lemonbar
+	bspc quit 1 && pkill polybar
 
 # Show keybindings
 super + F1
 	$TERMINAL -e keybindings.sh
+
+# make sxhkd reload its configuration files:
+super + shift + BackSpace
+	pkill -USR1 -x sxhkd
+
+# In case bspwmrc fails to execute/you wish have plugged in a new monitor
+super + shift + r
+	source ~/.config/bspwm/bspwmrc
+
+#edit this file
+alt + ctrl + space
+	$GUI_EDITOR ~/.config/sxhkd/sxhkdrc
+
+# Toggle compositing
+super + ctrl + space
+	{pkill compton ,\
+	compton -b }
+
+# Remove receptacles
+#   super + BackSpace
+#     for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
+
+
+# _____________________________________________________________    
 #
-# Window manipulation
-# ______________
+# WINDOW MANIPULATION
+# _____________________________________________________________    
 
 # Close window
 super + q
@@ -51,82 +86,45 @@ super + Escape
 ctrl + shift + XF86Eject
     betterlockscreen -l dim
     #dm-tool lock
+    #
     
-
 ### Map or unmap windows (functional equivalent of "minimize")
-super + c
-    whid dmenu
+# TODO: figure out what to do with it
+#   super + c
+#       whid dmenu
 
-super + shift + c
-    whid hide
+#   super + shift + c
+#       whid hide
 
-super + ctrl + c
-    whid last
+#   super + ctrl + c
+#       whid last
 
-# focus the next/previous node in the same window
-super + {n,p}
-	bspc node -f {next,prev}.local
+
+
+
+
+
+
+# _____________________________________________________________    
 #
-# Window moving and splitting
-# ______________    
-
-# Autopresel (split window in its largest dimension)
-alt + ctrl + Return
-	auto-presel
-
-alt + space
-	auto-presel
-	
-# Presel window for splitting in certain direction
-#alt + ctrl + {a,s,w,d}
-#	bspc node -p \~{west,south,north,east} -i
-
-alt + ctrl + {h,j,k,l}
-	bspc node -p \~{west,south,north,east}
-
-#alt + ctrl + {Left,Down,Up,Right}
-#	bspc node -p \~{west,south,north,east}
-
-# Presel the desktop for splitting in certain direction
-# alt + shift + {a,s,w,d}
-	# bspc node @/ -p \~{west,south,north,east}
-# 
-# alt + shift + {h,j,k,l}
-	# bspc node @/ -p \~{west,south,north,east}
-
-# alt + shift + {Left,Down,Up,Right}
-	# bspc node @/ -p \~{west,south,north,east}
-# Set splitting ratio of windows
-alt + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-		
-# Move current window to largest space or preselected area if there is one.
-#super + Return
-#    windowpromoter
-
-# Resize the current window based on preselection or reseptacles
-alt + Return
-	resizetopresel.sh	
+# WINDOW MOVING AND SPLITTING
+# _____________________________________________________________    
+ 
 # go (Shift=move) to desktop (and focus the monitor that the desktop is located on. Bspwm style)
 super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} ^{1-9,10}
+ 
+# focus the next/previous node in the same window
+super + {n,p}
+	bspc node -f {next,prev}.local
 
-## Alternative: i3 style behavior (focus nth, desktop of the focused monitor)
-#super + {1-9,0}
-#	focusdesktopofthismonitor {1-9}
-#super + shift + {1-9,0}
-#	movetodesktopofthismonitor {1-9,10}
+# Set insertion point
+alt + ctrl + {h,j,k,l}
+	bspc node -p \~{west,south,north,east}
 
-## Another alternative: xmonad style desktops. You have 10 desktops shared between all monitors,
-## and focusing a desktop focuses it on the currently focused monitor
-#super + {1-9,0}
-#	summondesktop.sh {1-9,10}
-#super + shift + {1-9,0}
-#	bspc node -d ^{1-9,10}
-
-# Select previous / next desktop
-#super + {m,n}
-#	bspc desktop -f {prev.occupied,next.occupied} 
+# Set splitting ratio of windows
+alt + ctrl + {1-9}
+	bspc node -o 0.{1-9}
 
 # Select previous / next monitor
 super + m
@@ -136,29 +134,11 @@ super + m
 alt + {_,shift + }Tab
     bspc node -f {next,prev}
 
-# Go to specific window
-super + Tab
-	WindowSelector
-	
-#Focus windows by direction, works with multihead
-#super +  {a,s,w,d}
-#    focusmover {west,south,north,east}
+# Swap window in a direction
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
 
-super +  {h,j,k,l}
-    focusmover {west,south,north,east}
 
-super +  {Left,Down,Up,Right}
-    focusmover {west,south,north,east}
-        	
-# Move tiled windows. Moving a tiled window to 
-# preselected one moves into preselection instead. 
-# Moving out of the screen should move the window to next monitor if possible
-#super + shift + {a,s,w,d}
-#	windowgrabber {west,south,north,east}
-
-super + shift + {h,j,k,l}
-	windowgrabber {west,south,north,east}
-	
 # Different style of movement: transplant into window in chosen direction
 #super + shift + {Left,Down,Up,Right}
 #	euclid_mover {west,south,north,east}
@@ -169,15 +149,13 @@ super + ctrl + {h,j,k,l}
 super + shift + {a,s,w,d}
 	bspwm_resize.sh {west,south,north,east}
 
-#super + ctrl + {h,j,k,l}
-#	bspwm_resize.sh {west,south,north,east}
-	
-#super + ctrl + {Left,Down,Up,Right}
-#	bspwm_resize.sh {west,south,north,east}
 
+
+
+# _____________________________________________________________    
 #
-# Layout manipulation/desktop level controls
-# ______________    
+# LAYOUT MANIPULATION/DESKTOP LEVEL CONTROLS
+# _____________________________________________________________    
 
 # Toggle monocle mode
 super + s 
@@ -196,8 +174,8 @@ super + ctrl + b
 	bspc node @/ -E
 
 # Toggle automatic balancing of windows
-alt + b
-	euclid_balancer
+#   alt + b
+#           euclid_balancer
 
 # Mirror and flip leaves of tree
 super + {comma,period}
@@ -214,19 +192,23 @@ super + g
 
 super + button{4,5}
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
+
+
+
+# _____________________________________________________________    
 #
-# mouse bindings
-# __________________
+# MOUSE BINDINGS
+# _____________________________________________________________    
 
-~button1
-	DidIClickDesktop.sh && gapgrab	
+#   ~button1
+#           DidIClickDesktop.sh && gapgrab	
 
-~button2
-	DidIClickDesktop.sh && mygtkmenui -- .config/GTKmenu/BspwmDesktopMenui
+#   ~button2
+#           DidIClickDesktop.sh && mygtkmenui -- .config/GTKmenu/BspwmDesktopMenui
 #DidIClickDesktop.sh && mygtkmenui -- .config/GTKmenu/BspwmWindowMenui
 		
-~button3
-	DidIClickDesktop.sh && mygtkmenui -- .config/GTKmenu/LaunchMenu
+#   ~button3
+#           DidIClickDesktop.sh && mygtkmenui -- .config/GTKmenu/LaunchMenu
 
 # Switch workspace by scrolling on the desktop. Causes scrolling issues on some systems.
 #~button4
@@ -235,55 +217,40 @@ super + button{4,5}
 #	DidIClickDesktop.sh && bspc desktop -f prev
 	
 ### Add or remove desktops by scrolling
-super + ctrl + button5
-    bspcp dsktp rm
+#   super + ctrl + button5
+#       bspcp dsktp rm
 
-super + ctrl + button4
-    bspcp dsktp add
+#   super + ctrl + button4
+#       bspcp dsktp add
 
 # Spawn applications popup menu and manually tile selected 
 # app where your mouse was when you opened the menu. Smartsplit only chooses
 # biggest dimension of the window, MouseLaunch only cares which edge is closer.
 # mod5 is alt_gr (first key right from space) on most keyboards. 
-mod5 + @button1
-    MouseLaunch ; mygtkmenui -- .config/GTKmenu/LaunchMenu
+#   mod5 + @button1
+#       MouseLaunch ; mygtkmenui -- .config/GTKmenu/LaunchMenu
 #	smartsplit ; dboxmenu
 
 # Spawn window manipulation menu
 # Mod1 is alt
 #    BspwmWindowMenu
-mod1 + @button1
-    mygtkmenui -- .config/GTKmenu/BspwmWindowMenui
+#   mod1 + @button1
+#       mygtkmenui -- .config/GTKmenu/BspwmWindowMenui
 
 
-#
-# Touchpad "gestures" (depend on your touchpad driver, very likely to be unavailable)
-#_____________________
+
     
+# _____________________________________________________________    
 #
-# spawn programs
-#
-
-# run applications
-super + shift + space
-	dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 14 -w 600 -y $PANEL_HEIGHT
+# SPAWN PROGRAMS
+# _____________________________________________________________    
 
 ctrl + space
 	rofi -show
 
-super + p
-	dmenu_recent -h $PANEL_HEIGHT -fn 'xos4 Terminus:size=15' -i
-
 super + Return
-	default-terminal
-#super + z
-#	default-terminal
+	$TERMINAL $@
 
-super + shift + z
-	open-terminal-here
-	
-super + r
-	rofi-finder.sh
 
 super + shift + b
 	$BROWSER
@@ -291,16 +258,18 @@ super + shift + b
 super + e
 	pcmanfm
 
-# Use slightly bigger font for ranger
-super + shift + e
-	st -f "Terminus:size=14:style=regular" ranger
-
+# TODO: change to maim
 Print
 	scrot
 
+# Take screenshot directly to clipboard baby
+shift + alt + 4
+    maim -s | xclip -selection clipboard -t image/png
+
+
 	
 #
-# Media keys
+# MEDIA KEYS
 #
 
 XF86AudioRaiseVolume
@@ -322,29 +291,7 @@ XF86MonBrightnessUp
 XF86Sleep
 	systemctl suspend
 
-# make sxhkd reload its configuration files:
-super + shift + BackSpace
-	pkill -USR1 -x sxhkd
 
-# In case bspwmrc fails to execute/you wish have plugged in a new monitor
-super + shift + r
-	bspwmrc
-#edit this file
-alt + ctrl + space
-	$GUI_EDITOR ~/.config/sxhkd/sxhkdrc
-# Toggle compositing
-super + ctrl + space
-	{pkill compton ,\
-	compton -b }
-
-# Remove receptacles
-super + BackSpace
-  for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
-
-
-# Take screenshot directly to clipboard baby
-shift + alt + 4
-    maim -s | xclip -selection clipboard -t image/png
 
     
 
