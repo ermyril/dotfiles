@@ -125,12 +125,16 @@ bspc rule -a Sublime_text desktop=^9
 #xdo above -t $(xdo id -n root) $(xdo id -n lemonbar)
 
 ##Autostart apps
-#Keybindings daemon
-sxhkd &
 #Source autostartfile. Uncomment this if you use bspwm-git
 #. $HOME/.config/bspwm/autostart
 
+#Keybindings daemon
+
+if hash compton 2>/dev/null; then
+    compton -b --backend=glx &
+fi
+
+sxhkd &
 #limepanel &
 kitty &
-
 $HOME/.config/polybar/launch.sh
