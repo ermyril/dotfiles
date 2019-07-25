@@ -266,6 +266,10 @@ Print
 shift + alt + 4
     maim -s | xclip -selection clipboard -t image/png
 
+# Take screenshot with that fancy util, draw arrows and send it to imgur
+#   shift + alt + 3
+#       flameshot gui
+
 
 	
 #
@@ -273,10 +277,10 @@ shift + alt + 4
 #
 
 XF86AudioRaiseVolume
-	volume up
+	amixer set Master 2dB+
 
 XF86AudioLowerVolume
-	volume down
+	amixer set Master 2dB-
 
 XF86AudioMute
 	amixer set Master toggle & amixer set Headphone toggle
