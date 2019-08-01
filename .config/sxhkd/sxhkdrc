@@ -284,12 +284,23 @@ XF86AudioLowerVolume
 
 XF86AudioMute
 	amixer set Master toggle & amixer set Headphone toggle
-	
+
 XF86MonBrightnessDown
  light -U 5 
 
 XF86MonBrightnessUp
  light -A 5
+
+# spotify-control
+XF86AudioPlay
+	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+	
+XF86AudioNext
+	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+
+XF86AudioPrev
+	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+
  
 
 XF86Sleep
