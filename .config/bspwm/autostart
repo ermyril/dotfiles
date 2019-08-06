@@ -1,6 +1,6 @@
 
 if hash compton 2>/dev/null; then
-    compton -b --backend=glx &
+    compton -b &
 fi
 
 ## Wallpaper. Nitrogen just draws wallpaper, 
