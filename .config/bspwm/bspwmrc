@@ -99,8 +99,15 @@ bspc rule -a tint2 border=off manage=off
 #bspc desktop II --layout monocle
 
 bspc rule -a Slack desktop=^3
+bspc rule -a TelegramDesktop desktop=^3
 bspc rule -a Chromium desktop=^1
-bspc rule -a "" desktop=^4 #Spotify (bug)
+bspc rule -a firefox desktop=^1
+   # FUCK
+   #https://community.spotify.com/t5/Desktop-Linux/WM-CLASS-window-property-on-Linux/td-p/1247042/page/2
+   #bspc rule -a Spotify desktop=^4 #Spotify (bug)
+   #bspc rule -a "" desktop=^4 #Spotify (bug)
+   #bspc rule -a '' desktop=^4 #Spotify (bug)
+   #bspc rule -a spotify desktop=^4 #Spotify (bug)
 bspc rule -a kitty desktop=^10
 bspc rule -a Sublime_text desktop=^9
 
@@ -132,5 +139,8 @@ source $HOME/.config/bspwm/autostart
 
 
 sxhkd &
-kitty &
+firefox &
+telegram-desktop &
+slack &
+kitty --detach tmux &
 $HOME/.config/polybar/launch.sh

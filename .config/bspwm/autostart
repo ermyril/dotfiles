@@ -3,8 +3,10 @@ if hash compton 2>/dev/null; then
     compton -b &
 fi
 
-## Wallpaper. Nitrogen just draws wallpaper, 
-betterlockscreen -u  ~/.dotfiles/wallpapers/wallhaven-676594.png &
+## Lockscreen 
+#if hash betterlockscreen 2>/dev/null; then
+    betterlockscreen -u  ~/.dotfiles/wallpapers/wallhaven-676594.png &
+#fi
 
-## Wallpaper. Nitrogen just draws wallpaper, 
+## Wallpaper 
 sh ~/.fehbg &
