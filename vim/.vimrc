@@ -189,7 +189,7 @@ if has('nvim')
     " IMPORTANTE: :help Ncm2PopupOpen for more information
     set completeopt=noinsert,menuone,noselect
 
-   " todo: set up this someday
+   " todo: set this up someday
    "let g:LanguageClient_serverCommands = {
    "  \ 'javascript': ['javascript-typescript-stdio'],
    "  \ }
