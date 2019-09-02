@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/ermyril/.dotfiles/wallpapers/wallpaper.png' 
+feh --no-xinerama --bg-fill '/home/ermyril/.dotfiles/wallpapers/wallpaper.png' 
