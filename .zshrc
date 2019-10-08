@@ -157,6 +157,8 @@ alias ls='colorls'
 alias ll='colorls -al'
 alias mv='mv -v'
 alias rm='rm -v'
+alias dc='docker-compose'
+alias dce='docker-compose exec'
 
 
 unameOut="$(uname -s)"
