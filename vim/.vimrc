@@ -115,6 +115,11 @@ nmap <Leader><Leader>v :CtrlP<cr>resources/views/
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+" Goto link
+nmap <Leader>g <C-]>
+nmap <Leader>b <C-O>
+
+
 "------------Plugins-----------"
 
 "/
