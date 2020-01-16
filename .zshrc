@@ -226,3 +226,7 @@ export NVM_DIR="$HOME/.nvm"
 NODE_VERSION="v11.13.0"
 export PATH="${PATH}:${NVM_DIR}/versions/node/${NODE_VERSION}/bin"
 
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '/home/ermyril/yandex-cloud/path.bash.inc' ]; then source '/home/ermyril/yandex-cloud/path.bash.inc'; fi
+
