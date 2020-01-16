@@ -2,3 +2,6 @@
 alias pbcopy='xclip -selection c' 
 alias pbpaste='xclip -selection clipboard o' 
 alias backup='sudo rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","/home/*"} / /home/backup --delete'
+
+# checking if the next system update needs manual intervention
+alias update='if yay -Pw | grep -i manual > /dev/null 2>&1 ; then yay -Pw; else sudo pacman -Syyu; fi'
