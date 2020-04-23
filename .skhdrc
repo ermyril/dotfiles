@@ -70,7 +70,7 @@ shift + alt - 0x1B : yabai -m window --space  7; yabai -m space --focus 7
 
 
 # focus monitor
-alt - m : yabai -m display --focus next
+alt - m : yabai -m display --focus recent
 
 
 # focus desktop
