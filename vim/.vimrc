@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+                                  
 
 so ~/.dotfiles/vim/plugins.vim
 

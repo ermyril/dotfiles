@@ -52,6 +52,9 @@ Plug 'mxw/vim-jsx'
 "blade syntax
 Plug 'jwalton512/vim-blade'
 
+"handlebars support for ember
+Plug 'mustache/vim-mustache-handlebars'
+
 " include neovim plugins
 source ~/.dotfiles/vim/nvim-plugins.vim
 
