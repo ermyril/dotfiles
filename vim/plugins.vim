@@ -31,9 +31,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'ervandew/supertab'
 "Plug 'garbas/vim-snipmate'
-Plug 'SirVer/ultisnips'
+if has('python3')
+    Plug 'SirVer/ultisnips'
+endif
+
 Plug 'mattn/emmet-vim'
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 "Trying to fix bad php support
 Plug '2072/PHP-Indenting-for-VIm'
