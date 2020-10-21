@@ -31,9 +31,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'ervandew/supertab'
 "Plug 'garbas/vim-snipmate'
-if has('python3')
-    Plug 'SirVer/ultisnips'
-endif
+Plug 'SirVer/ultisnips', Cond(has('python3'))
 
 Plug 'mattn/emmet-vim'
 "Plug 'terryma/vim-multiple-cursors'
