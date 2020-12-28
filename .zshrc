@@ -14,7 +14,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export ZSH=$HOME/.oh-my-zsh
 
 # Path to my vimrc file
-export MYVIMRC=$HOME/.vimrc
+#export MYVIMRC=$HOME/.vimrc
 
 # To turn off ctrl-D to exit *FOR ZSH*
 setopt ignoreeof
@@ -27,20 +27,7 @@ setopt ignoreeof
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ju:ww::w:$ZSH_THEME="agnoster"
 #ZSH_THEME="agnoster"
-ZSH_THEME="spaceship"
-
-# Spaceship theme configurations section
-# https://github.com/denysdovhan/spaceship-prompt/
-#
-#SPACESHIP_CHAR_SYMBOL=" ➜ "
-SPACESHIP_CHAR_SYMBOL="› "
-SPACESHIP_BATTERY_THRESHOLD="40"
-#SPACESHIP_VI_MODE_INSERT="( ─ ‿‿ ─ ).-~☆"
-#SPACESHIP_VI_MODE_NORMAL="( ─ ‿‿ ─ )    "
-SPACESHIP_VI_MODE_INSERT=" ~"
-SPACESHIP_VI_MODE_NORMAL="  "
-SPACESHIP_VI_MODE_COLOR="green"
-
+ZSH_THEME="robbyrussell"
 
 
 # Set list of themes to load
@@ -94,49 +81,30 @@ SPACESHIP_VI_MODE_COLOR="green"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
  git
-#github
-#sublime
- docker
-#docker-compose
-#osx
  autojump
-#taskwarrior
- tmux
-#nvm
-  #vi-mode
+ #tmux
 )
 
 
 
-#enable if using vi-mode plugin
-export RPS1="%{$reset_color%}"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# vi-mode
-#  look here (https://dougblack.io/words/zsh-vi-mode.html) 
-   function zle-keymap-select() { zle reset-prompt ; zle -R }
-   zle -N zle-keymap-select
-   bindkey -v
-   export KEYTIMEOUT=1
-
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
 
 # Run nvim instead of vim if it present
 if hash nvim 2>/dev/null; then
     alias vim='nvim'
+
+    # Preferred editor for local and remote sessions
+    if [[ -n $SSH_CONNECTION ]]; then
+      export EDITOR='vim'
+    else
+      export EDITOR='nvim'
+    fi
 fi
 
 
@@ -152,11 +120,6 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zrc='nvim ~/.zshrc'
-alias ohmyzsh='nvim ~/.oh-my-zsh'
-alias lyrics='~/.lyrics'
-alias ls='colorls'
-alias ll='colorls -al'
 alias mv='mv -v'
 alias rm='rm -v'
 alias dc='docker-compose'
@@ -176,30 +139,17 @@ if [ -f ~/.zshalias ]; then
     source ~/.zshalias
 fi
 
+# hooks 
+#
+if [ -f ~/.dotfiles/zsh/fnm.zsh ]; then
+    source ~/.dotfiles/zsh/fnm.zsh
+fi
 
 # handy functions
 #
 if [ -f ~/.dotfiles/zshfunc ]; then
     source ~/.dotfiles/zshfunc
 fi
-
-# get bitrix restore
-alias getrestore='wget http://www.1c-bitrix.ru/download/scripts/restore.php'
-alias getsetup='wget http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php'
-
-# get laravel container
-alias getlaravel='curl -LO https://raw.githubusercontent.com/bitnami/bitnami-docker-laravel/master/docker-compose.yml'
-
-
-#PROMPT='%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f \$ '
-#RPROMPT='[%F{yellow}%?%f]'
-
-
-export GOPATH=$HOME/go
-
-eval $(thefuck --alias)
-
-#eval $(nvm use default)
 
 
 # Zplug (https://github.com/zplug/zplug)
@@ -210,25 +160,8 @@ eval $(thefuck --alias)
 #
 #
 
-getcontainerid(){
-    container=$1 # db or app
-    echo $(docker ps | grep $( echo pwd | awk -F \/ '{print $NF}' | sed 's/\.//g')_$container | awk '{print $1}')
-}
 
 
-# The next line updates PATH for Yandex Cloud CLI.
-# if [ -f '/home/shiasyn/yandex-cloud/path.bash.inc' ]; then source '/home/shiasyn/yandex-cloud/path.bash.inc'; fi
+eval "$(fnm env --use-on-cd)"
 
-# this hack is for evading slowdown in nvm usage
-# https://github.com/nvm-sh/nvm/issues/860#issuecomment-242157535
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh --no-use" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-NODE_VERSION="v11.13.0"
-export PATH="${PATH}:${NVM_DIR}/versions/node/${NODE_VERSION}/bin"
-
-
-# The next line updates PATH for Yandex Cloud CLI.
-if [ -f '/home/ermyril/yandex-cloud/path.bash.inc' ]; then source '/home/ermyril/yandex-cloud/path.bash.inc'; fi
-
+export PATH="/usr/local/opt/php@7.2/bin:$PATH"
