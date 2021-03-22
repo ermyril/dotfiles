@@ -53,6 +53,8 @@ Plug 'mxw/vim-jsx'
 "blade syntax
 Plug 'jwalton512/vim-blade'
 
+Plug 'digitaltoad/vim-pug'
+
 "handlebars support for ember
 Plug 'mustache/vim-mustache-handlebars'
 
