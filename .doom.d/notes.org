@@ -1,0 +1,13 @@
+#+TITLE: TODO:
+
+
+1. Fix seo fields for posts.
+
+
+2. Do the presentation -> dto and shit
+
+3. Do the frontend
+
+4. ???
+
+5. Profit

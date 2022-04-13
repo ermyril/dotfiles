@@ -42,24 +42,32 @@ Plug 'StanAngeloff/php.vim'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'mhartington/oceanic-next'
 Plug 'jiangmiao/auto-pairs'
 
-"jsx support
-Plug 'pangloss/vim-javascript'
+" Themes
+Plug 'mhartington/oceanic-next'
+"Plug 'ghifarit53/tokyonight-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+" Syntax support
+Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'mxw/vim-jsx'
+"jsx support
+"Plug 'pangloss/vim-javascript'
+"Plug 'mxw/vim-jsx'
 
-"blade syntax
-Plug 'jwalton512/vim-blade'
+"Plug 'jwalton512/vim-blade'
+"Plug 'digitaltoad/vim-pug'
 
-Plug 'digitaltoad/vim-pug'
+"Plug 'mustache/vim-mustache-handlebars'
 
 " Nix syntax support
 Plug 'LnL7/vim-nix'
 
-"handlebars support for ember
-Plug 'mustache/vim-mustache-handlebars'
+"Goddammit how I was living without it
+"
+Plug 'tpope/vim-commentary'
+Plug 'psliwka/vim-smoothie'
 
 " include neovim plugins
 source ~/.dotfiles/vim/nvim-plugins.vim
