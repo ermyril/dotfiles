@@ -45,8 +45,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 
 " Themes
-"Plug 'mhartington/oceanic-next'
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'mhartington/oceanic-next'
+"Plug 'ghifarit53/tokyonight-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Syntax support

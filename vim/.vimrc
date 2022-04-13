@@ -208,6 +208,21 @@ endif
 let g:user_emmet_leader_key='<C-E>'
 
 
+"/ 
+"/ Smoothie 
+"/ 
+let g:smoothie_update_interval = 10
+let g:smoothie_speed_exponentiation_factor = 0.9
+let g:smoothie_speed_linear_factor = 20
+
+"/ 
+"/ Autocomment 
+"/ 
+let g:inline_comment_dict = {
+            \'//': ["js", "ts", "cpp", "c", "dart", "php"],
+            \'#': ['py', 'sh'],
+            \'"': ['vim'],
+            \}
 
 "------------Auto-Commands-----------"
 
