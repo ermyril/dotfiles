@@ -55,6 +55,9 @@ Plug 'jwalton512/vim-blade'
 
 Plug 'digitaltoad/vim-pug'
 
+" Nix syntax support
+Plug 'LnL7/vim-nix'
+
 "handlebars support for ember
 Plug 'mustache/vim-mustache-handlebars'
 

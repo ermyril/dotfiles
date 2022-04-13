@@ -31,7 +31,7 @@
 
 
 # open terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
+# cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
 
 # focus window
 alt - h : yabai -m window --focus west
@@ -74,13 +74,13 @@ alt - m : yabai -m display --focus recent
 
 
 # focus desktop
-alt - 1 : yabai -m space --focus 1
-alt - 2 : yabai -m space --focus 2
-alt - 3 : yabai -m space --focus 3
-alt - 4 : yabai -m space --focus 4
-alt - 9 : yabai -m space --focus 5
-alt - 0 : yabai -m space --focus 6
-alt - 0x1B : yabai -m space --focus 7
+#alt - 1 : yabai -m space --focus 1
+#alt - 2 : yabai -m space --focus 2
+#alt - 3 : yabai -m space --focus 3
+#alt - 4 : yabai -m space --focus 4
+#alt - 9 : yabai -m space --focus 5
+#alt - 0 : yabai -m space --focus 6
+#alt - 0x1B : yabai -m space --focus 7
 
 
 # increase window size
