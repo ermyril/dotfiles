@@ -58,5 +58,5 @@
   (remove-hook! tide-mode 'tide-hl-identifier-mode))
 
 (setq
- projectile-project-search-path '("~/Projects")
+ projectile-project-search-path '("~/Projects" "~/.dotfiles")
 )
