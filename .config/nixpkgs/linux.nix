@@ -12,9 +12,9 @@ let mkTuple = lib.hm.gvariant.mkTuple;
     wget
     vimgolf
     jq
-    tmux
     emacs
     fd # for doom-emacs
+    at
     ctags
     cmake
     libtool
@@ -45,9 +45,10 @@ let mkTuple = lib.hm.gvariant.mkTuple;
 in
 {
     imports = [
-	./dconf.nix
+        ./dconf.nix
         ./dotfiles.nix
         ./firefox.nix
+        ./tmux.nix
         #./wireguard.nix
         #./outline.nix
    ];
@@ -66,6 +67,7 @@ in
 
   home.packages =  tools ++ apps;
 
+
   #xsession.enable = true;
   #xsession.windowManager.command = "…";
   #xsession.windowManager.bspwm.enable = true;
@@ -79,6 +81,14 @@ in
      EDITOR = "vim";
   };
   programs = {
+    vim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [ vim-airline vim-tmux-navigator ];
+      settings = { ignorecase = true; };
+      extraConfig = ''
+        set mouse=a
+      '';
+    };
     gpg = {
       enable = true;
       mutableKeys = true;
@@ -135,11 +145,6 @@ in
             };
 	}
       ];
-    };
-
-    tmux = {
-     enable = true;
-     clock24 = true;
     };
 
     ssh = {
@@ -215,36 +220,19 @@ in
 	};
     };
 
-    #firefox = 
-    #{
-	#enable = true;
-
-	#profiles.a = {
-    #      settings = {
-    #          "browser.startup.homepage" = "https://nixos.org";
-    #          "browser.search.region" = "GB";
-    #          "browser.search.isUS" = false;
-    #          "distribution.searchplugins.defaultLocale" = "en-US";
-    #          "general.useragent.locale" = "en-US";
-    #          "browser.bookmarks.showMobileBookmarks" = true;
-    #      };
-
-    #      search.default = "DuckDuckGo";
-
-    #      extensions = 
-    #        with pkgs.nur.repos.rycee.firefox-addons; [
-    #          #https-everywhere
-    #          privacy-badger
-    #          vimium
-    #          adnauseam
-    #      ];
-	#};
-    #};
     htop.enable = true;
+
     keychain = 
     {
 	enable = true;
     };
   };
+
+  nixpkgs.overlays = [
+    (self: super: {
+      fcitx-engines = pkgs.fcitx5;
+    })
+  ];
+
   services =  { };
 }
