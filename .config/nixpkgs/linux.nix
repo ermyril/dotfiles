@@ -49,6 +49,7 @@ in
         ./dotfiles.nix
         ./firefox.nix
         ./tmux.nix
+        ./ssh.nix
         #./wireguard.nix
         #./outline.nix
    ];
@@ -113,11 +114,11 @@ in
       enableSyntaxHighlighting = true;
       shellAliases =
       {
-	ll = "ls -al";
-	".." = "cd ..";
-	update = "sudo nixos-rebuild switch --flake .#sabbath";
-	search = "nix search nixpkgs";
-	clean = "nix-collect-garbage -d";
+        ll = "ls -al";
+        ".." = "cd ..";
+        update = "sudo nixos-rebuild switch --flake .#sabbath";
+        search = "nix search nixpkgs";
+        clean = "nix-collect-garbage -d";
       };
       oh-my-zsh = {
         enable = true;
@@ -147,62 +148,6 @@ in
       ];
     };
 
-    ssh = {
-       enable = true;
-       matchBlocks = {
-        "github.com" = {
-          hostname = "github.com";
-	  identityFile = "${homedir}/.ssh/ermyril";
-	  user = "git";
-       	};
-	"gitlab.com" = {
-          hostname = "gitlab.com";
-	  identityFile = "${homedir}/.ssh/ermyril";
-	  user = "git";
-       	};
-	"eosprod" = {
-          hostname = "193.19.100.91";
-	  identityFile = "${homedir}/.ssh/redcollar";
-          port = 2223;
-	  user = "admin-vm";
-       	};
-	"eos" = {
-          hostname = "193.19.100.91";
-	  identityFile = "${homedir}/.ssh/redcollar";
-          port = 2224;
-	  user = "admin-vm";
-       	};
-	"eoslk" = {
-          hostname = "188.94.211.92";
-	  identityFile = "${homedir}/.ssh/redcollar";
-          port = 2227;
-	  user = "root";
-       	};
-	"eoslktest" = {
-          hostname = "188.94.211.92";
-	  identityFile = "${homedir}/.ssh/redcollar";
-          port = 2228;
-	  user = "root";
-       	};
-	"eoslksentry" = {
-          hostname = "188.94.211.92";
-	  identityFile = "${homedir}/.ssh/redcollar";
-          port = 2229;
-	  user = "root";
-       	};
-	"doserver" = {
-          hostname = "142.93.229.84";
-	  identityFile = "${homedir}/.ssh/ermyril";
-	  user = "root";
-       	};
-	"proxy" = {
-          hostname = "84.201.142.71";
-	  identityFile = "${homedir}/.ssh/redcollar";
-	  user = "ubuntu";
-       	};
-	
-       };
-    };
     git = {
 	enable = true;
 	userName = "Er Myril";

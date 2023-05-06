@@ -1,0 +1,20 @@
+#+title: Todo
+
+
+- [X] Screenshot at Ctrl/Alt+super+4
+- [X] Rounded corners in pop-shell
+- [X] Set default editor for the root
+- [ ] Add Load Average to the powerline in tmux
+  + [ ] Fix colors in powerline
+  + [ ] Replace powerline
+  + [ ] Add tmux-mem-cpu-load
+
+- [ ] Super+C, Super+V - CopyPaste
+- [ ] Sleep issue (?)
+- [ ] Set Default Shell to Zsh/Fish
+- [ ] Kitty fullsize window
+- [ ] Kitty font size
+- [ ] Proper search
+- [ ] Analogue of open in mac (alias open=xdg-open)
+- [ ] Analogue of preview in mac
+- [ ] Wireguard shenanigans - Don't really want to tunnel by default
