@@ -45,10 +45,12 @@ let mkTuple = lib.hm.gvariant.mkTuple;
 in
 {
     imports = [
-        ./dconf.nix
+        ./dconf.nix # should go under the gnome module
         ./dotfiles.nix
         ./firefox.nix
         ./tmux.nix
+        ./vim.nix
+        ./fish.nix
         ./ssh.nix
         #./wireguard.nix
         #./outline.nix

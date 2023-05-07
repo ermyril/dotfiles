@@ -2,7 +2,8 @@
 
 
 - [X] Screenshot at Ctrl/Alt+super+4
-- [X] Rounded corners in pop-shell
+- [ ]  * Warning: can't find id_rsa; skipping on su - ermyril
+- [ ] Rounded corners in pop-shell
 - [X] Set default editor for the root
 - [ ] Add Load Average to the powerline in tmux
   + [ ] Fix colors in powerline
@@ -11,9 +12,10 @@
 
 - [ ] Super+C, Super+V - CopyPaste
 - [ ] Sleep issue (?)
-- [ ] Set Default Shell to Zsh/Fish
+- [X] Set Default Shell to Zsh/Fish
 - [ ] Kitty fullsize window
 - [ ] Kitty font size
+- [ ] Move vim configuration to nix
 - [ ] Proper search
 - [ ] Analogue of open in mac (alias open=xdg-open)
 - [ ] Analogue of preview in mac
