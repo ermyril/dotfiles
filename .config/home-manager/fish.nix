@@ -85,18 +85,30 @@ programs.fish.interactiveShellInit = ''
 
 '';
 
+  programs.fish = {
+    enable = true;
+    plugins = [
+       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+       { name = "done"; src = pkgs.fishPlugins.done.src; }
+       { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+       { name = "z"; src = pkgs.fishPlugins.z.src; }
+    ];
+  };
 
   home.packages = with pkgs; [
-    fishPlugins.done
-    libnotify       # dependency of done, check dat shit
-    fishPlugins.autopair
-    #fishPlugins.fzf-fish
-    #fishPlugins.forgit
-    fishPlugins.hydro
-    #fzf
-    #fishPlugins.grc
-    #grc
-    fishPlugins.z
+    grc
+    libnotify
   ];
-  programs.fish.enable = true;
+  # TODO: add more, fix dis mess
+ #home.packages = with pkgs; [
+ #  fishPlugins.done
+ #  fishPlugins.autopair
+ #  #fishPlugins.fzf-fish
+ #  #fishPlugins.forgit
+ #  fishPlugins.hydro
+ #  #fzf
+ #  #fishPlugins.grc
+ #  grc
+ #  fishPlugins.z
+ #];
 }
