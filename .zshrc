@@ -2,12 +2,11 @@
 # TODO: cleanup this mess
 
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.vimpkg/bin:$(ruby -e 'print Gem.user_dir')/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$(ruby -e 'print Gem.user_dir')/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
 
 
 # Path to your oh-my-zsh installation.
