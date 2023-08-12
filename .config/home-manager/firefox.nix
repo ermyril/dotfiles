@@ -10,9 +10,11 @@
           with pkgs.nur.repos.rycee.firefox-addons; [
             #https-everywhere
             privacy-badger
+            firefox-translations
             vimium
-            adnauseam
+            #adnauseam
             bitwarden
+            consent-o-matic
         ];
         search = {
           force = true;

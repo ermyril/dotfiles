@@ -15,6 +15,7 @@ let mkTuple = lib.hm.gvariant.mkTuple;
     emacs
     fd # for doom-emacs
     at
+    element-desktop
     ctags
     cmake
     libtool
@@ -30,6 +31,10 @@ let mkTuple = lib.hm.gvariant.mkTuple;
     wireshark
     dconf2nix # to generate nixconfig from dconf
     emacsPackages.vterm
+    ghc
+    logseq
+    terraform
+
   ];
   apps = with pkgs; [
     ffmpeg-full
@@ -52,6 +57,7 @@ in
         ./vim.nix
         ./fish.nix
         ./ssh.nix
+        #./syncthing.nix
         #./wireguard.nix
         #./outline.nix
    ];
@@ -84,14 +90,6 @@ in
      EDITOR = "vim";
   };
   programs = {
-    vim = {
-      enable = true;
-      plugins = with pkgs.vimPlugins; [ vim-airline vim-tmux-navigator ];
-      settings = { ignorecase = true; };
-      extraConfig = ''
-        set mouse=a
-      '';
-    };
     gpg = {
       enable = true;
       mutableKeys = true;
@@ -110,45 +108,6 @@ in
     };
 
     alacritty.enable = true;
-    zsh = {
-      enable = true;
-      enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
-      shellAliases =
-      {
-        ll = "ls -al";
-        ".." = "cd ..";
-        update = "sudo nixos-rebuild switch --flake .#sabbath";
-        search = "nix search nixpkgs";
-        clean = "nix-collect-garbage -d";
-      };
-      oh-my-zsh = {
-        enable = true;
-     #   custom = ".config/ohmyzsh/custom";
-        plugins = [ "git" ];
-        theme = "darkblood";
-      };
-      plugins = [
-	{
-            name = "zsh-syntax-highlighting";
-            src = pkgs.fetchFromGitHub {
-              owner = "zsh-users";
-              repo = "zsh-syntax-highlighting";
-              rev = "caa749d030d22168445c4cb97befd406d2828db0";
- 	      sha256 = "sha256-YV9lpJ0X2vN9uIdroDWEize+cp9HoKegS3sZiSpNk50=";
-            };
-	}
-	{
-            name = "zsh-autosuggestions";
-            src = pkgs.fetchFromGitHub {
-              owner = "zsh-users";
-              repo = "zsh-autosuggestions";
-	      rev = "a411ef3e0992d4839f0732ebeb9823024afaaaa8";
-	      sha256 = "1g3pij5qn2j7v7jjac2a63lxd97mcsgw6xq6k5p7835q9fjiid98";
-            };
-	}
-      ];
-    };
 
     git = {
 	enable = true;

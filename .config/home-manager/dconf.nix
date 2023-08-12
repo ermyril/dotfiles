@@ -140,8 +140,8 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/keybindings" = {
       open-application-menu = [];
-      screenshot = ["<Alt><Super>4"];
-      show-screenshot-ui = [ "<Control><Super>4" ];
+      show-screenshot-ui = ["<Alt><Super>4"];
+      screenshot = [ "<Control><Super>4" ];
       switch-to-application-1 = [];
       switch-to-application-2 = [];
       switch-to-application-3 = [];
