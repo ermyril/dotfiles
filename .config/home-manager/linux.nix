@@ -40,7 +40,6 @@ let mkTuple = lib.hm.gvariant.mkTuple;
     ffmpeg-full
     tdesktop #telegram
     vlc
-    extremetuxracer
   ];
   sandbox = with pkgs; [
     spotify-tui

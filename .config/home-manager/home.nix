@@ -4,17 +4,20 @@ let
   isLinux = builtins.currentSystem == "x86_64-linux";
   isMacOS = builtins.currentSystem == "x86_64-darwin";
 in
+if isLinux then
 {
-    imports = [
-        ./macos.nix
-    ];
+  imports = [
+      ./linux.nix
+  ];
+}
+else if isMacOS then
+{ 
+  imports = [
+      ./macos.nix
+  ];
+}
+else
+{
+  # someday I'll try SomeBSD 
 }
 
-# if isLinux then
-#   { inherit (import ./linux.nix) fileToInclude; }
-# else if isMacOS then
-#   { inherit (import ./macos.nix) fileToInclude; }
-# else
-#   {
-#     # someday I'll try SomeBSD 
-#   }

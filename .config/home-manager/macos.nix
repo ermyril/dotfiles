@@ -5,6 +5,8 @@
         ./dotfiles.nix
         ./tmux.nix
         ./fish.nix
+        ./vim.nix
+        ./ssh.nix
         #./wireguard.nix
         #./outline.nix
    ];
@@ -28,11 +30,7 @@
 
   # Packages to install
   home.packages = [
-    pkgs.tmux
-
-    pkgs.vim
     pkgs.ripgrep
-
     pkgs.neofetch
     pkgs.git
     pkgs.coreutils
