@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set ignorecase
                                   
 
 so ~/.dotfiles/vim/plugins.vim
@@ -6,6 +7,9 @@ so ~/.dotfiles/vim/plugins.vim
 syntax enable
 
 language messages C
+
+" Adding cyrillics support to the normal and visual modes
+set langmap=йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪфФыЫвВаАпПрРоОлЛдДжЖэЭяЯчЧсСмМиИтТьЬбБюЮ.\\,;qQwWeErRtTyYuUiIoOpP[{]}aAsSdDfFgGhHjJkKlL;:'\"zZxXcCvVbBnNmM\\,<.>/?
 
 set backspace=indent,eol,start				"Make backspace behave like every other editor
 let mapleader = ','					"The default leader is \, but a comma is much better

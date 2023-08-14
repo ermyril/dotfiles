@@ -61,3 +61,5 @@
 (setq
  projectile-project-search-path '("~/Projects" "~/.dotfiles")
 )
+
+(setq tidal-boot-script-path "~/.local/share/x86_64-osx-ghc-9.6.2/tidal-1.9.4/BootTidal.hs")
