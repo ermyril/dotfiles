@@ -2,10 +2,8 @@
 
 {
     imports = [
-	./dconf.nix
         ./dotfiles.nix
-        #./wireguard.nix
-        #./outline.nix
+       ./tmux.nix
    ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -28,6 +26,7 @@
   # Packages to install
   home.packages = [
     pkgs.tmux
+    pkgs.go
     pkgs.vim
     pkgs.neofetch
     pkgs.ripgrep
@@ -35,7 +34,17 @@
     pkgs.coreutils
     pkgs.fd
     pkgs.gnupg
-    #pkgs.ansible
+    pkgs.cmake
+    pkgs.gnugrep
+    pkgs.tree
+    pkgs.nmap
+    pkgs.bchunk
+    pkgs.jq
+    pkgs.htop
+    pkgs.glances
+    pkgs.pstree
+    pkgs.picocom
+    pkgs.parallel
     #pkgs.yabai # shit is not working due to plist fuckery in home-manager
     #pkgs.skhd # same as above
   ];
