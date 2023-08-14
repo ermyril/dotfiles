@@ -1,54 +1,6 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-    imports = [
-        ./dotfiles.nix
-       ./tmux.nix
-   ];
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "nikitami";
-  home.homeDirectory = "/Users/nikitami";
-
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "22.05";
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  # Packages to install
-  home.packages = [
-    pkgs.tmux
-    pkgs.go
-    pkgs.vim
-    pkgs.neofetch
-    pkgs.ripgrep
-    pkgs.git
-    pkgs.coreutils
-    pkgs.fd
-    pkgs.gnupg
-    pkgs.cmake
-    pkgs.gnugrep
-    pkgs.tree
-    pkgs.nmap
-    pkgs.bchunk
-    pkgs.jq
-    pkgs.htop
-    pkgs.glances
-    pkgs.pstree
-    pkgs.picocom
-    pkgs.parallel
-    #pkgs.yabai # shit is not working due to plist fuckery in home-manager
-    #pkgs.skhd # same as above
-  ];
-
 programs.fish.interactiveShellInit = ''
   set -g fish_greeting ""
   set -x PATH ~/.config/emacs/bin $PATH
@@ -129,20 +81,34 @@ programs.fish.interactiveShellInit = ''
       _print_in_color "$nix_shell_info λ " (_prompt_color_for_status $last_status) ]
   end
 
-  fnm env --use-on-cd | source
+  #fnm env --use-on-cd | source # - unclear what to do with such cases (aligning crossconfiguration))
+
 '';
 
-  #programs.tmux.enable = true;
-  
+  programs.fish = {
+    enable = true;
+    plugins = [
+       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+       { name = "done"; src = pkgs.fishPlugins.done.src; }
+       { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+       { name = "z"; src = pkgs.fishPlugins.z.src; }
+    ];
+  };
 
-  programs.fish.enable = true;
-  programs.fish.plugins = [{
-    name = "z";
-    src = pkgs.fetchFromGitHub {
-      owner = "jethrokuan";
-      repo = "z";
-      rev = "e0e1b9dfdba362f8ab1ae8c1afc7ccf62b89f7eb";
-      sha256 = "0dbnir6jbwjpjalz14snzd3cgdysgcs3raznsijd6savad3qhijc";
-    };
-  }];
+  home.packages = with pkgs; [
+    grc
+    libnotify
+  ];
+  # TODO: add more, fix dis mess
+ #home.packages = with pkgs; [
+ #  fishPlugins.done
+ #  fishPlugins.autopair
+ #  #fishPlugins.fzf-fish
+ #  #fishPlugins.forgit
+ #  fishPlugins.hydro
+ #  #fzf
+ #  #fishPlugins.grc
+ #  grc
+ #  fishPlugins.z
+ #];
 }

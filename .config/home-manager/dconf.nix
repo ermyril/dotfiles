@@ -8,7 +8,7 @@ with lib.hm.gvariant;
     "org/gnome/desktop/input-sources" = {
       per-window = false;
       sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "ru" ]) ];
-      xkb-options = [ "terminate:ctrl_alt_bksp" ];
+      xkb-options = [ "terminate:ctrl_alt_bksp" "caps:escape"];
     };
 
     "org/gnome/desktop/interface" = {
@@ -60,7 +60,6 @@ with lib.hm.gvariant;
       switch-to-workspace-left = [];
       switch-to-workspace-right = [];
       switch-to-workspace-up = [ "<Primary><Super>Up" "<Primary><Super>k" ];
-      toggle-floating = [ "<Super>t" ];
       toggle-maximized = [ "<Super>f" ];
       unmaximize = [];
     };
@@ -86,11 +85,11 @@ with lib.hm.gvariant;
       night-light-temperature = mkUint32 3500;
     };
 
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      binding = "<Super>z";
-      command = "alacritty";
-      name = "Alacritty";
-    };
+    # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+    #   binding = "<Super>z";
+    #   command = "alacritty";
+    #   name = "Alacritty";
+    # };
 
     "org/gnome/shell" = {
       disable-extension-version-validation = true;
@@ -127,6 +126,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/pop-shell" = {
+      active-hint-border-radius = 15;
       active-hint = true;
       gap-inner = mkUint32 2;
       gap-outer = mkUint32 2;
@@ -135,13 +135,13 @@ with lib.hm.gvariant;
       search = [ "<Control>Space" ];
       show-title = false;
       smart-gaps = true;
-      tile-by-default = false;
+      tile-by-default = true;
     };
 
     "org/gnome/shell/keybindings" = {
       open-application-menu = [];
-      screenshot = [];
-      show-screenshot-ui = [ "<Control><Super>4" ];
+      show-screenshot-ui = ["<Alt><Super>4"];
+      screenshot = [ "<Control><Super>4" ];
       switch-to-application-1 = [];
       switch-to-application-2 = [];
       switch-to-application-3 = [];
@@ -151,7 +151,7 @@ with lib.hm.gvariant;
       switch-to-application-7 = [];
       switch-to-application-8 = [];
       switch-to-application-9 = [];
-      toggle-message-tray = [ "<Super>v" ];
+      toggle-message-tray = [];
       toggle-overview = [];
     };
 

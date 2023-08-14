@@ -1,5 +1,5 @@
 {
-  home.file.".vimrc".source = ../../vim/.vimrc;
+  #home.file.".vimrc".source = ../../vim/.vimrc;
   home.file.".config/kitty".source = ../../.config/kitty;
   # home.file.".tmux.conf".source = ../../.tmux.conf;
   home.file.".yabairc".source = ../../.yabairc;
