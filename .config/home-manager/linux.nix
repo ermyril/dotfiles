@@ -7,42 +7,57 @@
 }:
 let mkTuple = lib.hm.gvariant.mkTuple;
   tools = with pkgs; [
+    vscode
     git
     curl
     wget
-    vimgolf
-    jq
-    emacs
-    fd # for doom-emacs
     at
-    element-desktop
+    #element-desktop # matrix client
     ctags
     cmake
     libtool
     ripgrep
-    moreutils
+    #moreutils
     gnome.gnome-tweaks
     gnome.dconf-editor
     gnomeExtensions.pop-shell
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.hide-top-bar
+    gnomeExtensions.gjs-osk
+    gnomeExtensions.screen-rotate
     wireguard-tools
     atop
     gparted
     wireshark
     dconf2nix # to generate nixconfig from dconf
-    emacsPackages.vterm
     ghc
+    btop
     logseq
     terraform
+    kubectl
+    insomnia
+    unzip
+    p7zip
+    foliate
+    gimp
 
+    lmms
+    ardour
+    reaper
+    mixxx
+    vcv-rack
+    nerdfonts
+    deluge
+    obsidian
+    # kicad
   ];
   apps = with pkgs; [
     ffmpeg-full
-    tdesktop #telegram
+    #tdesktop #telegram
     vlc
   ];
   sandbox = with pkgs; [
-    spotify-tui
+    #spotify-tui
   ];
   username = "ermyril";
   homedir = "/home/${username}"; 
@@ -56,13 +71,14 @@ in
         ./vim.nix
         ./fish.nix
         ./ssh.nix
+        ./emacs.nix
         #./syncthing.nix
         #./wireguard.nix
-        #./outline.nix
    ];
-  home.stateVersion = "22.05"; 
+  home.stateVersion = "22.11"; 
   programs.home-manager.enable = true;
   
+  nixpkgs.config.allowUnfree = true;
   nixpkgs.config.packageOverrides = pkgs: {
     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
       inherit pkgs;
@@ -105,8 +121,6 @@ in
         PASSWORD_STORE_CLIP_TIME = "60";
       };
     };
-
-    alacritty.enable = true;
 
     git = {
 	enable = true;

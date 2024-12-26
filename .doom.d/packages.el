@@ -50,3 +50,7 @@
 ;(unpin! t)
 
 (package! tidal)
+
+;; (package! emacsql :built-in 'prefer)
+;; (package! emacsql-sqlite :built-in 'prefer)
+;; (package! pdf-tools :built-in 'prefer)

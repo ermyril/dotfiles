@@ -4,6 +4,7 @@
 programs.fish.interactiveShellInit = ''
   set -g fish_greeting ""
   set -x PATH ~/.config/emacs/bin $PATH
+  set -x PATH ~/.emacs.d/bin $PATH
   set -x PATH ~/.nix-profile/bin $PATH
   set -U fish_color_autosuggestion      brblack
   set -U fish_color_cancel              -r

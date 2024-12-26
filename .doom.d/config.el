@@ -26,11 +26,12 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-henna)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Notes/")
+
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -62,4 +63,42 @@
  projectile-project-search-path '("~/Projects" "~/.dotfiles")
 )
 
-(setq tidal-boot-script-path "~/.local/share/x86_64-osx-ghc-9.6.2/tidal-1.9.4/BootTidal.hs")
+;; (setq tidal-boot-script-path "~/.local/share/x86_64-osx-ghc-9.6.2/tidal-1.9.4/BootTidal.hs")
+
+;; (use-package! org-roam
+;;   :ensure t
+;;   :custom
+;;   (org-roam-directory (file-truename "~/Notes"))
+;;   ;; (org-roam-dailies-directory "journals/")
+;;   :config
+;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
+;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+;;   (org-roam-db-autosync-mode)
+;;   ;; If using org-roam-protocol
+;; ;;   (require 'org-roam-protocol))
+
+;;   (use-package! org-roam
+;;      :after org
+;;      :hook (org-mode . org-roam-mode)
+;;      :custom
+;;      (org-roam-directory "~/org-roam")
+;;      :bind (:map org-roam-mode-map
+;;                  (("C-c n l" . org-roam)
+;;                   ("C-c n f" . org-roam-find-file)
+;;                   ("C-c n g" . org-roam-graph))
+;;                  :map org-mode-map
+;;                  (("C-c n i" . org-roam-insert))
+;;                  (("C-c n I" . org-roam-insert-immediate))))
+
+;; (setq org-roam-file-exclude-regexp "\\.git/.*\\|logseq/.*$"
+;;       org-roam-capture-templates
+;;       '(("d" "default" plain
+;;          "%?"
+;;          ;; Accomodates for the fact that Logseq uses the "pages" directory
+;;          :target (file+head "pages/${slug}.org" "#+title: ${title}\n")
+;;          :unnarrowed t))
+;;       org-roam-dailies-capture-templates
+;;       '(("d" "default" entry
+;;          "* %?"
+;;          :target (file+head "%<%Y-%m-%d>.org" ;; format matches Logseq
+;;                             "#+title: %<%Y-%m-%d>\n"))))

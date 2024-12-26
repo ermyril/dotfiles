@@ -9,50 +9,52 @@
             identityFile = "~/.ssh/ermyril";
             user = "git";
           };
-          "proxmox" = {
-            hostname = "192.168.88.35";
-            identityFile = "~/.ssh/ermyril";
-            user = "root";
-          };
           "gitlab.com" = {
             hostname = "gitlab.com";
             identityFile = "~/.ssh/ermyril";
             user = "git";
           };
-          "eosprod" = {
-            hostname = "193.19.100.91";
-            identityFile = "~/.ssh/redcollar";
-            port = 2223;
-            user = "admin-vm";
-          };
-          "eos" = {
-            hostname = "193.19.100.91";
-            identityFile = "~/.ssh/redcollar";
-            port = 2224;
-            user = "admin-vm";
-          };
-          "eoslk" = {
-            hostname = "188.94.211.92";
-            identityFile = "~/.ssh/redcollar";
-            port = 2227;
+          "kurisu" = {
+            hostname = "192.168.88.35";
+            identityFile = "~/.ssh/ermyril";
             user = "root";
           };
-          "eoslktestnew" = {
-            hostname = "188.94.211.92";
-            identityFile = "~/.ssh/redcollar";
-            #port = 2228;
-            port = 2224;
+          "kyouma" = { 
+            hostname = "93.95.228.13";
+            identityFile = "~/.ssh/ermyril";
             user = "root";
           };
-          "eoslksentry" = {
-            hostname = "188.94.211.92";
-            identityFile = "~/.ssh/redcollar";
-            port = 2229;
+          "daru" = {
+            hostname = "142.93.229.84";
+            identityFile = "~/.ssh/ermyril";
+            user = "root";
+          };
+          "proxmox" = {
+            hostname = "192.168.88.35";
+            identityFile = "~/.ssh/ermyril";
             user = "root";
           };
           "doserver" = {
             hostname = "142.93.229.84";
             identityFile = "~/.ssh/ermyril";
+            user = "root";
+          };
+          "eoslk" = {
+            hostname = "188.94.211.70";
+            identityFile = "~/.ssh/ermyril";
+            port = 2224;
+            user = "admin-vm";
+          };
+          "eoslktest" = {
+            hostname = "188.94.211.70";
+            identityFile = "~/.ssh/ermyril";
+            port = 2228;
+            user = "admin-vm";
+          };
+          "eossentry" = {
+            hostname = "188.94.211.70";
+            identityFile = "~/.ssh/redcollar";
+            port = 2229;
             user = "root";
           };
           "proxy" = {

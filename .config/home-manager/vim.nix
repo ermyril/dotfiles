@@ -29,6 +29,7 @@
       syntax enable
       language messages C
       set mouse=a
+      set clipboard=unnamedplus
       set backspace=indent,eol,start				"Make backspace behave like every other editor
             
       let mapleader = ','					"The default leader is \, but a comma is much better
@@ -207,23 +208,6 @@
       endif
 
 
-
-      "/
-      "/  NCM
-      "/
-
-      if has('nvim')
-          " enable ncm2 for all buffers
-          autocmd BufEnter * call ncm2#enable_for_buffer()
-
-          " IMPORTANTE: :help Ncm2PopupOpen for more information
-          set completeopt=noinsert,menuone,noselect
-
-         " todo: set this up someday
-         "let g:LanguageClient_serverCommands = {
-         "  \ 'javascript': ['javascript-typescript-stdio'],
-         "  \ }
-      endif
 
       "/ 
       "/ Emmet 

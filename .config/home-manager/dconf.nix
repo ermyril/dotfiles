@@ -5,22 +5,80 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
+    "org/gnome/Console" = {
+      last-window-size = mkTuple [ 628 752 ];
+    };
+
+    "org/gnome/calendar" = {
+      active-view = "month";
+      window-maximized = true;
+      window-size = mkTuple [ 768 600 ];
+    };
+
+    "org/gnome/control-center" = {
+      last-panel = "wifi";
+      window-state = mkTuple [ 628 752 ];
+    };
+
+    "org/gnome/desktop/app-folders" = {
+      folder-children = [ "Utilities" "YaST" ];
+    };
+
+    "org/gnome/desktop/app-folders/folders/Utilities" = {
+      apps = [ "gnome-abrt.desktop" "gnome-system-log.desktop" "nm-connection-editor.desktop" "org.gnome.baobab.desktop" "org.gnome.Connections.desktop" "org.gnome.DejaDup.desktop" "org.gnome.Dictionary.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.eog.desktop" "org.gnome.Evince.desktop" "org.gnome.FileRoller.desktop" "org.gnome.fonts.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.tweaks.desktop" "org.gnome.Usage.desktop" "vinagre.desktop" ];
+      categories = [ "X-GNOME-Utilities" ];
+      name = "X-GNOME-Utilities.directory";
+      translate = true;
+    };
+
+    "org/gnome/desktop/app-folders/folders/YaST" = {
+      categories = [ "X-SuSE-YaST" ];
+      name = "suse-yast.directory";
+      translate = true;
+    };
+
+    "org/gnome/desktop/background" = {
+      color-shading-type = "solid";
+      picture-options = "zoom";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
+      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-d.svg";
+      primary-color = "#967864";
+      secondary-color = "#000000";
+    };
+
     "org/gnome/desktop/input-sources" = {
       per-window = false;
       sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "ru" ]) ];
-      xkb-options = [ "terminate:ctrl_alt_bksp" "caps:escape"];
+      xkb-options = [ "terminate:ctrl_alt_bksp" ]; # MINIBOOK Specific
     };
 
     "org/gnome/desktop/interface" = {
-      color-scheme = "default";
+      color-scheme = "prefer-dark";
       cursor-size = 24;
       cursor-theme = "Adwaita";
       enable-animations = true;
+      enable-hot-corners = false;
       font-antialiasing = "grayscale";
       font-hinting = "slight";
       font-name = "Noto Sans,  10";
       icon-theme = "Adwaita";
       toolbar-style = "text";
+    };
+
+    "org/gnome/desktop/notifications" = {
+      application-children = [ "org-gnome-epiphany" "org-gnome-nautilus" "org-gnome-console" ];
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-console" = {
+      application-id = "org.gnome.Console.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-epiphany" = {
+      application-id = "org.gnome.Epiphany.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-nautilus" = {
+      application-id = "org.gnome.Nautilus.desktop";
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
@@ -30,8 +88,16 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/peripherals/touchpad" = {
       edge-scrolling-enabled = false;
-      tap-to-click = false;
+      tap-to-click = true;
       two-finger-scrolling-enabled = true;
+    };
+
+    "org/gnome/desktop/screensaver" = {
+      color-shading-type = "solid";
+      picture-options = "zoom";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/pixels-l.webp";
+      primary-color = "#967864";
+      secondary-color = "#000000";
     };
 
     "org/gnome/desktop/wm/keybindings" = {
@@ -71,12 +137,59 @@ with lib.hm.gvariant;
       workspace-names = [];
     };
 
+    "org/gnome/epiphany" = {
+      ask-for-default = false;
+    };
+
+    "org/gnome/epiphany/state" = {
+      is-maximized = false;
+      window-size = mkTuple [ 1024 768 ];
+    };
+
+    "org/gnome/evolution-data-server" = {
+      migrated = true;
+    };
+
+    "org/gnome/file-roller/listing" = {
+      list-mode = "as-folder";
+      name-column-width = 250;
+      show-path = false;
+      sort-method = "name";
+      sort-type = "ascending";
+    };
+
+    "org/gnome/file-roller/ui" = {
+      sidebar-width = 200;
+      window-height = 480;
+      window-width = 600;
+    };
+
     "org/gnome/mutter" = {
+      experimental-features = [ "scale-monitor-framebuffer" ];
       attach-modal-dialogs = true;
       dynamic-workspaces = false;
-      edge-tiling = true;
+      edge-tiling = false;
       focus-change-on-pointer-rest = true;
+      overlay-key = "Super_L";
       workspaces-only-on-primary = false;
+    };
+
+    "org/gnome/nautilus/preferences" = {
+      default-folder-viewer = "icon-view";
+      migrated-gtk-settings = true;
+      search-filter-time-type = "last_modified";
+      search-view = "list-view";
+    };
+
+    "org/gnome/nautilus/window-state" = {
+      initial-size = mkTuple [ 628 752 ];
+      maximized = true;
+    };
+
+    "org/gnome/photos" = {
+      window-maximized = false;
+      window-position = [ 26 23 ];
+      window-size = [ 779 548 ];
     };
 
     "org/gnome/settings-daemon/plugins/color" = {
@@ -85,17 +198,11 @@ with lib.hm.gvariant;
       night-light-temperature = mkUint32 3500;
     };
 
-    # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-    #   binding = "<Super>z";
-    #   command = "alacritty";
-    #   name = "Alacritty";
-    # };
-
     "org/gnome/shell" = {
       disable-extension-version-validation = true;
       disable-user-extensions = false;
       disabled-extensions = [];
-      enabled-extensions = [ "pop-shell@system76.com" "dash-to-dock@micxgx.gmail.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" ];
+      enabled-extensions = [ "pop-shell@system76.com" "dash-to-dock@micxgx.gmail.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" ];
       favorite-apps = [ "org.gnome.Epiphany.desktop" "org.gnome.Geary.desktop" "org.gnome.Calendar.desktop" "org.gnome.Music.desktop" "org.gnome.Photos.desktop" "org.gnome.Nautilus.desktop" "Alacritty.desktop" ];
       had-bluetooth-devices-setup = true;
       last-selected-power-profile = "power-saver";
@@ -103,7 +210,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/auto-move-windows" = {
-      application-list = [ "telegramdesktop.desktop:3" ];
+      application-list = [ "firefox.desktop:1" "kitty.desktop:5" "org.telegram.desktop.desktop:3" "emacs.desktop:6" ];
     };
 
     "org/gnome/shell/extensions/dash-to-dock" = {
@@ -126,8 +233,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/pop-shell" = {
-      active-hint-border-radius = 15;
       active-hint = true;
+      active-hint-border-radius = mkUint32 10;
       gap-inner = mkUint32 2;
       gap-outer = mkUint32 2;
       hint-color-rgba = "rgba(0, 139, 140, 1)";
@@ -140,8 +247,8 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/keybindings" = {
       open-application-menu = [];
-      show-screenshot-ui = ["<Alt><Super>4"];
-      screenshot = [ "<Control><Super>4" ];
+      show-screenshot-ui = [ "<Control><Super>4" ];
+      screenshot = [ "<Alt><Super>4" ];
       switch-to-application-1 = [];
       switch-to-application-2 = [];
       switch-to-application-3 = [];
@@ -153,6 +260,29 @@ with lib.hm.gvariant;
       switch-to-application-9 = [];
       toggle-message-tray = [];
       toggle-overview = [];
+    };
+
+    "org/gnome/shell/world-clocks" = {
+      locations = "@av []";
+    };
+
+    "org/gnome/tweaks" = {
+      show-extensions-notice = false;
+    };
+
+    "org/gtk/gtk4/settings/file-chooser" = {
+      date-format = "regular";
+      location-mode = "path-bar";
+      show-hidden = true;
+      show-size-column = true;
+      show-type-column = true;
+      sidebar-width = 140;
+      sort-column = "name";
+      sort-directories-first = false;
+      sort-order = "ascending";
+      type-format = "category";
+      view-type = "list";
+      window-size = mkTuple [ 825 327 ];
     };
 
   };

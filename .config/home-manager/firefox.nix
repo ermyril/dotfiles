@@ -1,6 +1,10 @@
 { lib, config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    firefox-wayland
+  ];
+
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;
@@ -9,6 +13,7 @@
         extensions = 
           with pkgs.nur.repos.rycee.firefox-addons; [
             #https-everywhere
+            ublock-origin
             privacy-badger
             firefox-translations
             vimium
@@ -83,7 +88,7 @@
               }];
               icon = "${pkgs.fetchurl {
                 url = "https://www.redditstatic.com/accountmanager/favicon/favicon-512x512.png";
-                sha256 = "sha256-WiXqffmuCVCOJ/rpqyhFK59bz1lKnUOp9/aoEAYRsn0=";
+                sha256 = "sha256-4zWTcHuL1SEKk8KyVFsOKYPbM4rc7WNa9KrGhK4dJyg=";
               }}";
               definedAliases = [ "@r" ];
             };
