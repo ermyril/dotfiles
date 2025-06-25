@@ -1,44 +1,76 @@
 { config, pkgs, ... }:
 
-{
+let
+  # Set the username and home directory using environment variables
+  username = builtins.getEnv "USERNAME";
+  homeDir = builtins.getEnv "HOME";
+in {
+  home.username = "mikhaini";
+  home.homeDirectory = "/Users/mikhaini";
+
     imports = [
         ./dotfiles.nix
         ./tmux.nix
         ./fish.nix
         ./vim.nix
         ./ssh.nix
-        #./wireguard.nix
-        #./outline.nix
+        ./home-manager-spotlight-hack.nix
    ];
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "nikitami";
-  home.homeDirectory = "/Users/nikitami";
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "22.05";
+  home.packages = with pkgs; [
+    docker
+    kubectl
+    kitty
+    neofetch
+    git
+    coreutils
+    gnused
+    gnugrep
+    gnupg
+    ansible
+    yabai 
+    skhd 
+    netcat 
+    htop
+    go
+
+    emacs29-macport # TODO: move to the separate file
+    emacsPackages.vterm
+    haskell-language-server
+    ghc
+    gopls
+    libgccjit
+
+    fd
+    jq
+    yq-go
+    awscli2
+    ripgrep
+    #lima # try to update it after some time, right now there is some troubles with VZ vm's
+    cmake
+    terraform
+    minikube
+    #parallel
+    multimarkdown
+    postgresql_14
+    fnm
+    nerdfonts
+    podman
+
+    mongodb
+
+    # (python3.withPackages (ps: with ps; [
+    #   ipykernel jupyterlab
+    #   matplotlib numpy pandas seaborn
+    #   networkx
+    # ]))
+  ];
+
+
+  home.stateVersion = "23.11";
+  nixpkgs.config.allowUnfree = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  # Packages to install
-  home.packages = [
-    pkgs.ripgrep
-    pkgs.neofetch
-    pkgs.git
-    pkgs.coreutils
-    pkgs.fd
-    pkgs.gnupg
-    #pkgs.ansible
-    #pkgs.yabai # shit is not working due to plist fuckery in home-manager
-    #pkgs.skhd # same as above
-  ];
-
+  home.enableNixpkgsReleaseCheck = false;
 }

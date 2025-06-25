@@ -5,8 +5,9 @@
        enable = true;
        matchBlocks = {
           "github.com" = {
-            hostname = "github.com";
-            identityFile = "~/.ssh/ermyril";
+            hostname = "ssh.github.com";
+            port = 443;
+            identityFile = "~/.ssh/id_rsa";
             user = "git";
           };
           "proxmox" = {

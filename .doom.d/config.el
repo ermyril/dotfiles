@@ -3,7 +3,14 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 ;;
-(setq default-frame-alist '((undecorated . t)))
+
+
+;; SWITCH THAT SO IT'S ENABLED ONLY ON LINUX
+
+;; make the whole not IS-MAC work
+;; (if (not IS-MAC 
+;;(setq default-frame-alist '((undecorated . t)))
+;;))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -55,11 +62,43 @@
 ;; they are implemented.
 ;;
 ;;
-(after! tide
-  (remove-hook! tide-mode 'tide-hl-identifier-mode))
+;; (after! tide
+;;   (remove-hook! tide-mode 'tide-hl-identifier-mode))
+
+(menu-bar-mode 0) ;; small menu-bar
 
 (setq
  projectile-project-search-path '("~/Projects" "~/.dotfiles")
-)
+ )
 
-(setq tidal-boot-script-path "~/.local/share/x86_64-osx-ghc-9.6.2/tidal-1.9.4/BootTidal.hs")
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word))
+  )
+
+(require 'lsp-mode)
+(add-hook 'go-mode-hook #'lsp-deferred)
+
+
+;; Set up before-save hooks to format buffer and add/delete imports.
+;; Make sure you don't have other gofmt/goimports hooks enabled.
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+
+;; Я ебал в рот gopls, лучше учиться кодить на лиспе
+(after! go-mode
+  (defun my-fix-pp-imports-after-organize ()
+    "Replace occurrences of 'github.com/k0kubun/pp' with 'github.com/k0kubun/pp/v3'."
+    (save-excursion
+      (goto-char (point-min))
+      (while (search-forward "github.com/k0kubun/pp\"" nil t)
+        (replace-match "github.com/k0kubun/pp/v3\"" nil t))))
+  (advice-add 'lsp-organize-imports :after #'my-fix-pp-imports-after-organize))

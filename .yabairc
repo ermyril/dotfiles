@@ -21,7 +21,8 @@ yabai -m config window_shadow                on
 yabai -m config window_border                on
 yabai -m config window_border_width          3
 # - colors for borders are in the format AARRGGBB (alpha, red, green, blue)
-yabai -m config active_window_border_color   0xFF008B8C
+#yabai -m config active_window_border_color   0xFF008B8C
+yabai -m config active_window_border_color   0xFF009c95
 yabai -m config normal_window_border_color   0x33696969
 #yabai -m config normal_window_border_color   0x00505050
 yabai -m config insert_window_border_color   0xffd75f5f
@@ -42,11 +43,16 @@ yabai -m config left_padding                 0
 yabai -m config right_padding                0
 yabai -m config window_gap                   10
 
-yabai -m rule --add app=Emacs manage=on space=5
+yabai -m rule --add app=Emacs manage=on space=6
 yabai -m rule --add app=slack manage=on space=3
-yabai -m rule --add app=Kitty space=6
+yabai -m rule --add app=kitty space=7
 yabai -m rule --add app=iTunes space=4
 yabai -m rule --add app=Telegram space=3
-yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^Microsoft Teams$" space=3
+yabai -m rule --add app="^Microsoft Outlook$" space=8
+yabai -m rule --add app="^Outlook \(PWA\)" space=8
+yabai -m rule --add app="^Logseq$" space=2
+yabai -m rule --add app="^System Settings$" manage=off # Maybe should leave as it is
+yabai -m rule --add app="^Microsoft Teams$" title="^Microsoft Teams Notification$" manage=off # I suspect that it's not working
 
 echo "yabai configuration loaded.."

@@ -1,8 +1,11 @@
 { config, lib, pkgs, ... }:
 
-{
+let
+  isDarwin = if builtins.elem builtins.currentSystem ["aarch64-darwin" "x86_64-darwin"] then true else false;
+in {
   programs.vim = {
     enable = true;
+    packageConfigurable = if isDarwin then pkgs.vim-darwin else pkgs.vim-full;
     plugins = with pkgs.vimPlugins; [
       vim-vinegar
       nerdtree
@@ -31,6 +34,7 @@
       set mouse=a
       set backspace=indent,eol,start				"Make backspace behave like every other editor
             
+      set clipboard=unnamed
       let mapleader = ','					"The default leader is \, but a comma is much better
 
       set number						"Activate line numbers

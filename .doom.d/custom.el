@@ -13,6 +13,16 @@
       :desc "Hydra resize"
       "w SPC" #'doom-window-resize-hydra/body)
 
+(map! :leader
+      :desc "Open private config"
+      "f p" #'(lambda () (interactive) (projectile-find-file-in-directory "~/.dotfiles/.doom.d/")))
+
+(map! :leader
+      :desc "Open home-manager config"
+      "f h" #'(lambda () (interactive) (projectile-find-file-in-directory "~/.dotfiles/.config/home-manager")))
+
+(map! :leader "." nil)
+
 
 
 (custom-set-variables

@@ -1,5 +1,10 @@
 { pkgs, config, ... }:
 {
+  home.packages = [
+    pkgs.coreutils
+    pkgs.ncurses
+  ];
+
   programs.tmux = {
     enable = true;
     clock24 = true;
@@ -16,6 +21,7 @@
       sensible
       better-mouse-mode
       open
+      sysstat
       # catppuccin
       pain-control
       {
@@ -45,7 +51,7 @@
       {
         plugin = cpu;
         extraConfig = ''
-          set -g status-right '#{cpu_bg_color} CPU: #{cpu_icon} #{cpu_percentage} | %a %h-%d %H:%M '
+          set -g status-right 'LA: #(sysctl -n vm.loadavg) #{cpu_bg_color} CPU: #{cpu_icon} #{cpu_percentage} | %a %h-%d %H:%M '
         '';
       }
       # {
@@ -59,9 +65,12 @@
     ];
 
     # TODO: add session manager - dmux / smug looks nice
+    # TODO: find a way to change screen-256 back to tmux-256, at least on linux, cuz screen breaks italics
     extraConfig = ''
       # https://old.reddit.com/r/tmux/comments/mesrci/tmux_2_doesnt_seem_to_use_256_colors/
-      set -g default-terminal "tmux-256color"
+
+      set -g default-terminal "screen-256color"
+
       set -ga terminal-overrides ",*256col*:Tc"
       set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
       set-environment -g COLORTERM "truecolor"
