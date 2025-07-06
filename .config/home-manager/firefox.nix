@@ -1,10 +1,6 @@
 { lib, config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    firefox-wayland
-  ];
-
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;

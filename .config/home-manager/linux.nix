@@ -43,12 +43,12 @@ let mkTuple = lib.hm.gvariant.mkTuple;
 
     lmms
     ardour
-    reaper
+    #reaper
     mixxx
-    vcv-rack
-    nerdfonts
+    #vcv-rack
+    #nerdfonts
     deluge
-    obsidian
+    obs-studio
     # kicad
   ];
   apps = with pkgs; [

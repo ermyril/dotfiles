@@ -1,13 +1,13 @@
 { config, lib, pkgs, ... }:
 
 {
+
   home.packages = with pkgs; [
     git
     emacs    
     emacsPackages.vterm
     emacsPackages.python
     emacsPackages.emacsql
-    emacsPackages.emacsql-sqlite
     emacsPackages.pdf-tools
 
 
@@ -22,7 +22,6 @@
     nixfmt
     python311Full
     python311Packages.pytest
-    python311Packages.nose
     ccls
     clang-tools
     libvterm
@@ -54,6 +53,6 @@
     isort
     stylelint
     ansible
-    nerdfonts
+    #nerd-fonts
   ];
 }

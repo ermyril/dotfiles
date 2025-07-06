@@ -63,6 +63,18 @@
  projectile-project-search-path '("~/Projects" "~/.dotfiles")
 )
 
+
+;; Together.ai offers an OpenAI compatible API
+(gptel-make-openai "TogetherAI"         ;Any name you want
+  :host "api.together.xyz"
+  ;; :key "your-api-key"                   ;can be a function that returns the key
+  :stream t
+  :models '(;; has many more, check together.ai
+            mistralai/Mixtral-8x7B-Instruct-v0.1
+            codellama/CodeLlama-13b-Instruct-hf
+            codellama/CodeLlama-34b-Instruct-hf))
+
+
 ;; (setq tidal-boot-script-path "~/.local/share/x86_64-osx-ghc-9.6.2/tidal-1.9.4/BootTidal.hs")
 
 ;; (use-package! org-roam
