@@ -18,7 +18,6 @@ imports = [
   ./home-encryption.nix
   ./programs/kmonad/kmonad.nix
   ./programs/waydroid.nix
-  (import ../../flake.nix).inputs.kmonad.nixosModules.default
 ];
 
   hardware.sensor.iio.enable = true;
