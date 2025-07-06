@@ -171,6 +171,7 @@ hardware.nvidia = {
     kdePackages.kdenlive
     mesa-demos
     deluge
+    htop
 
 
 	gst_all_1.gstreamer
