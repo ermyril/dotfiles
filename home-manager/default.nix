@@ -12,8 +12,8 @@
     ./.config/home-manager/ssh.nix
     ./.config/home-manager/fish.nix
     ./.config/home-manager/firefox.nix
-    ./.config/home-manager/syncthing.nix
-    ./.config/home-manager/linux.nix     # platform-specific tweaks
+    #./.config/home-manager/syncthing.nix
+    #./.config/home-manager/linux.nix     # platform-specific tweaks
     # ./.config/home-manager/macos.nix   # keep for macbook standalone HM
   ];
 
