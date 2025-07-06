@@ -15,8 +15,8 @@
             vimium
             #adnauseam
             bitwarden
-            consent-o-matic
-        ];
+            # consent-o-matic removed due to bspwm dependency
+          ];
         search = {
           force = true;
           default = "DuckDuckGo";
