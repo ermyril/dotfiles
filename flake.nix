@@ -36,8 +36,8 @@
             # Make NUR available to HM
             ({ nixpkgs.overlays = [ nur.overlays.default ]; })
 
-            # Existing HM entrypoint (we will modularise later)
-            ./home-manager/home.nix
+            # Aggregate HM entrypoint
+            ./home-manager/default.nix
           ];
         };
     in {
@@ -55,11 +55,12 @@
           system  = "x86_64-linux";
           modules = [
             ./hosts/north/configuration.nix
+            ({ nixpkgs.overlays = [ nur.overlays.default ]; })
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.ermyril = import ./home-manager/home.nix;
+              home-manager.users.ermyril = import ./home-manager/default.nix;
             }
           ];
         };
@@ -68,11 +69,12 @@
           system  = "x86_64-linux";
           modules = [
             ./hosts/minibook/configuration.nix
+            ({ nixpkgs.overlays = [ nur.overlays.default ]; })
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.ermyril = import ./home-manager/home.nix;
+              home-manager.users.ermyril = import ./home-manager/default.nix;
             }
           ];
         };
