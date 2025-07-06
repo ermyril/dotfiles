@@ -13,11 +13,17 @@
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
 
+    # KMonad (keyboard remapper) Nix module
+    kmonad = {
+      url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Utility helpers
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, flake-utils, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, flake-utils, kmonad, ... }:
     let
       inherit (nixpkgs.lib) nixosSystem;
 
@@ -35,6 +41,12 @@
           ];
         };
     in {
+      # expose selected flake inputs for host configs that do
+      #   (import ../../flake.nix).inputs.<name>
+      inputs = {
+        inherit kmonad nur home-manager nixpkgs flake-utils;
+      };
+
       ############################################################
       ## NixOS Hosts  (HM-as-module will be wired later)
       ############################################################
