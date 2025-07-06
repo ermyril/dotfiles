@@ -6,8 +6,11 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
+      ./modules/ollama.nix
+      # ./modules/plasma.nix
+      # ./modules/bottles.nix
     ];
 
 fileSystems = {
@@ -341,4 +344,3 @@ hardware.graphics = {
   system.stateVersion = "24.11"; # Did you read the comment?
 
 }
-

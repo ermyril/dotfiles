@@ -1,0 +1,58 @@
+{ config, pkgs, lib, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    vim-full
+    wget
+    firefox-wayland
+    bookworm
+    calibre
+    telegram-desktop
+    kitty
+    neofetch
+    htop
+    tmux
+    home-manager
+    wine
+
+    git
+    git-credential-manager
+    pass-git-helper
+    msmtp
+
+    acpid
+    wl-clipboard
+    #nerd-fonts
+
+    emacs
+    ripgrep
+    clang
+    cmake
+    rtags
+    nixfmt-classic
+    python3
+    emacsPackages.vterm
+    emacsPackages.python
+
+    gnome-tweaks
+    dconf-editor
+    gnomeExtensions.pop-shell
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.hide-top-bar
+    gnomeExtensions.gjs-osk
+    gnomeExtensions.screen-rotate
+
+    #obs-studio
+    gimp
+    (wrapOBS {
+      plugins = with obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        droidcam-obs
+      ];
+    })
+  ];
+
+}
+
+

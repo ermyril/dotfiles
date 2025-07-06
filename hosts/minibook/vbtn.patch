@@ -1,0 +1,36 @@
+diff --git a/drivers/input/misc/soc_button_array.c b/drivers/input/misc/soc_button_array.c
+index b8cad415c62c..745c0e6ce833 100644
+--- a/drivers/input/misc/soc_button_array.c
++++ b/drivers/input/misc/soc_button_array.c
+@@ -598,6 +598,7 @@ static const struct soc_device_data soc_device_MSHW0040 = {
+ static const struct acpi_device_id soc_button_acpi_match[] = {
+ 	{ "PNP0C40", (unsigned long)&soc_device_PNP0C40 },
+ 	{ "INT33D3", (unsigned long)&soc_device_INT33D3 },
++	{ "PNP0C60", (unsigned long)&soc_device_INT33D3 },
+ 	{ "ID9001", (unsigned long)&soc_device_INT33D3 },
+ 	{ "ACPI0011", 0 },
+ 
+diff --git a/drivers/platform/x86/intel/vbtn.c b/drivers/platform/x86/intel/vbtn.c
+index 232cd12e3c9f..b326329939c9 100644
+--- a/drivers/platform/x86/intel/vbtn.c
++++ b/drivers/platform/x86/intel/vbtn.c
+@@ -32,6 +32,7 @@ MODULE_AUTHOR("AceLan Kao");
+ 
+ static const struct acpi_device_id intel_vbtn_ids[] = {
+ 	{"INT33D6", 0},
++	{"INT33D3", 0},
+ 	{"", 0},
+ };
+ MODULE_DEVICE_TABLE(acpi, intel_vbtn_ids);
+@@ -234,6 +235,11 @@ static const struct dmi_system_id dmi_switches_allow_list[] = {
+ 			DMI_EXACT_MATCH(DMI_CHASSIS_TYPE, "32" /* Detachable */),
+ 		},
+ 	},
++	{
++		.matches = {
++			DMI_EXACT_MATCH(DMI_CHASSIS_TYPE, "10" /* Detachable */),
++		},
++	},
+ 	{
+ 		.matches = {
+ 			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),

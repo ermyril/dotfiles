@@ -1,0 +1,12 @@
+diff --git a/drivers/iio/accel/mxc4005.c b/drivers/iio/accel/mxc4005.c
+index 82e8d0b39..09764ef8b 100644
+--- a/drivers/iio/accel/mxc4005.c
++++ b/drivers/iio/accel/mxc4005.c
+@@ -472,6 +472,7 @@ static int mxc4005_probe(struct i2c_client *client)
+ static const struct acpi_device_id mxc4005_acpi_match[] = {
+ 	{"MXC4005",	0},
+ 	{"MXC6655",	0},
++	{"MDA6655",	0},
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(acpi, mxc4005_acpi_match);
