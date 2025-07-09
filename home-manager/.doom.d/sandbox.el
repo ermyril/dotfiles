@@ -23,13 +23,15 @@
 year % 4 === 0
 
 (defun leap-year-p (year)
-  (and (equal (% year 4) 0)
-       (equal (% year 10))
-       )
 
   ;; (equal (% 100 year) 0)
   )
 
+(defun dough-calculator (pizzas diameter) (
+  (* pizzas (+ (/ (* 45 pi diameter) 20) 200))
+))
+
+(dough-calculator 4 30)
 
 (leap-year-p 1996) ; +
 (leap-year-p 1997) ; -
