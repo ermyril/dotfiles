@@ -40,6 +40,7 @@ let mkTuple = lib.hm.gvariant.mkTuple;
     p7zip
     foliate
     gimp
+    neofetch
 
     lmms
     ardour
@@ -89,7 +90,9 @@ in
   home.homeDirectory = homedir;
 
 
-  home.packages =  tools ++ apps;
+  home.packages =  tools ++ apps ++ [
+    pkgs.nixpkgs-fmt  # Nix formatter
+  ];
 
 
   #xsession.enable = true;

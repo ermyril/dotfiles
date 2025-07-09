@@ -58,6 +58,7 @@ in {
     podman
 
     mongodb
+    nixpkgs-fmt  # Nix formatter
 
     # (python3.withPackages (ps: with ps; [
     #   ipykernel jupyterlab

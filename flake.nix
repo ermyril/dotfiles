@@ -27,8 +27,12 @@
     let
       inherit (nixpkgs.lib) nixosSystem;
 
-      # Helper: create a stand-alone home-manager config for a given system
-      mkHome = system:
+
+      # Helper: create a stand-alone home-manager config for a given system and username
+      mkHome = system: username:
+        let
+          isDarwin = (import nixpkgs { inherit system; }).stdenv.hostPlatform.isDarwin;
+        in
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { 
             inherit system; 
@@ -41,7 +45,22 @@
 
             # Aggregate HM entrypoint
             ./home-manager/default.nix
-          ];
+            
+            # Pass username and homeDirectory
+            {
+              home.username = username;
+              home.homeDirectory = if isDarwin 
+                then "/Users/${username}" 
+                else "/home/${username}";
+            }
+            
+            # Platform-specific imports
+            (if isDarwin 
+              then ./home-manager/modules/macos.nix 
+              else ./home-manager/modules/linux.nix)
+          ] ++ (if isDarwin 
+            then [] 
+            else [./home-manager/modules/dconf.nix]);
         };
     in {
       # expose selected flake inputs for host configs that do
@@ -51,7 +70,7 @@
       };
 
       ############################################################
-      ## NixOS Hosts  (HM-as-module will be wired later)
+      ## NixOS Hosts
       ############################################################
       nixosConfigurations = {
         north = nixosSystem {
@@ -90,7 +109,7 @@
       ############################################################
       ## Stand-alone Home-Manager (macbook)
       ############################################################
-      homeConfigurations.macbook = mkHome "aarch64-darwin";
+      homeConfigurations.macbook = mkHome "aarch64-darwin" "mikhaini";
 
       # flake-utils defaultPackage/devShell, etc. can be added later if needed
     };
