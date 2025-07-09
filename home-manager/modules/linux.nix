@@ -9,6 +9,7 @@
   # Linux-specific imports only
   imports = [
     ./emacs.nix
+    ./dconf.nix
     #./syncthing.nix
     #./wireguard.nix
   ];

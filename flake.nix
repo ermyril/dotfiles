@@ -31,14 +31,13 @@
       # Helper: create a stand-alone home-manager config for a given system, username, and stateVersion
       mkHome = system: username: stateVersion:
         let
-          isDarwin = (import nixpkgs { inherit system; }).stdenv.hostPlatform.isDarwin;
-        in
-        home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { 
             inherit system; 
             config.allowUnfree = true;
           };
-
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
           modules = [
             # Make NUR available to HM
             ({ nixpkgs.overlays = [ nur.overlays.default ]; })
@@ -46,22 +45,15 @@
             # Aggregate HM entrypoint
             ./home-manager/default.nix
             
-            # Pass username, homeDirectory, and stateVersion
+            # Platform-specific configuration
+            ./home-manager/platforms/${pkgs.stdenv.hostPlatform.parsed.kernel.name}.nix
+            
+            # Pass username and stateVersion (homeDirectory is set by platform config)
             {
               home.username = username;
-              home.homeDirectory = if isDarwin 
-                then "/Users/${username}" 
-                else "/home/${username}";
               home.stateVersion = stateVersion;
             }
-            
-            # Platform-specific imports
-            (if isDarwin 
-              then ./home-manager/modules/macos/macos.nix 
-              else ./home-manager/modules/linux.nix)
-          ] ++ (if isDarwin 
-            then [] 
-            else [./home-manager/modules/dconf.nix]);
+          ];
         };
     in {
       # expose selected flake inputs for host configs that do
