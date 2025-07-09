@@ -16,14 +16,11 @@
       auto-optimise-store = true;
     };
     
-    # Garbage collection settings (defaults, can be overridden)
-    gc = {
+    # Garbage collection settings (Linux only - Determinate Systems handles this on macOS)
+    gc = lib.mkIf pkgs.stdenv.isLinux {
       automatic = lib.mkDefault true;
       options = lib.mkDefault "--delete-older-than 7d";
-    } // lib.optionalAttrs pkgs.stdenv.isLinux {
       dates = lib.mkDefault "weekly";
-    } // lib.optionalAttrs pkgs.stdenv.isDarwin {
-      interval = lib.mkDefault { Weekday = 0; Hour = 2; Minute = 0; };
     };
   };
 
