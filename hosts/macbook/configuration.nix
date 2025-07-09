@@ -3,6 +3,7 @@
 {
   # Enable nix flakes
   nix.settings.experimental-features = "nix-command flakes";
+  nix.enable = false;
   
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
