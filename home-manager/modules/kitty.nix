@@ -42,6 +42,7 @@
       input_delay = 3;
       sync_to_monitor = "yes";
       
+      
       # Bell
       visual_bell_duration = "0.0";
       enable_audio_bell = "yes";
@@ -83,8 +84,8 @@
       dynamic_background_opacity = "no";
       dim_opacity = "0.75";
       
-      # Terminal settings
-      shell = ".";
+      # Terminal settings - start tmux by default
+      shell = "${pkgs.tmux}/bin/tmux";
       editor = ".";
       close_on_child_death = "no";
       allow_remote_control = "no";
@@ -185,8 +186,5 @@
     };
   };
   
-  # Create autostart configuration file
-  home.file.".config/kitty/autostart.conf".text = ''
-    launch sh -c "tmux"
-  '';
+  # tmux is launched directly as the shell, no autostart file needed
 }
