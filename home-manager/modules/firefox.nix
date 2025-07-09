@@ -1,9 +1,12 @@
 { lib, config, pkgs, ... }:
 
+let
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+in
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-wayland;
+    package = if isDarwin then pkgs.firefox-bin else pkgs.firefox-wayland;
     profiles = {
       ${config.home.username} = {
         extensions = 
@@ -211,7 +214,7 @@
     };
   };
 
-  xdg = {
+  xdg = lib.mkIf (!isDarwin) {
     desktopEntries = {
       # Overrides upstream desktop entry to open firefox in a new tab
       firefox = {
@@ -240,7 +243,7 @@
     };
   };
 
-  home.sessionVariables = {
+  home.sessionVariables = lib.mkIf (!isDarwin) {
     # Touchscreen support
     MOZ_USE_XINPUT2 = "1";
   };

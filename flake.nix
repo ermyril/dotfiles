@@ -85,7 +85,7 @@
       ############################################################
       ## Stand-alone Home-Manager (macbook)
       ############################################################
-      homeConfigurations."ermyril@mac" = mkHome "aarch64-darwin";
+      homeConfigurations.macbook = mkHome "aarch64-darwin";
 
       # flake-utils defaultPackage/devShell, etc. can be added later if needed
     };
