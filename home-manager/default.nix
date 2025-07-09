@@ -36,7 +36,6 @@
     wget
     jq
     yq-go
-    at
     unzip
     p7zip
     wireguard-tools

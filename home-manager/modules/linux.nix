@@ -22,6 +22,7 @@
     ctags
     libtool
     insomnia
+    at
 
     # GNOME/Linux desktop
     gnome.gnome-tweaks
