@@ -30,7 +30,10 @@
       # Helper: create a stand-alone home-manager config for a given system
       mkHome = system:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs { 
+            inherit system; 
+            config.allowUnfree = true;
+          };
 
           modules = [
             # Make NUR available to HM
@@ -56,6 +59,7 @@
           modules = [
             ./hosts/north/configuration.nix
             ({ nixpkgs.overlays = [ nur.overlays.default ]; })
+            ({ nixpkgs.config.allowUnfree = true; })
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -71,6 +75,7 @@
           modules = [
             ./hosts/minibook/configuration.nix
             ({ nixpkgs.overlays = [ nur.overlays.default ]; })
+            ({ nixpkgs.config.allowUnfree = true; })
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
