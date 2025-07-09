@@ -27,6 +27,7 @@ fileSystems = {
 ########};
 
 
+services.sunshine.enable = true;
 
  nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
@@ -172,6 +173,7 @@ hardware.nvidia = {
     mesa-demos
     deluge
     htop
+    waypipe
 
 
 	gst_all_1.gstreamer
@@ -188,6 +190,7 @@ hardware.nvidia = {
     pkgsi686Linux.gst_all_1.gst-plugins-ugly
     pkgsi686Linux.gst_all_1.gst-libav
 
+    claude-code
 bottles
 
 	gnutls 
