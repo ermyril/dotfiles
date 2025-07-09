@@ -57,7 +57,7 @@
             
             # Platform-specific imports
             (if isDarwin 
-              then ./home-manager/modules/macos.nix 
+              then ./home-manager/modules/macos/macos.nix 
               else ./home-manager/modules/linux.nix)
           ] ++ (if isDarwin 
             then [] 

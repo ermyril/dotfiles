@@ -9,8 +9,8 @@ in
     package = if isDarwin then pkgs.firefox-bin else pkgs.firefox-wayland;
     profiles = {
       ${config.home.username} = {
-        extensions = 
-          with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions = {
+          packages = with pkgs.nur.repos.rycee.firefox-addons; [
             #https-everywhere
             ublock-origin
             privacy-badger
@@ -20,18 +20,19 @@ in
             bitwarden
             # consent-o-matic removed due to bspwm dependency
           ];
+        };
         search = {
           force = true;
-          default = "DuckDuckGo";
-          order = [ "DuckDuckGo" "Google" ];
+          default = "ddg";
+          order = [ "ddg" "google" ];
           engines = {
-            "Amazon.ca".metaData.alias = "@a";
-            "Bing".metaData.hidden = true;
-            "eBay".metaData.hidden = true;
-            "Google".metaData.alias = "@g";
-            "Wikipedia (en)".metaData.alias = "@w";
+            "amazon".metaData.alias = "@a";
+            "bing".metaData.hidden = true;
+            "ebay".metaData.hidden = true;
+            "google".metaData.alias = "@g";
+            "wikipedia".metaData.alias = "@w";
 
-            "GitHub" = {
+            "github" = {
               urls = [{
                 template = "https://github.com/search";
                 params = [
@@ -45,7 +46,7 @@ in
               definedAliases = [ "@gh" ];
             };
 
-            "Nix Packages" = {
+            "nix-packages" = {
               urls = [{
                 template = "https://search.nixos.org/packages";
                 params = [
@@ -57,7 +58,7 @@ in
               definedAliases = [ "@np" ];
             };
 
-            "NixOS Wiki" = {
+            "nixos-wiki" = {
               urls = [{
                 template = "https://nixos.wiki/index.php";
                 params = [ { name = "search"; value = "{searchTerms}"; }];
@@ -66,7 +67,7 @@ in
               definedAliases = [ "@nw" ];
             };
 
-            "Nixpkgs Issues" = {
+            "nixpkgs-issues" = {
               urls = [{
                 template = "https://github.com/NixOS/nixpkgs/issues";
                 params = [
@@ -78,7 +79,7 @@ in
             };
 
             # A good way to find genuine discussion
-            "Reddit" = {
+            "reddit" = {
               urls = [{
                 template = "https://www.reddit.com/search";
                 params = [
@@ -92,7 +93,7 @@ in
               definedAliases = [ "@r" ];
             };
 
-            "Youtube" = {
+            "youtube" = {
               urls = [{
                 template = "https://www.youtube.com/results";
                 params = [ { name = "search_query"; value = "{searchTerms}"; }];
