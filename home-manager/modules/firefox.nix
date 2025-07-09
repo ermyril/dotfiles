@@ -18,7 +18,7 @@ in
             vimium
             #adnauseam
             bitwarden
-            # consent-o-matic removed due to bspwm dependency
+            consent-o-matic 
           ];
         };
         search = {
