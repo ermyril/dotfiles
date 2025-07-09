@@ -9,6 +9,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # nix-darwin for macOS system management
+    nix-darwin.url = "github:lnl7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     # NUR overlay (already used in current configs)
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
@@ -23,43 +27,16 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, flake-utils, kmonad, ... }:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, ... }:
     let
       inherit (nixpkgs.lib) nixosSystem;
 
 
-      # Helper: create a stand-alone home-manager config for a given system, username, and stateVersion
-      mkHome = system: username: stateVersion:
-        let
-          pkgs = import nixpkgs { 
-            inherit system; 
-            config.allowUnfree = true;
-          };
-        in
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            # Make NUR available to HM
-            ({ nixpkgs.overlays = [ nur.overlays.default ]; })
-
-            # Aggregate HM entrypoint
-            ./home-manager/default.nix
-            
-            # Platform-specific configuration
-            ./home-manager/platforms/${pkgs.stdenv.hostPlatform.parsed.kernel.name}.nix
-            
-            # Pass username and stateVersion (homeDirectory is set by platform config)
-            {
-              home.username = username;
-              home.stateVersion = stateVersion;
-            }
-          ];
-        };
     in {
       # expose selected flake inputs for host configs that do
       #   (import ../../flake.nix).inputs.<name>
       inputs = {
-        inherit kmonad nur home-manager nixpkgs flake-utils;
+        inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils;
       };
 
       ############################################################
@@ -106,9 +83,18 @@
       };
 
       ############################################################
-      ## Stand-alone Home-Manager (macbook)
+      ## macOS Hosts (nix-darwin)
       ############################################################
-      homeConfigurations.macbook = mkHome "aarch64-darwin" "mikhaini" "24.11";
+      darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { 
+          inputs = { inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils; };
+        };
+        modules = [
+          ./hosts/macbook/configuration.nix
+          home-manager.darwinModules.home-manager
+        ];
+      };
 
       # flake-utils defaultPackage/devShell, etc. can be added later if needed
     };
