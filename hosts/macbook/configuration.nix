@@ -100,9 +100,6 @@
     backupFileExtension = "bak";
     
     users.mikhaini = {
-     #imports = [ ../../home-manager/default.nix ];
-      
-      # User-specific settings
       home = {
         username = "mikhaini";
         homeDirectory = "/Users/mikhaini";

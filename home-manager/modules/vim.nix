@@ -26,16 +26,19 @@ in {
       vim-smoothie
       vim-commentary
     ];
-    settings = { ignorecase = true; };
+    settings = { 
+      ignorecase = true;
+    };
     extraConfig = ''
       set nocompatible
       syntax enable
       language messages C
+      
+      " Platform-specific clipboard settings
+      ${if isDarwin then "set clipboard=unnamed" else "set clipboard=unnamedplus"}
+      
       set mouse=a
-      set clipboard=unnamedplus
       set backspace=indent,eol,start				"Make backspace behave like every other editor
-            
-      set clipboard=unnamed
       let mapleader = ','					"The default leader is \, but a comma is much better
 
       set number						"Activate line numbers
