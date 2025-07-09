@@ -1,12 +1,16 @@
 {
-  #home.file.".vimrc".source = ../../vim/.vimrc;
-  home.file.".config/kitty".source = ../.config/kitty;
-  # home.file.".tmux.conf".source = ../../.tmux.conf;
-  home.file.".yabairc".source = ../.yabairc;
-  home.file.".skhdrc".source = ../.skhdrc;
-  home.file.".doom.d".source = ../.doom.d;
-  home.file.".config/bspwm".source = ../.config/bspwm;
-  home.file.".config/sxhkd".source = ../.config/sxhkd;
-  home.file.".config/polybar".source = ../.config/polybar;
-  home.file.".config/rofi".source = ../.config/rofi;
+  # Plain text configuration files - now organized in dedicated dotfiles/ directory
+  
+  # Terminal & GUI apps
+  home.file.".config/kitty".source = ../../dotfiles/config/kitty;
+  
+  # macOS window managers
+  home.file.".yabairc".source = ../../dotfiles/yabairc;
+  home.file.".skhdrc".source = ../../dotfiles/skhdrc;
+  
+  # Editors
+  home.file.".doom.d".source = ../../dotfiles/doom.d;
+  
+  # Git
+  home.file.".gitignore_global".source = ../../dotfiles/gitignore_global;
 }

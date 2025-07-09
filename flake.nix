@@ -28,8 +28,8 @@
       inherit (nixpkgs.lib) nixosSystem;
 
 
-      # Helper: create a stand-alone home-manager config for a given system and username
-      mkHome = system: username:
+      # Helper: create a stand-alone home-manager config for a given system, username, and stateVersion
+      mkHome = system: username: stateVersion:
         let
           isDarwin = (import nixpkgs { inherit system; }).stdenv.hostPlatform.isDarwin;
         in
@@ -46,12 +46,13 @@
             # Aggregate HM entrypoint
             ./home-manager/default.nix
             
-            # Pass username and homeDirectory
+            # Pass username, homeDirectory, and stateVersion
             {
               home.username = username;
               home.homeDirectory = if isDarwin 
                 then "/Users/${username}" 
                 else "/home/${username}";
+              home.stateVersion = stateVersion;
             }
             
             # Platform-specific imports
@@ -84,7 +85,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "bak";
-              home-manager.users.ermyril = import ./home-manager/default.nix;
+              home-manager.users.ermyril = {
+                imports = [ ./home-manager/default.nix ];
+                home.stateVersion = "25.05";
+              };
             }
           ];
         };
@@ -100,7 +104,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "bak";
-              home-manager.users.ermyril = import ./home-manager/default.nix;
+              home-manager.users.ermyril = {
+                imports = [ ./home-manager/default.nix ];
+                home.stateVersion = "22.11";
+              };
             }
           ];
         };
@@ -109,7 +116,7 @@
       ############################################################
       ## Stand-alone Home-Manager (macbook)
       ############################################################
-      homeConfigurations.macbook = mkHome "aarch64-darwin" "mikhaini";
+      homeConfigurations.macbook = mkHome "aarch64-darwin" "mikhaini" "24.11";
 
       # flake-utils defaultPackage/devShell, etc. can be added later if needed
     };

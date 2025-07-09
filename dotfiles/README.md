@@ -1,4 +1,5 @@
 # dotfiles
+## mostly obsolete due to moving to nix
 ![screenshot](https://i.redd.it/91sfmofjb6k31.jpg)
 
 Terminal: [Kitty](https://github.com/kovidgoyal/kitty)  

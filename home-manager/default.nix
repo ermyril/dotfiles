@@ -11,9 +11,49 @@
     #./modules/syncthing.nix # do not enable
   ];
 
-  # username and homeDirectory are set by the flake
-  home.stateVersion  = "25.05";
+  # username, homeDirectory, and stateVersion are set by the flake
 
   programs.home-manager.enable = true;
+  # nixpkgs.config is handled by the flake
+
+  # Common packages across all platforms
+  home.packages = with pkgs; [
+    # Development tools
+    git
+    cmake
+    ripgrep
+    terraform
+    kubectl
+    nixpkgs-fmt
+    go
+    gopls
+
+    # System utilities
+    neofetch
+    htop
+    btop
+    curl
+    wget
+    jq
+    yq-go
+    at
+    unzip
+    p7zip
+    wireguard-tools
+    coreutils
+    netcat
+    fd
+    fnm
+
+    # Development languages
+    ghc
+
+    # Terminal/GUI applications
+    kitty
+    gnupg
+
+    # Media
+    ffmpeg-full
+  ];
 
 }
