@@ -20,6 +20,9 @@ imports = [
   ./programs/waydroid.nix
 ];
 
+  # Set primary user for shared modules
+  mySystem.primaryUser = "ermyril";
+
   hardware.sensor.iio.enable = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -102,9 +105,7 @@ imports = [
   #   enableSSHSupport = true;
   # };
 
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.config.nvidia.acceptLicense = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

@@ -1,24 +1,15 @@
 { config, pkgs, lib, inputs, self, ... }:
 
 {
-  # Enable nix flakes
-  nix.settings.experimental-features = "nix-command flakes";
+  # Disable nix daemon on macOS (managed by nix-darwin)
   nix.enable = false;
-  
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # Make NUR available
   nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
-  # macOS system packages (things that need system-level installation)
-  environment.systemPackages = with pkgs; [
-    yabai
-    skhd
-  ];
 
-
-  # Set primary user for nix-darwin
+  # Set primary user for nix-darwin and configure options
+  mySystem.primaryUser = "mikhaini";
   system.primaryUser = "mikhaini";
   nixpkgs.hostPlatform = "aarch64-darwin";
 

@@ -47,15 +47,21 @@
           system  = "x86_64-linux";
           modules = [
             ./hosts/north/configuration.nix
+            ./modules/shared/nix-settings.nix
+            ./modules/shared/users.nix
+            ./modules/shared/packages/common.nix
+            ./modules/nixos/packages.nix
             ({ nixpkgs.overlays = [ nur.overlays.default ]; })
-            ({ nixpkgs.config.allowUnfree = true; })
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "bak";
               home-manager.users.ermyril = {
-                imports = [ ./home-manager/default.nix ];
+                imports = [ 
+                  ./home-manager/default.nix
+                  ./home-manager/platforms/linux.nix
+                ];
                 home.stateVersion = "25.05";
               };
             }
@@ -66,15 +72,21 @@
           system  = "x86_64-linux";
           modules = [
             ./hosts/minibook/configuration.nix
+            ./modules/shared/nix-settings.nix
+            ./modules/shared/users.nix
+            ./modules/shared/packages/common.nix
+            ./modules/nixos/packages.nix
             ({ nixpkgs.overlays = [ nur.overlays.default ]; })
-            ({ nixpkgs.config.allowUnfree = true; })
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "bak";
               home-manager.users.ermyril = {
-                imports = [ ./home-manager/default.nix ];
+                imports = [ 
+                  ./home-manager/default.nix
+                  #./home-manager/platforms/linux.nix
+                ];
                 home.stateVersion = "22.11";
               };
             }
@@ -93,7 +105,23 @@
         };
         modules = [
           ./hosts/macbook/configuration.nix
+          ./modules/shared/nix-settings.nix
+          ./modules/shared/users.nix
+          ./modules/shared/packages/common.nix
+          ./modules/darwin/packages.nix
           home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "bak";
+            home-manager.users.mikhaini = {
+              imports = [ 
+                ./home-manager/default.nix
+                ./home-manager/platforms/darwin.nix
+              ];
+              home.stateVersion = "25.05";
+            };
+          }
         ];
       };
 

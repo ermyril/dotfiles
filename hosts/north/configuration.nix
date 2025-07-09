@@ -13,6 +13,9 @@
       # ./modules/bottles.nix
     ];
 
+  # Set primary user for shared modules
+  mySystem.primaryUser = "ermyril";
+
 fileSystems = {
   "/".options = [ "compress=zstd" ];
   "/home".options = [ "compress=zstd" ];
@@ -29,19 +32,12 @@ fileSystems = {
 
 services.sunshine.enable = true;
 
- nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    #substituters = ["https://hyprland.cachix.org"];
-    #trusted-substituters = ["https://hyprland.cachix.org"];
-    #trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  };
 
 hardware.enableRedistributableFirmware = true;
 
 services.flatpak.enable = true;
 programs.appimage.enable = true;
 programs.appimage.binfmt = true;
-nixpkgs.config.allowUnfree = true;
 # Use the systemd-boot EFI boot loader.
 boot.loader.efi.canTouchEfiVariables = true;
 

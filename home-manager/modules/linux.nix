@@ -26,8 +26,8 @@
     at
 
     # GNOME/Linux desktop
-    gnome.gnome-tweaks
-    gnome.dconf-editor
+    gnome-tweaks
+    dconf-editor
     gnomeExtensions.pop-shell
     gnomeExtensions.dash-to-dock
     gnomeExtensions.hide-top-bar
@@ -48,10 +48,10 @@
     #tdesktop #telegram
 
     # Media/Audio (Linux-specific)
-    lmms
-    ardour
+    #lmms    # Temporarily disabled due to cython/python3.13 compatibility issue
+    #ardour  # Temporarily disabled due to cython/python3.13 compatibility issue
     #reaper
-    mixxx
+    #mixxx   # Temporarily disabled due to cython/python3.13 compatibility issue
     #vcv-rack
     deluge
     obs-studio
