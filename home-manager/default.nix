@@ -8,6 +8,7 @@
     ./modules/ssh.nix
     ./modules/fish.nix
     ./modules/firefox.nix
+    ./modules/kitty.nix
     #./modules/syncthing.nix # do not enable
   ];
 
@@ -48,7 +49,6 @@
     ghc
 
     # Terminal/GUI applications
-    kitty
     gnupg
 
     # Media

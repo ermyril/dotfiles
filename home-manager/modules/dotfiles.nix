@@ -2,7 +2,7 @@
   # Plain text configuration files - now organized in dedicated dotfiles/ directory
   
   # Terminal & GUI apps
-  home.file.".config/kitty".source = ../../dotfiles/config/kitty;
+  # kitty is now managed by programs.kitty in kitty.nix
   
   # macOS window managers
   home.file.".yabairc".source = ../../dotfiles/yabairc;
