@@ -10,7 +10,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # nix-darwin for macOS system management
-    nix-darwin.url = "github:lnl7/nix-darwin";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # NUR overlay (already used in current configs)
@@ -89,6 +89,7 @@
         system = "aarch64-darwin";
         specialArgs = { 
           inputs = { inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils; };
+          inherit self;
         };
         modules = [
           ./hosts/macbook/configuration.nix

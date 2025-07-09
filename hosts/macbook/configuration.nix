@@ -1,9 +1,8 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, self, ... }:
 
 {
   # Enable nix flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]; # probably will not work with nix.enable, set in /etc/nix
-  nix.enable = false;
+  nix.settings.experimental-features = "nix-command flakes";
   
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -25,9 +24,8 @@
   # Set Git commit hash for darwin-version.
   system.configurationRevision = self.rev or self.dirtyRev or null;
 
- #system = {
- #  # macOS version compatibility
- #  stateVersion = 6;
+  # macOS version compatibility
+  system.stateVersion = 6;
  #  
  #  defaults = {
  #    # Dock settings
