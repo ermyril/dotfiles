@@ -216,16 +216,6 @@ vscode
     hyprlandPlugins.hyprbars
     hyprlandPlugins.hyprexpo
 
-
-   #(pkgs.wrapOBS {
-   #   plugins = with pkgs.obs-studio-plugins; [
-   #     wlrobs
-   #     obs-backgroundremoval
-   #     obs-pipewire-audio-capture
-   #     droidcam-obs
-   #     advanced-scene-switcher
-   #   ];
-  #})
   ];
 
 
@@ -240,13 +230,20 @@ programs.obs-studio = {
     );
 
     plugins = with pkgs.obs-studio-plugins; [
+      # obs-backgroundremoval - dope one
+      input-overlay
+      obs-advanced-masks
       wlrobs
+      #obs-vertical-canvas
       obs-backgroundremoval
       obs-pipewire-audio-capture
       obs-gstreamer
       obs-vkcapture
       droidcam-obs
+      obs-source-record
       advanced-scene-switcher
+      obs-text-pthread
+      obs-color-monitor
     ];
   };
 

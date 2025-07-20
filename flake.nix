@@ -64,6 +64,13 @@
                 ];
                 home.stateVersion = "25.05";
               };
+              home-manager.users.penguin = {
+                imports = [ 
+                  ./home-manager/modules/vim.nix
+                  ./home-manager/modules/tmux.nix
+                ];
+                home.stateVersion = "25.05";
+              };
             }
           ];
         };
