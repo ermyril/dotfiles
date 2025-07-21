@@ -37,14 +37,6 @@ with lib.hm.gvariant;
       translate = true;
     };
 
-    "org/gnome/desktop/background" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
-      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-d.svg";
-      primary-color = "#967864";
-      secondary-color = "#000000";
-    };
 
     "org/gnome/desktop/input-sources" = {
       per-window = false;
@@ -60,7 +52,6 @@ with lib.hm.gvariant;
       enable-hot-corners = false;
       font-antialiasing = "grayscale";
       font-hinting = "slight";
-      font-name = "Noto Sans,  10";
       icon-theme = "Adwaita";
       toolbar-style = "text";
     };

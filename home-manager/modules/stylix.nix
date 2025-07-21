@@ -6,10 +6,6 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     
-    image = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/wallpapers/nix-wallpaper-nineish-dark-gray.png";
-      sha256 = "sha256-nhIUtCy/Hf9O4flOOiyzUUV1AESeVYncr8qiU5OwpN4=";
-    };
 
     polarity = "dark";
     

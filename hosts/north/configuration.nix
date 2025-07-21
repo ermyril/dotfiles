@@ -213,8 +213,8 @@ vscode
 	hyprshell
 	hyprshot
 
-    hyprlandPlugins.hyprbars
-    hyprlandPlugins.hyprexpo
+    # hyprlandPlugins.hyprbars  # Disabled due to compilation errors
+    # hyprlandPlugins.hyprexpo  # Disabled due to compilation errors
 
   ];
 

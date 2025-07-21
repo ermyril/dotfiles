@@ -64,6 +64,7 @@
                 imports = [ 
                   ./home-manager/default.nix
                   ./home-manager/platforms/linux.nix
+                  stylix.homeManagerModules.stylix
                 ];
                 home.stateVersion = "25.05";
               };
@@ -96,6 +97,7 @@
                 imports = [ 
                   ./home-manager/default.nix
                   #./home-manager/platforms/linux.nix
+                  stylix.homeManagerModules.stylix
                 ];
                 home.stateVersion = "22.11";
               };
