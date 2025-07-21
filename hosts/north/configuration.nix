@@ -104,7 +104,8 @@ virtualisation.spiceUSBRedirection.enable = true;
   services.desktopManager.cosmic.enable = true;
   services.desktopManager.gnome.enable = true;
   
-programs.hyprland.enable = true;
+# Enable custom Hyprland module
+mySystem.hyprland.enable = true;
 
 hardware.nvidia = {
   modesetting.enable = true;
@@ -211,11 +212,6 @@ vscode
 	gnomeExtensions.pop-shell
 	gnomeExtensions.dash-to-dock
 	nautilus
-
-	hyprpanel
-	hyprnome
-	hyprshell
-	hyprshot
 
     # hyprlandPlugins.hyprbars  # Disabled due to compilation errors
     # hyprlandPlugins.hyprexpo  # Disabled due to compilation errors

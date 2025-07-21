@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  # Aggregate all feature modules previously referenced by flake-based HM
   imports = [
     ./modules/tmux.nix
     ./modules/vim.nix
@@ -13,7 +12,6 @@
     #./modules/syncthing.nix # do not enable
   ];
 
-  # username, homeDirectory, and stateVersion are set by the flake
 
   programs.home-manager.enable = true;
   # nixpkgs.config is handled by the flake

@@ -41,7 +41,7 @@ with lib.hm.gvariant;
     "org/gnome/desktop/input-sources" = {
       per-window = false;
       sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "ru" ]) ];
-      xkb-options = [ "terminate:ctrl_alt_bksp" ]; # MINIBOOK Specific
+      xkb-options = [ "caps:escape" "grp:win_space_toggle" "terminate:ctrl_alt_bksp" ];
     };
 
     "org/gnome/desktop/interface" = {
