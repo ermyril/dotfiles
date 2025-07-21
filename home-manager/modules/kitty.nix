@@ -6,14 +6,14 @@ in
   programs.kitty = {
     enable = true;
     
-    font = {
-      name = "monospace";
-      size = if isDarwin then 15.0 else 12.0;
-    };
+    # Remove font configuration - Stylix will handle this
+    # font = {
+    #   name = "monospace";
+    #   size = if isDarwin then 14.0 else 12.0;
+    # };
     
     settings = {
-      # Cursor configuration
-      cursor = "#cccccc";
+      # Cursor configuration (Stylix will handle colors)
       cursor_shape = "block";
       cursor_blink_interval = "0.5";
       cursor_stop_blinking_after = "15.0";
@@ -25,8 +25,7 @@ in
       scrollback_pager = "less +G -R";
       wheel_scroll_multiplier = "4.5";
       
-      # URL handling
-      url_color = "#0087BD";
+      # URL handling (Stylix will handle url_color)
       url_style = "curly";
       open_url_modifiers = "kitty_mod";
       open_url_with = "default";
@@ -46,7 +45,6 @@ in
       input_delay = 3;
       sync_to_monitor = "yes";
       
-      
       # Bell
       visual_bell_duration = "0.0";
       enable_audio_bell = "yes";
@@ -58,39 +56,26 @@ in
       initial_window_width = 640;
       initial_window_height = 400;
       hide_window_decorations = "yes";
-      wayland_titlebar_color = "#1B2B34";
-      macos_titlebar_color = "#1B2B34";
       enabled_layouts = "*";
       
-      # Window appearance
+      # Window appearance (remove manual colors - Stylix will handle these)
       window_resize_step_cells = 2;
       window_resize_step_lines = 2;
       window_border_width = 10;
       window_margin_width = 10;
       window_padding_width = 0;
-      active_border_color = "#00ff00";
-      inactive_border_color = "#cccccc";
-      bell_border_color = "#ff5a00";
       inactive_text_alpha = "1.0";
       
-      # Tab bar
+      # Tab bar (remove manual colors - Stylix will handle these)
       tab_bar_edge = "bottom";
       tab_separator = " ┇";
-      active_tab_foreground = "#000";
-      active_tab_background = "#eee";
-      active_tab_font_style = "bold-italic";
-      inactive_tab_foreground = "#444";
-      inactive_tab_background = "#999";
-      inactive_tab_font_style = "normal";
       
-      # Opacity and selection (theme will override colors)
-      background_opacity = "1.0";
+      # Opacity and selection (remove opacity settings - Stylix will handle these)
+      # background_opacity = "1.0";
       dynamic_background_opacity = "no";
       dim_opacity = "0.75";
       
-      # Terminal settings - start tmux by default
-      # shell = "${pkgs.tmux}/bin/tmux";
-
+      # Terminal settings
       editor = ".";
       close_on_child_death = "no";
       allow_remote_control = "no";
@@ -109,8 +94,7 @@ in
       clear_all_shortcuts = "no";
     };
     
-    # Use GitHub Dark theme from kitty-themes
-    themeFile = "GitHub_Dark";
+    # Remove manual theme - Stylix will handle theming
     
     # Keyboard shortcuts
     keybindings = {
@@ -194,5 +178,4 @@ in
   home.file.".config/kitty/tmux-session.conf".text = ''
     launch ${pkgs.fish}/bin/fish -c 'tmux'
   '';
-
 }

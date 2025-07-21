@@ -7,7 +7,6 @@
   # Make NUR available
   nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
-
   # Set primary user for nix-darwin and configure options
   mySystem.primaryUser = "mikhaini";
   system.primaryUser = "mikhaini";
@@ -18,19 +17,8 @@
 
   # macOS version compatibility
   system.stateVersion = 6;
- #  
-  system.defaults = {
-    # Dock settings
-    # dock = {
-    #   autohide = true;
-    #   autohide-delay = 0.0;
-    #   autohide-time-modifier = 0.2;
-    #   orientation = "bottom";
-    #   show-recents = false;
-    #   static-only = true;
-    #   tilesize = 48;
-    # };
 
+  system.defaults = {
     # Finder settings
     finder = {
       AppleShowAllExtensions = true;
@@ -41,51 +29,8 @@
       FXPreferredViewStyle = "clmv"; # Column view
     };
 
-    # System UI settings
-    # NSGlobalDomain = {
-    #   AppleShowAllExtensions = true;
-    #   AppleShowScrollBars = "Always";
-    #   NSDocumentSaveNewDocumentsToCloud = false;
-    #   NSTableViewDefaultSizeMode = 2;
-    #   "com.apple.swipescrolldirection" = false; # Natural scrolling off
-    # };
-
     # Additional system settings can be added here
   };
-
- #  # Keyboard settings
- #  keyboard = {
- #    enableKeyMapping = true;
- #    remapCapsLockToEscape = true;
- #  };
- #};
-
-  # Homebrew integration (for GUI apps not available in nixpkgs)
- #homebrew = {
- #  enable = true;
- #  onActivation = {
- #    cleanup = "zap";
- #    autoUpdate = true;
- #    upgrade = true;
- #  };
- #  
- #  # GUI applications from Homebrew
- #  casks = [
- #    "raycast"
- #    "arc"
- #    "notion"
- #    "spotify"
- #    "discord"
- #    "zoom"
- #    "rectangle"
- #  ];
- #  
- #  # Mac App Store apps
- #  masApps = {
- #    "Xcode" = 497799835;
- #    "TestFlight" = 899247664;
- #  };
- #};
 
   # User configuration
   users.users.mikhaini = {

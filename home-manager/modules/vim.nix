@@ -9,7 +9,7 @@ in {
     plugins = with pkgs.vimPlugins; [
       vim-vinegar
       nerdtree
-      vim-airline 
+      lightline-vim  # Replace vim-airline with lightline
       ctrlp-vim
       #tlib_vim
       vim-surround
@@ -19,7 +19,6 @@ in {
       ultisnips
       auto-pairs
       vim-tmux-navigator
-      oceanic-next
       vim-polyglot
       editorconfig-vim
       vim-nix
@@ -80,8 +79,8 @@ in {
           set term=xterm-256color
       endif
 
-      "colorscheme atom-dark
-      colorscheme OceanicNext
+      " Remove manual colorscheme - Stylix will handle theming
+      " colorscheme OceanicNext
 
       "dark background
       set background=dark
@@ -97,8 +96,9 @@ in {
       set guioptions-=r
       set guioptions-=R
 
-      hi LineNr guibg=bg					"Background of line number panel
-      hi vertsplit guifg=bg guibg=#232526			"split bar theme
+      " Remove manual highlight colors - Stylix will handle these
+      " hi LineNr guibg=bg					"Background of line number panel
+      " hi vertsplit guifg=bg guibg=#232526			"split bar theme
 
       "set insert mode indication via line
       :autocmd InsertEnter,InsertLeave * set cul!
@@ -139,12 +139,6 @@ in {
       "Add simple highlight removal
       nmap <Leader><Space> :nohlsearch<cr>
 
-      "Laravel Specific Mappings
-      nmap <Leader>lr :e routes/web.php<cr>
-      nmap <Leader><Leader>c :CtrlP<cr>app/http/Controller
-      nmap <Leader><Leader>m :CtrlP<cr>app/
-      nmap <Leader><Leader>v :CtrlP<cr>resources/views/
-
       " Allow saving of files as sudo when I forgot to start vim using sudo.
       cmap w!! w !sudo tee > /dev/null %
 
@@ -154,6 +148,31 @@ in {
 
 
       "------------Plugins-----------"
+
+      "/
+      "/ Lightline
+      "/
+      set laststatus=2
+      set noshowmode  " Hide default mode indicator since lightline shows it
+      
+      let g:lightline = {
+            \ 'colorscheme': 'one',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'readonly', 'filename', 'modified' ] ],
+            \   'right': [ [ 'lineinfo' ],
+            \              [ 'percent' ],
+            \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+            \ },
+            \ 'component': {
+            \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
+            \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
+            \ },
+            \ 'component_visible_condition': {
+            \   'readonly': '(&filetype!="help"&& &readonly)',
+            \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
+            \ }
+            \ }
 
       "/
       "/ CtrlP
@@ -207,20 +226,6 @@ in {
       let g:UltiSnipsExpandTrigger = "<tab>"
       let g:UltiSnipsJumpForwardTrigger = "<tab>"
       let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-
-      " Creating symlink to our snippets from dotfiles if there is no such folder
-      if empty(glob('~/.vim/snippets'))
-        silent !ln -s ~/.dotfiles/vim/snippets ~/.vim/snippets | source $MYVIMRC
-      endif
-
-
-
-      "/ 
-      "/ Emmet 
-      "/ 
-      "
-      let g:user_emmet_leader_key='<C-E>'
 
 
       "/ 

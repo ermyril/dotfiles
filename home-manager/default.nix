@@ -9,6 +9,7 @@
     ./modules/fish.nix
     ./modules/firefox.nix
     ./modules/kitty.nix
+    ./modules/stylix.nix
     #./modules/syncthing.nix # do not enable
   ];
 

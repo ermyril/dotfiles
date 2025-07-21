@@ -23,11 +23,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Stylix input
+    stylix.url = "github:danth/stylix";
+
     # Utility helpers
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, ... }:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, ... }:
     let
       inherit (nixpkgs.lib) nixosSystem;
 
@@ -36,7 +39,7 @@
       # expose selected flake inputs for host configs that do
       #   (import ../../flake.nix).inputs.<name>
       inputs = {
-        inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils;
+        inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils stylix;
       };
 
       ############################################################
@@ -107,7 +110,7 @@
       darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = { 
-          inputs = { inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils; };
+          inputs = { inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils stylix; };
           inherit self;
         };
         modules = [
@@ -125,6 +128,7 @@
               imports = [ 
                 ./home-manager/default.nix
                 ./home-manager/platforms/darwin.nix
+                stylix.homeManagerModules.stylix
               ];
               home.stateVersion = "25.05";
             };
