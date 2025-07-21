@@ -84,8 +84,8 @@
       dynamic_background_opacity = "no";
       dim_opacity = "0.75";
       
-      # Terminal settings - start tmux by default
-      shell = "${pkgs.tmux}/bin/tmux";
+      # Terminal settings - use fish as default shell
+      shell = "${pkgs.fish}/bin/fish";
       editor = ".";
       close_on_child_death = "no";
       allow_remote_control = "no";
