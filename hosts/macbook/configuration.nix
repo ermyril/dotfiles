@@ -19,39 +19,39 @@
   # macOS version compatibility
   system.stateVersion = 6;
  #  
- #  defaults = {
- #    # Dock settings
- #    dock = {
- #      autohide = true;
- #      autohide-delay = 0.0;
- #      autohide-time-modifier = 0.2;
- #      orientation = "bottom";
- #      show-recents = false;
- #      static-only = true;
- #      tilesize = 48;
- #    };
+  system.defaults = {
+    # Dock settings
+    # dock = {
+    #   autohide = true;
+    #   autohide-delay = 0.0;
+    #   autohide-time-modifier = 0.2;
+    #   orientation = "bottom";
+    #   show-recents = false;
+    #   static-only = true;
+    #   tilesize = 48;
+    # };
 
- #    # Finder settings
- #    finder = {
- #      AppleShowAllExtensions = true;
- #      AppleShowAllFiles = true;
- #      ShowPathbar = true;
- #      ShowStatusBar = true;
- #      FXEnableExtensionChangeWarning = false;
- #      FXPreferredViewStyle = "clmv"; # Column view
- #    };
+    # Finder settings
+    finder = {
+      AppleShowAllExtensions = true;
+      AppleShowAllFiles = true;
+      ShowPathbar = true;
+      ShowStatusBar = true;
+      FXEnableExtensionChangeWarning = false;
+      FXPreferredViewStyle = "clmv"; # Column view
+    };
 
- #    # System UI settings
- #    NSGlobalDomain = {
- #      AppleShowAllExtensions = true;
- #      AppleShowScrollBars = "Always";
- #      NSDocumentSaveNewDocumentsToCloud = false;
- #      NSTableViewDefaultSizeMode = 2;
- #      "com.apple.swipescrolldirection" = false; # Natural scrolling off
- #    };
+    # System UI settings
+    # NSGlobalDomain = {
+    #   AppleShowAllExtensions = true;
+    #   AppleShowScrollBars = "Always";
+    #   NSDocumentSaveNewDocumentsToCloud = false;
+    #   NSTableViewDefaultSizeMode = 2;
+    #   "com.apple.swipescrolldirection" = false; # Natural scrolling off
+    # };
 
- #    # Additional system settings can be added here
- #  };
+    # Additional system settings can be added here
+  };
 
  #  # Keyboard settings
  #  keyboard = {
