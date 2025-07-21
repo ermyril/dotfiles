@@ -95,7 +95,7 @@ virtualisation.spiceUSBRedirection.enable = true;
  #};
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver.enable = false;
   services.xserver.videoDrivers = ["nvidia"];
 
 
@@ -114,6 +114,10 @@ hardware.nvidia = {
   open = false; 
   nvidiaSettings = true;
 };
+
+# Disable nvidia suspend/resume services
+# systemd.services.nvidia-suspend.enable = false;
+# systemd.services.nvidia-resume.enable = false;
 
 
   services.btrfs.autoScrub = {

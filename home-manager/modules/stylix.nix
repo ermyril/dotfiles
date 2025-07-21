@@ -5,7 +5,7 @@
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    
+    image = ./../../wallpapers/ark.jpg;
 
     polarity = "dark";
     
@@ -31,10 +31,14 @@
     };
 
     # Enable targets for kitty and vim, but disable tmux (using custom Catppuccin)
-    targets = {
-      kitty.enable = true;
-      tmux.enable = false;  # Disabled - using custom Catppuccin configuration
-      vim.enable = true;
-    };
+    targets.firefox.profileNames = [ "ermyril" ];
+    # targets = {
+    #   kitty.enable = true;
+    #   tmux.enable = true;  
+    #   vim.enable = true;
+    #   console.enable = true;
+    #   fish.enable = true;
+    #   fzf.enable = true;
+    # };
   };
 }

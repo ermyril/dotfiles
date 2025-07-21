@@ -3,7 +3,8 @@
 
   inputs = {
     # Core channels
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
+    #nixpkgs.url = "github:NixOS/nixpkgs/5c724ed1388e53cc231ed98330a60eb2f7be4be3";
 
     # Home-Manager (stand-alone + nixos module later)
     home-manager.url = "github:nix-community/home-manager";
