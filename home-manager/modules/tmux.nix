@@ -20,7 +20,6 @@
     #secureSocket = false;
 
     plugins = with pkgs.tmuxPlugins; [
-      sensible
       better-mouse-mode
       open
       sysstat
@@ -74,14 +73,11 @@
     ];
 
     # TODO: add session manager - dmux / smug looks nice
-    # TODO: find a way to change screen-256 back to tmux-256, at least on linux, cuz screen breaks italics
     extraConfig = ''
-      # https://old.reddit.com/r/tmux/comments/mesrci/tmux_2_doesnt_seem_to_use_256_colors/
-
       set -g default-terminal "tmux-256color"
 
-      set -ga terminal-overrides ",*256col*:Tc"
-      set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
+    # set -ga terminal-overrides ",*256col*:Tc"
+    # set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
       set-environment -g COLORTERM "truecolor"
 
       set-option -g status-position top
@@ -91,7 +87,7 @@
       bind c new-window -c "#{pane_current_path}"
 
       # convenient config reload
-      bind r source-file ~/.tmux.conf \; display-message "Tmux configuration reloaded."
+      bind r source-file ~/.config/tmux/tmux.conf \; display-message "Tmux configuration reloaded."
 
       # vim-like copypaste
       set-window-option -g mode-keys vi

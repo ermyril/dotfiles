@@ -1,12 +1,14 @@
 { config, lib, pkgs, ... }:
-
+let
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+in
 {
   programs.kitty = {
     enable = true;
     
     font = {
       name = "monospace";
-      size = 12.0;
+      size = if isDarwin then 15.0 else 12.0;
     };
     
     settings = {
@@ -16,6 +18,8 @@
       cursor_blink_interval = "0.5";
       cursor_stop_blinking_after = "15.0";
       
+      startup_session = "~/.config/kitty/tmux-session.conf";
+
       # Scrollback
       scrollback_lines = 2000;
       scrollback_pager = "less +G -R";
@@ -85,13 +89,13 @@
       dim_opacity = "0.75";
       
       # Terminal settings - start tmux by default
-      #shell = "${pkgs.tmux}/bin/tmux";
+      # shell = "${pkgs.tmux}/bin/tmux";
 
       editor = ".";
       close_on_child_death = "no";
       allow_remote_control = "no";
       clipboard_control = "write-clipboard write-primary";
-      term = "xterm-256color";
+      term = "xterm-kitty";
       
       # Modifier key
       kitty_mod = "ctrl+shift";
@@ -187,5 +191,8 @@
     };
   };
   
-  # tmux is launched directly as the shell, no autostart file needed
+  home.file.".config/kitty/tmux-session.conf".text = ''
+    launch ${pkgs.fish}/bin/fish -c 'tmux'
+  '';
+
 }
