@@ -117,8 +117,8 @@ hardware.nvidia = {
 };
 
 # Disable nvidia suspend/resume services
-# systemd.services.nvidia-suspend.enable = false;
-# systemd.services.nvidia-resume.enable = false;
+systemd.services.nvidia-suspend.enable = false;
+systemd.services.nvidia-resume.enable = false;
 
 
   services.btrfs.autoScrub = {

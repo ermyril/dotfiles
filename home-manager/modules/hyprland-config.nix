@@ -254,13 +254,37 @@
         weather.unit = "metric";
       };
       
-      theme = {
+      theme = with config.lib.stylix.colors; {
         font = {
-          name = "JetBrainsMono Nerd Font";
-          size = "14px";
+          name = config.stylix.fonts.monospace.name;
+          size = "${toString config.stylix.fonts.sizes.applications}px";
         };
         bar.transparent = true;
-        name = "catppuccin_latte";
+        
+        # Use stylix colors directly instead of named theme
+        bar.outer_spacing = "0px";
+        bar.buttons.style = "default";
+        
+        # Color overrides using stylix palette
+        colors = {
+          primary = "#${base0D}";
+          secondary = "#${base0C}";
+          error = "#${base08}";
+          warning = "#${base0A}";
+          ok = "#${base0B}";
+          background = "#${base00}";
+          surface = "#${base01}";
+          overlay = "#${base02}";
+          muted = "#${base03}";
+          subtle = "#${base04}";
+          text = "#${base05}";
+          love = "#${base08}";
+          gold = "#${base0A}";
+          rose = "#${base0F}";
+          pine = "#${base0C}";
+          foam = "#${base0D}";
+          iris = "#${base0E}";
+        };
       };
       
       # Panel layout for primary monitor
