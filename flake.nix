@@ -56,7 +56,7 @@
             ./modules/shared/packages/common.nix
             ./modules/shared/keyboard.nix
             ./modules/nixos/packages.nix
-            ./modules/nixos/hyprland.nix
+            #./modules/nixos/hyprland.nix
             ({ nixpkgs.overlays = [ nur.overlays.default ]; })
             home-manager.nixosModules.home-manager
             {
@@ -67,7 +67,7 @@
                 imports = [ 
                   ./home-manager/default.nix
                   ./home-manager/platforms/linux.nix
-                  ./home-manager/modules/hyprland-config.nix
+                  #./home-manager/modules/hyprland-config.nix
                   stylix.homeManagerModules.stylix
                 ];
                 home.stateVersion = "25.05";

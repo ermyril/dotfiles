@@ -20,8 +20,8 @@
     gnumake
     rtags
     nixfmt
-    python311Full
-    python311Packages.pytest
+    python314
+    python314Packages.pytest
     ccls
     clang-tools
     libvterm

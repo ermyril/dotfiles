@@ -8,7 +8,8 @@
     settings = {
         # Monitor configuration
         monitor = [
-          ",preferred,auto,1"  # Auto-detect monitors
+          "DP-1,3440x1440@179.92,0x0,1"  # 180Hz for main display
+          ",preferred,auto,1"  # Auto-detect any additional monitors
         ];
 
         # Input configuration
@@ -98,6 +99,8 @@
           disable_splash_rendering = true;
           mouse_move_enables_dpms = true;
           key_press_enables_dpms = true;
+          vfr = true;  # Variable frame rate for better performance
+          vrr = 1;     # Variable refresh rate if supported
         };
 
         # Window rules
@@ -301,7 +304,6 @@
   # Application launcher
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
     
     extraConfig = {
       modi = "drun,run,window";

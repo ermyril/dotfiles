@@ -94,8 +94,8 @@ virtualisation.spiceUSBRedirection.enable = true;
  #  useXkbConfig = true; # use xkb.options in tty.
  #};
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = false;
+  # Enable the X11 windowing system (needed for XWayland support in Cosmic).
+  services.xserver.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
 
 
@@ -105,7 +105,7 @@ virtualisation.spiceUSBRedirection.enable = true;
   services.desktopManager.gnome.enable = true;
   
 # Enable custom Hyprland module
-mySystem.hyprland.enable = true;
+#mySystem.hyprland.enable = true;
 
 hardware.nvidia = {
   modesetting.enable = true;
@@ -117,8 +117,8 @@ hardware.nvidia = {
 };
 
 # Disable nvidia suspend/resume services
-systemd.services.nvidia-suspend.enable = false;
-systemd.services.nvidia-resume.enable = false;
+systemd.services.nvidia-suspend.enable = true;
+systemd.services.nvidia-resume.enable = true;
 
 
   services.btrfs.autoScrub = {
@@ -257,8 +257,24 @@ xdg.portal = {
     # xdg-desktop-portal-gtk      # <- safe fallback
   ];
 
-  # Optional but handy: make “xdg-open” always use the portal
+  # Optional but handy: make "xdg-open" always use the portal
   xdgOpenUsePortal = true;
+};
+
+# Monitor configuration for 180Hz across all desktop environments
+services.xserver.displayManager.sessionCommands = ''
+  ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 3440x1440 --rate 179.92 --primary || true
+'';
+
+# GNOME display settings for 180Hz
+services.desktopManager.gnome.extraGSettingsOverrides = ''
+  [org.gnome.mutter]
+  experimental-features=['scale-monitor-framebuffer', 'variable-refresh-rate']
+'';
+
+# Environment variables for Cosmic display configuration
+environment.sessionVariables = {
+  COSMIC_MONITOR_DP_1_MODE = "3440x1440@179.92";
 };
 
 

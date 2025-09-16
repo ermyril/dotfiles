@@ -27,5 +27,7 @@
 
     android-tools # move to obs setup
     usbmuxd #move to obs setup
+
+    cpu-x
   ];
 }

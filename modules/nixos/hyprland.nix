@@ -81,7 +81,7 @@ in
       hyprshot        # Screenshots
       
       # Panel and UI
-      rofi-wayland    # Application launcher
+      rofi    # Application launcher
       dunst           # Notifications
       
       # System utilities
@@ -108,7 +108,7 @@ in
       noto-fonts-emoji
       font-awesome
       
-    ] ++ optionals cfg.enableRofi [ rofi-wayland ]
+    ] ++ optionals cfg.enableRofi [ rofi ]
       ++ optionals cfg.enableScreenshots [ grim slurp hyprshot ]
       ++ optionals cfg.enableHyprpanel [ hyprpanel ]
       ++ optionals cfg.enableExtraHyprPackages [ hyprnome hyprshell ];
