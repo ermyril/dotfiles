@@ -168,7 +168,7 @@ systemd.services.nvidia-resume.enable = true;
     git
     curl
     kitty
-    openrgb-with-all-plugins
+    openrgb
     flycast
     kdePackages.kdenlive
     mesa-demos

@@ -59,9 +59,6 @@
             #./modules/nixos/hyprland.nix
             ({ nixpkgs.overlays = [
               nur.overlays.default
-              (final: prev: {
-                openrgb-with-all-plugins = import ./pkgs/openrgb.nix { pkgs = prev; };
-              })
             ]; })
             home-manager.nixosModules.home-manager
             {
@@ -99,9 +96,6 @@
             ./modules/nixos/packages.nix
             ({ nixpkgs.overlays = [
               nur.overlays.default
-              (final: prev: {
-                openrgb-with-all-plugins = import ./pkgs/openrgb.nix { pkgs = prev; };
-              })
             ]; })
             home-manager.nixosModules.home-manager
             {
