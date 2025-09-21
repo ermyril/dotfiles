@@ -57,7 +57,12 @@
             ./modules/shared/keyboard.nix
             ./modules/nixos/packages.nix
             #./modules/nixos/hyprland.nix
-            ({ nixpkgs.overlays = [ nur.overlays.default ]; })
+            ({ nixpkgs.overlays = [
+              nur.overlays.default
+              (final: prev: {
+                openrgb-with-all-plugins = import ./pkgs/openrgb.nix { pkgs = prev; };
+              })
+            ]; })
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -92,7 +97,12 @@
             ./modules/shared/packages/common.nix
             ./modules/shared/keyboard.nix
             ./modules/nixos/packages.nix
-            ({ nixpkgs.overlays = [ nur.overlays.default ]; })
+            ({ nixpkgs.overlays = [
+              nur.overlays.default
+              (final: prev: {
+                openrgb-with-all-plugins = import ./pkgs/openrgb.nix { pkgs = prev; };
+              })
+            ]; })
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
