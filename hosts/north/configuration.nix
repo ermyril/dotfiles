@@ -109,10 +109,10 @@ virtualisation.spiceUSBRedirection.enable = true;
 
 hardware.nvidia = {
   modesetting.enable = true;
-  powerManagement.enable = true;
+  powerManagement.enable = false;  # Disabled - prevents freeze on shutdown/suspend
   powerManagement.finegrained = false;
 
-  open = false; 
+  open = false;
   nvidiaSettings = true;
 };
 
