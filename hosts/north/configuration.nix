@@ -117,8 +117,8 @@ hardware.nvidia = {
 };
 
 # Disable nvidia suspend/resume services
-systemd.services.nvidia-suspend.enable = true;
-systemd.services.nvidia-resume.enable = true;
+systemd.services.nvidia-suspend.enable = false;
+systemd.services.nvidia-resume.enable = false;
 
 
   services.btrfs.autoScrub = {
@@ -243,7 +243,7 @@ programs.obs-studio = {
       obs-source-record
       advanced-scene-switcher
       obs-text-pthread
-      obs-color-monitor
+      obs-aitum-multistream
     ];
   };
 

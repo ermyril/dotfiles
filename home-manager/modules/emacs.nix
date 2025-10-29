@@ -18,7 +18,7 @@
     clang
     cmake
     gnumake
-    rtags
+    #rtags
     nixfmt
     python314
     python314Packages.pytest

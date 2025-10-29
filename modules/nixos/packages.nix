@@ -29,5 +29,8 @@
     usbmuxd #move to obs setup
 
     cpu-x
+
+    discord
+    chromium
   ];
 }

@@ -27,7 +27,6 @@
     ripgrep
     clang
     cmake
-    rtags
     nixfmt-classic
     python3
     emacsPackages.vterm
