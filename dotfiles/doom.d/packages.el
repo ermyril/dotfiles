@@ -49,24 +49,16 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
                                         ;(unpin! t)
 
-<<<<<<< HEAD:home-manager/.doom.d/packages.el
-(package! tidal)
-
-(package! gptel)
 
 ;; (package! emacsql :built-in 'prefer)
 ;; (package! emacsql-sqlite :built-in 'prefer)
 ;; (package! pdf-tools :built-in 'prefer)
-=======
+
 ;; (package! tidal)
 (package! groovy-mode)
+(package! gptel)
 
 (package! copilot
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
 
-(package! copilot-chat
-  :recipe (:host github :repo "chep/copilot-chat.el" :files ("*.el"))
-  )
 
-(unpin! lsp-mode) ;; TODO: remove it after this was resolved https://github.com/doomemacs/doomemacs/issues/7540
->>>>>>> origin/mac:.doom.d/packages.el

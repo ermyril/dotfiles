@@ -15,15 +15,13 @@
     ansible
 
     # macOS-specific development
-    emacs29-macport # TODO: move to the separate file
-    emacsPackages.vterm
     haskell-language-server
     libgccjit
 
     # macOS utilities
     gnused
     gnugrep
-    awscli2
+    # awscli2
     minikube
     multimarkdown
     postgresql_14

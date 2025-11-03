@@ -31,7 +31,7 @@
     };
 
     # Enable targets for kitty and vim, but disable tmux (using custom Catppuccin)
-    targets.firefox.profileNames = [ "ermyril" ];
+    #targets.firefox.profileNames = [ "ermyril" ];
     # targets = {
     #   kitty.enable = true;
     #   tmux.enable = true;  

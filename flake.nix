@@ -29,9 +29,11 @@
 
     # Utility helpers
     flake-utils.url = "github:numtide/flake-utils";
+
+    nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, ... }:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, ... }@inputs:
     let
       inherit (nixpkgs.lib) nixosSystem;
 
@@ -70,7 +72,7 @@
                   ./home-manager/default.nix
                   ./home-manager/platforms/linux.nix
                   #./home-manager/modules/hyprland-config.nix
-                  stylix.homeManagerModules.stylix
+                  stylix.homeModules.stylix
                 ];
                 home.stateVersion = "25.05";
               };
@@ -106,7 +108,7 @@
                 imports = [ 
                   ./home-manager/default.nix
                   #./home-manager/platforms/linux.nix
-                  stylix.homeManagerModules.stylix
+                  stylix.homeModules.stylix
                 ];
                 home.stateVersion = "22.11";
               };
@@ -132,6 +134,7 @@
           ./modules/darwin/packages.nix
           home-manager.darwinModules.home-manager
           {
+            nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "bak";
@@ -139,7 +142,7 @@
               imports = [ 
                 ./home-manager/default.nix
                 ./home-manager/platforms/darwin.nix
-                stylix.homeManagerModules.stylix
+                stylix.homeModules.stylix
               ];
               home.stateVersion = "25.05";
             };

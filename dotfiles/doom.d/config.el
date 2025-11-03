@@ -72,59 +72,6 @@
  projectile-project-search-path '("~/Projects" "~/.dotfiles")
  )
 
-<<<<<<< HEAD:home-manager/.doom.d/config.el
-
-;; Together.ai offers an OpenAI compatible API
-(gptel-make-openai "TogetherAI"         ;Any name you want
-  :host "api.together.xyz"
-  ;; :key "your-api-key"                   ;can be a function that returns the key
-  :stream t
-  :models '(;; has many more, check together.ai
-            mistralai/Mixtral-8x7B-Instruct-v0.1
-            codellama/CodeLlama-13b-Instruct-hf
-            codellama/CodeLlama-34b-Instruct-hf))
-
-
-;; (setq tidal-boot-script-path "~/.local/share/x86_64-osx-ghc-9.6.2/tidal-1.9.4/BootTidal.hs")
-
-;; (use-package! org-roam
-;;   :ensure t
-;;   :custom
-;;   (org-roam-directory (file-truename "~/Notes"))
-;;   ;; (org-roam-dailies-directory "journals/")
-;;   :config
-;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
-;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-;;   (org-roam-db-autosync-mode)
-;;   ;; If using org-roam-protocol
-;; ;;   (require 'org-roam-protocol))
-
-;;   (use-package! org-roam
-;;      :after org
-;;      :hook (org-mode . org-roam-mode)
-;;      :custom
-;;      (org-roam-directory "~/org-roam")
-;;      :bind (:map org-roam-mode-map
-;;                  (("C-c n l" . org-roam)
-;;                   ("C-c n f" . org-roam-find-file)
-;;                   ("C-c n g" . org-roam-graph))
-;;                  :map org-mode-map
-;;                  (("C-c n i" . org-roam-insert))
-;;                  (("C-c n I" . org-roam-insert-immediate))))
-
-;; (setq org-roam-file-exclude-regexp "\\.git/.*\\|logseq/.*$"
-;;       org-roam-capture-templates
-;;       '(("d" "default" plain
-;;          "%?"
-;;          ;; Accomodates for the fact that Logseq uses the "pages" directory
-;;          :target (file+head "pages/${slug}.org" "#+title: ${title}\n")
-;;          :unnarrowed t))
-;;       org-roam-dailies-capture-templates
-;;       '(("d" "default" entry
-;;          "* %?"
-;;          :target (file+head "%<%Y-%m-%d>.org" ;; format matches Logseq
-;;                             "#+title: %<%Y-%m-%d>\n"))))
-=======
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
@@ -147,13 +94,12 @@
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
 
-;; Я ебал в рот gopls, лучше учиться кодить на лиспе
-(after! go-mode
-  (defun my-fix-pp-imports-after-organize ()
-    "Replace occurrences of 'github.com/k0kubun/pp' with 'github.com/k0kubun/pp/v3'."
-    (save-excursion
-      (goto-char (point-min))
-      (while (search-forward "github.com/k0kubun/pp\"" nil t)
-        (replace-match "github.com/k0kubun/pp/v3\"" nil t))))
-  (advice-add 'lsp-organize-imports :after #'my-fix-pp-imports-after-organize))
->>>>>>> origin/mac:.doom.d/config.el
+; ;; Я ебал в рот gopls, лучше учиться кодить на лиспе
+; (after! go-mode
+;   (defun my-fix-pp-imports-after-organize ()
+;     "Replace occurrences of 'github.com/k0kubun/pp' with 'github.com/k0kubun/pp/v3'."
+;     (save-excursion
+;       (goto-char (point-min))
+;       (while (search-forward "github.com/k0kubun/pp\"" nil t)
+;         (replace-match "github.com/k0kubun/pp/v3\"" nil t))))
+;   (advice-add 'lsp-organize-imports :after #'my-fix-pp-imports-after-organize))

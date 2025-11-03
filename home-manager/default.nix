@@ -20,6 +20,9 @@
   home.packages = with pkgs; [
     # Development tools
     git
+    github-cli
+    github-copilot-cli
+    claude-code
     cmake
     ripgrep
     terraform

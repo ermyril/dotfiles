@@ -5,8 +5,9 @@ let
 in
 {
   programs.firefox = {
-    enable = true;
-    package = if isDarwin then pkgs.firefox-bin else pkgs.firefox-wayland;
+    enable = false;
+    #package = if isDarwin then pkgs.firefox-bin else pkgs.firefox-wayland;
+    #package = pkgs.firefox-bin;
     profiles = {
       ${config.home.username} = {
         extensions = {
@@ -78,7 +79,6 @@ in
               definedAliases = [ "@ni" ];
             };
 
-            # A good way to find genuine discussion
             "reddit" = {
               urls = [{
                 template = "https://www.reddit.com/search";
