@@ -5,9 +5,7 @@ let
 in
 {
   programs.firefox = {
-    enable = false;
-    #package = if isDarwin then pkgs.firefox-bin else pkgs.firefox-wayland;
-    #package = pkgs.firefox-bin;
+    enable = true;
     profiles = {
       ${config.home.username} = {
         extensions = {

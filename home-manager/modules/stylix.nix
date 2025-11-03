@@ -31,14 +31,14 @@
     };
 
     # Enable targets for kitty and vim, but disable tmux (using custom Catppuccin)
-    #targets.firefox.profileNames = [ "ermyril" ];
-    # targets = {
-    #   kitty.enable = true;
-    #   tmux.enable = true;  
-    #   vim.enable = true;
-    #   console.enable = true;
-    #   fish.enable = true;
-    #   fzf.enable = true;
-    # };
+    targets.firefox.profileNames = [ "${config.home.username}" ];
+     targets = {
+       kitty.enable = true;
+       tmux.enable = true;  
+       vim.enable = true;
+       #console.enable = true;
+       fish.enable = true;
+       fzf.enable = true;
+     };
   };
 }
