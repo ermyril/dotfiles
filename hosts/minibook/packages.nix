@@ -3,7 +3,7 @@
   environment.systemPackages = with pkgs; [
     vim-full
     wget
-    firefox-wayland
+    firefox
     bookworm
     calibre
     telegram-desktop

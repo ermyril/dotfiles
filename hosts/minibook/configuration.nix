@@ -23,6 +23,9 @@ imports = [
   # Set primary user for shared modules
   mySystem.primaryUser = "ermyril";
 
+  # Enable deluge service
+  mySystem.deluge.enable = true;
+
   hardware.sensor.iio.enable = true;
 
   # Use the systemd-boot EFI boot loader.

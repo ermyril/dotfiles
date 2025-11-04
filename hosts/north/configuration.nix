@@ -16,6 +16,9 @@
   # Set primary user for shared modules
   mySystem.primaryUser = "ermyril";
 
+  # Enable deluge service
+  mySystem.deluge.enable = true;
+
 fileSystems = {
   "/".options = [ "compress=zstd" ];
   "/home".options = [ "compress=zstd" ];
@@ -163,7 +166,7 @@ systemd.services.nvidia-resume.enable = false;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
     wget
     git
     curl
@@ -172,7 +175,6 @@ systemd.services.nvidia-resume.enable = false;
     flycast
     kdePackages.kdenlive
     mesa-demos
-    deluge
     htop
     waypipe
 

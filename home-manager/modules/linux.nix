@@ -53,7 +53,6 @@
     #reaper
     #mixxx   # Temporarily disabled due to cython/python3.13 compatibility issue
     #vcv-rack
-    deluge
     obs-studio
     # kicad
   ];

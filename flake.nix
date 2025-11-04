@@ -58,6 +58,7 @@
             ./modules/shared/packages/common.nix
             ./modules/shared/keyboard.nix
             ./modules/nixos/packages.nix
+            ./modules/nixos/deluge.nix
             #./modules/nixos/hyprland.nix
             ({ nixpkgs.overlays = [
               nur.overlays.default
@@ -96,6 +97,7 @@
             ./modules/shared/packages/common.nix
             ./modules/shared/keyboard.nix
             ./modules/nixos/packages.nix
+            ./modules/nixos/deluge.nix
             ({ nixpkgs.overlays = [
               nur.overlays.default
             ]; })
@@ -105,7 +107,7 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "bak";
               home-manager.users.ermyril = {
-                imports = [ 
+                imports = [
                   ./home-manager/default.nix
                   #./home-manager/platforms/linux.nix
                   stylix.homeModules.stylix
