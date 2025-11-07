@@ -9,9 +9,6 @@
   home.packages = with pkgs; [
     # macOS-specific tools
     docker
-
-    yabai 
-    skhd 
     ansible
 
     # macOS-specific development

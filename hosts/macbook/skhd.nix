@@ -1,0 +1,145 @@
+{ config, pkgs, lib, ... }:
+
+{
+  services.skhd = {
+    enable = true;
+    skhdConfig = ''
+
+      # focus window
+      alt - h : yabai -m window --focus west
+      alt - j : yabai -m window --focus south
+      alt - k : yabai -m window --focus north
+      alt - l : yabai -m window --focus east
+
+      # swap window
+      shift + alt - h : yabai -m window --swap west
+      shift + alt - j : yabai -m window --swap south
+      shift + alt - k : yabai -m window --swap north
+      shift + alt - l : yabai -m window --swap east
+
+      # move window
+      shift + cmd - h : yabai -m window --warp west
+      shift + cmd - j : yabai -m window --warp south
+      shift + cmd - k : yabai -m window --warp north
+      shift + cmd - l : yabai -m window --warp east
+
+      # balance size of windows
+      shift + cmd - 0 : yabai -m space --balance
+
+
+      # send window to desktop and follow focus
+      #shift + alt - x : yabai -m window --space last; yabai -m space --focus last
+      #shift + alt - z : yabai -m window --space prev; yabai -m space --focus prev
+      #shift + alt - c : yabai -m window --space next; yabai -m space --focus next
+      shift + alt - 1 : yabai -m window --space  1 #; yabai -m space --focus 1
+      shift + alt - 2 : yabai -m window --space  2 #; yabai -m space --focus 2
+      shift + alt - 3 : yabai -m window --space  3 #; yabai -m space --focus 3
+      shift + alt - 4 : yabai -m window --space  4 #; yabai -m space --focus 4
+
+      shift + alt - 8 : yabai -m window --space  5 #; yabai -m space --focus 5
+      shift + alt - 9 : yabai -m window --space  6 #; yabai -m space --focus 6
+      shift + alt - 0 : yabai -m window --space  7 #; yabai -m space --focus 7
+      shift + alt - 0x1B : yabai -m window --space #;8; yabai -m space --focus 8
+
+
+      # focus monitor
+      alt - m : yabai -m display --focus recent
+
+      #   alt - 1 : yabai -m space --focus 1
+      #   alt - 2 : yabai -m space --focus 2
+      #   alt - 3 : yabai -m space --focus 3
+      #   alt - 4 : yabai -m space --focus 4
+      #   alt - 9 : yabai -m space --focus 5
+      #   alt - 0 : yabai -m space --focus 6
+      #   alt - 0x1B : yabai -m space --focus 7
+
+      # increase window size
+      shift + alt - a : yabai -m window --resize left:-50:0
+      shift + alt - d : yabai -m window --resize left:50:0
+      shift + alt - d : yabai -m window --resize right:50:0
+
+      shift + alt - s : yabai -m window --resize bottom:0:50
+      shift + alt - w : yabai -m window --resize top:0:-50
+
+      # decrease window size
+      shift + cmd - d : yabai -m window --resize right:-50:0
+
+      shift + cmd - s : yabai -m window --resize bottom:0:-50
+      shift + cmd - w : yabai -m window --resize top:0:50
+
+      # increase/decrease region size i3 way
+         #shift + alt - a : yabai -m window --use-temporary-ratio 0.05 --adjust-window-edge west; yabai -m window --use-temporary-ratio -0.05 --adjust-window-edge east
+         #shift + alt - s : yabai -m window --use-temporary-ratio 0.05 --adjust-window-edge south; yabai -m window --use-temporary-ratio -0.05 --adjust-window-edge north
+         #shift + alt - w : yabai -m window --use-temporary-ratio 0.05 --adjust-window-edge north; yabai -m window --use-temporary-ratio -0.05 --adjust-window-edge south
+         #shift + alt - d : yabai -m window --use-temporary-ratio 0.05 --adjust-window-edge east; yabai -m window --use-temporary-ratio -0.05 --adjust-window-edge west
+
+
+      # set insertion point for focused container
+      #ctrl + alt - f : chunkc tiling::window --use-insertion-point cancel
+      #ctrl + alt - h : chunkc tiling::window --use-insertion-point west
+      #ctrl + alt - j : chunkc tiling::window --use-insertion-point south
+      #ctrl + alt - k : chunkc tiling::window --use-insertion-point north
+      #ctrl + alt - l : chunkc tiling::window --use-insertion-point east
+
+      # rotate tree
+      alt + shift - 0x2B : yabai -m space --rotate 90
+      alt + shift - 0x2F : yabai -m space --rotate 270
+
+      # mirror tree y-axis
+      # alt - y : yabai -m space --mirror y-axis
+      #
+      # # mirror tree x-axis
+      # alt - x : yabai -m space --mirror x-axis
+
+      # toggle desktop offset
+      alt - a : yabai -m space --toggle padding; yabai -m space --toggle gap
+
+      # toggle window fullscreen
+      alt - f : yabai -m window --toggle zoom-fullscreen
+
+      # toggle window native fullscreen
+      #shift + alt - f : chunkc tiling::window --toggle native-fullscreen
+
+      # toggle window parent zoom
+      #alt - d : chunkc tiling::window --toggle parent
+
+      # toggle window split type
+      #alt - e : chunkc tiling::window --toggle split
+
+      # toggle window fade
+      #alt - q : chunkc tiling::window --toggle fade
+
+      # float / unfloat window and center on screen
+      alt - t : yabai -m window --toggle float;\
+                yabai -m window --grid 4:4:1:1:2:2
+
+      # toggle sticky, float and resize to picture-in-picture size
+      #alt - s : chunkc tiling::window --toggle sticky;\
+      #          chunkc tiling::window --grid-layout 5:5:4:0:1:1
+
+      # float next window to be tiled
+      #shift + alt - t : chunkc set window_float_next 1
+
+      # change layout of desktop
+      alt - e : yabai -m space --layout bsp
+      alt - s : yabai -m space --layout stack
+      alt - d : yabai -m space --layout float
+
+
+      #ignoring keys that I don't intentionally use 
+      cmd - h : ""
+      #cmd + alt - h : ""
+
+
+      # Arrow Keys
+      fn - h : skhd -k "left"
+      fn - j : skhd -k "down"
+      fn - k : skhd -k "up"
+      fn - l : skhd -k "right"
+
+
+      # Painless tilda on mac ansi keeb
+      fn - 0x2C : skhd -k "shift - 0x32"
+    '';
+  };
+}

@@ -1,6 +1,10 @@
 { config, pkgs, lib, inputs, self, ... }:
 
 {
+  imports = [
+    ./yabai.nix
+    ./skhd.nix
+  ];
   # Disable nix daemon on macOS (managed by nix-darwin)
   nix.enable = false;
 
@@ -52,4 +56,5 @@
       };
     };
   };
+
 }

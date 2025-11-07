@@ -5,8 +5,8 @@
   # kitty is now managed by programs.kitty in kitty.nix
   
   # macOS window managers
-  home.file.".yabairc".source = ../../dotfiles/yabairc;
-  home.file.".skhdrc".source = ../../dotfiles/skhdrc;
+  #home.file.".yabairc".source = ../../dotfiles/yabairc;
+  #home.file.".skhdrc".source = ../../dotfiles/skhdrc;
   
   # Editors
   home.file.".doom.d".source = ../../dotfiles/doom.d;
