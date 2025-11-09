@@ -59,6 +59,7 @@
             ./modules/shared/keyboard.nix
             ./modules/nixos/packages.nix
             ./modules/nixos/deluge.nix
+            ./modules/nixos/reaper.nix
             #./modules/nixos/hyprland.nix
             ({ nixpkgs.overlays = [
               nur.overlays.default
@@ -98,6 +99,7 @@
             ./modules/shared/keyboard.nix
             ./modules/nixos/packages.nix
             ./modules/nixos/deluge.nix
+            ./modules/nixos/reaper.nix
             ({ nixpkgs.overlays = [
               nur.overlays.default
             ]; })

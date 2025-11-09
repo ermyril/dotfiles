@@ -19,6 +19,9 @@
   # Enable deluge service
   mySystem.deluge.enable = true;
 
+  # Enable Reaper DAW with audio production environment
+  mySystem.reaper.enable = true;
+
 fileSystems = {
   "/".options = [ "compress=zstd" ];
   "/home".options = [ "compress=zstd" ];
@@ -136,13 +139,9 @@ systemd.services.nvidia-resume.enable = false;
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  # Audio is configured by mySystem.reaper module
   # Enable sound.
   # hardware.pulseaudio.enable = true;
-  # OR
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.penguin = {

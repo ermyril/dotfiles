@@ -4,7 +4,7 @@
     vim-full
     wget
     firefox
-    bookworm
+    # bookworm  # Marked as broken in nixpkgs
     calibre
     telegram-desktop
     kitty

@@ -26,6 +26,9 @@ imports = [
   # Enable deluge service
   mySystem.deluge.enable = true;
 
+  # Enable Reaper DAW with audio production environment
+  mySystem.reaper.enable = true;
+
   hardware.sensor.iio.enable = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -78,8 +81,8 @@ imports = [
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  # Audio is configured by mySystem.reaper module
   # Enable sound.
-  # sound.enable = true;
   # hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
