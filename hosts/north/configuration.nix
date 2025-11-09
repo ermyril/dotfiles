@@ -115,16 +115,32 @@ virtualisation.spiceUSBRedirection.enable = true;
 
 hardware.nvidia = {
   modesetting.enable = true;
-  powerManagement.enable = false;  # Disabled - prevents freeze on shutdown/suspend
+  powerManagement.enable = true;
   powerManagement.finegrained = false;
 
-  open = false;
+  open = true;  # Open kernel module recommended for RTX 3090 (Ampere)
   nvidiaSettings = true;
 };
 
-# Disable nvidia suspend/resume services
-systemd.services.nvidia-suspend.enable = false;
-systemd.services.nvidia-resume.enable = false;
+# Open driver has better built-in suspend/resume - test without these services first
+# Previously caused freezes with proprietary driver, may not be needed with open driver
+# systemd.services.nvidia-suspend.enable = false;
+# systemd.services.nvidia-resume.enable = false;
+# systemd.services.nvidia-hibernate.enable = false;
+
+# Enable CUDA support globally (allowUnfree is set in modules/shared/nix-settings.nix)
+nixpkgs.config.cudaSupport = true;
+
+
+systemd.services = builtins.listToAttrs (map (service: {
+    name = service;
+    value.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
+  }) [
+    "systemd-suspend"
+    "systemd-hibernate"
+    "systemd-hybrid-sleep"
+    "systemd-suspend-then-hibernate-sleep"
+  ]);
 
 
   services.btrfs.autoScrub = {
@@ -242,7 +258,7 @@ programs.obs-studio = {
       obs-vkcapture
       droidcam-obs
       obs-source-record
-      advanced-scene-switcher
+      #advanced-scene-switcher  # Temporarily disabled - build issue with CUDA toolkit
       obs-text-pthread
       obs-aitum-multistream
     ];
@@ -281,14 +297,12 @@ environment.sessionVariables = {
 
 hardware.graphics = {
    enable = true;
-   enable32Bit = true;
    extraPackages = with pkgs; [
      mesa
      libva
      libvdpau-va-gl
      vulkan-loader
      vulkan-validation-layers
-     #amdvlk  # Optional: AMD's proprietary Vulkan driver
      mesa.opencl  # Enables Rusticl (OpenCL) support
    ];
  };

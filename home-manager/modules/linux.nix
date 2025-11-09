@@ -60,7 +60,7 @@
   # Linux-specific session variables
   home.sessionVariables = {
     # Fix for alacritty window decorations on gnome
-    WAYLAND_DISPLAY = " ";
+    # WAYLAND_DISPLAY = " ";  # Disabled: breaks COSMIC compositor initialization
     EDITOR = "vim";
   };
 
