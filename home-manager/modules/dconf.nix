@@ -155,15 +155,15 @@ with lib.hm.gvariant;
       window-width = 600;
     };
 
-    "org/gnome/mutter" = {
-      experimental-features = [ "scale-monitor-framebuffer" ];
-      attach-modal-dialogs = true;
-      dynamic-workspaces = false;
-      edge-tiling = false;
-      focus-change-on-pointer-rest = true;
-      overlay-key = "Super_L";
-      workspaces-only-on-primary = false;
-    };
+    # "org/gnome/mutter" = {
+    #   experimental-features = [ "scale-monitor-framebuffer" ];
+    #   attach-modal-dialogs = true;
+    #   dynamic-workspaces = false;
+    #   edge-tiling = false;
+    #   focus-change-on-pointer-rest = true;
+    #   overlay-key = "Super_L";
+    #   workspaces-only-on-primary = false;
+    # };
 
     "org/gnome/nautilus/preferences" = {
       default-folder-viewer = "icon-view";

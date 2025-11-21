@@ -70,6 +70,7 @@ in
         # Audio effects plugins
         calf                 # Audio plugin suite (compressors, EQs, reverbs, etc.)
         lsp-plugins          # Linux Studio Plugins (EQs, compressors, etc.)
+        neural-amp-modeler-lv2
 
         # Audio utilities and patchbays
         helvum               # Pipewire patchbay (graphical)
@@ -87,6 +88,7 @@ in
         # Additional audio production tools
         audacity             # Audio editor
         ardour               # Full-featured DAW (alternative/complement to Reaper)
+
       ];
 
       # Session variables for VST plugin discovery
