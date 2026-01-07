@@ -188,7 +188,7 @@ systemd.services = builtins.listToAttrs (map (service: {
     kitty
     openrgb
     flycast
-    kdePackages.kdenlive
+    #kdePackages.kdenlive
     mesa-demos
     htop
     waypipe
@@ -307,8 +307,8 @@ hardware.graphics = {
    ];
  };
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.host.enable = false;
+  virtualisation.virtualbox.host.enableExtensionPack = false;
   users.extraGroups.vboxusers.members = [ "ermyril" "penguin" ];
 
   services.hardware.openrgb.enable = true;

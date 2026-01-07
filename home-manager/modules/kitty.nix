@@ -92,6 +92,10 @@ in
       
       # Shortcuts
       clear_all_shortcuts = "no";
+
+      # Mark for filtering
+      "mark1_foreground" = "#555555";
+      "mark1_background" = "#555555";
     };
     
     # Remove manual theme - Stylix will handle theming
@@ -174,6 +178,12 @@ in
       "kitty_mod+a>d" = "set_background_opacity default";
     };
   };
+
+  #  keybindings = {
+    # Map F1 to toggle redaction
+    # The regex combines Names, IPv4, IPv6, Key Headers, and SSH Public Keys
+  #  "f1" = "toggle_marker regex 1 (ermyril|Nikita|Mikhailevich)|\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b|(?:[0-9a-fA-F]{1,4}:){2,7}[0-9a-fA-F]{1,4}|-----BEGIN [A-Z ]+ KEY-----|ssh-(?:rsa|ed25519) AAAA[A-Za-z0-9+/]+";
+  #};
   
   home.file.".config/kitty/tmux-session.conf".text = ''
     launch ${pkgs.fish}/bin/fish -c 'tmux'

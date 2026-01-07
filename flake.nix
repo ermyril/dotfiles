@@ -27,13 +27,19 @@
     # Stylix input
     stylix.url = "github:danth/stylix";
 
+    # nixos-generators for building Proxmox LXC templates
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Utility helpers
     flake-utils.url = "github:numtide/flake-utils";
 
     nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, nixos-generators, ... }@inputs:
     let
       inherit (nixpkgs.lib) nixosSystem;
 
@@ -42,7 +48,7 @@
       # expose selected flake inputs for host configs that do
       #   (import ../../flake.nix).inputs.<name>
       inputs = {
-        inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils stylix;
+        inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils stylix nixos-generators;
       };
 
       ############################################################
@@ -121,6 +127,7 @@
         };
       };
 
+
       ############################################################
       ## macOS Hosts (nix-darwin)
       ############################################################
@@ -154,6 +161,30 @@
         ];
       };
 
-      # flake-utils defaultPackage/devShell, etc. can be added later if needed
+
+      # Run: nixos-rebuild switch --flake .#rukako --target-host root@192.168.88.88
+      # rukako is on 192.168.88.88
+      nixosConfigurations.rukako = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ 
+          ./hosts/rukako/configuration.nix
+        ];
+      };
+
+
+      ############################################################
+      ## Proxmox LXC Container Configurations
+      ############################################################
+      packages.x86_64-linux = {
+        # Build with: nix build '.#proxmox-lxc'
+        proxmox-lxc = nixos-generators.nixosGenerate {
+          system = "x86_64-linux";
+          format = "proxmox-lxc";
+          modules = [
+            ./modules/nixos/proxmox/bootstrap.nix
+          ];
+        };
+
+      };
     };
 }
