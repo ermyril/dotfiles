@@ -1,0 +1,49 @@
+diff --git a/hosts/north/configuration.nix b/hosts/north/configuration.nix
+index 57ee70d..3693422 100644
+--- a/hosts/north/configuration.nix
++++ b/hosts/north/configuration.nix
+@@ -4,6 +4,19 @@
+ 
+ { config, lib, pkgs,  ... }:
+ 
++let
++  zfsCompatibleKernelPackages = lib.filterAttrs (
++    name: kernelPackages:
++    (builtins.match "linux_[0-9]+_[0-9]+" name) != null
++    && (builtins.tryEval kernelPackages).success
++    && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
++  ) pkgs.linuxKernel.packages;
++  latestKernelPackage = lib.last (
++    lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
++      builtins.attrValues zfsCompatibleKernelPackages
++    )
++  );
++in
+ {
+   imports =
+     [
+@@ -13,6 +26,8 @@
+       # ./modules/bottles.nix
+     ];
+ 
++  # Note this might jump back and forth as kernels are added or removed.
++  boot.kernelPackages = latestKernelPackage;
+   # Set primary user for shared modules
+   mySystem.primaryUser = "ermyril";
+ 
+@@ -49,6 +64,7 @@ boot.loader.efi.canTouchEfiVariables = true;
+ 
+ boot = {
+ 
++  supportedFilesystems = [ "zfs" ];
+ 
+     loader.systemd-boot = {
+ 	    enable = true;
+@@ -81,6 +97,7 @@ virtualisation.libvirtd.enable = true;
+ virtualisation.spiceUSBRedirection.enable = true;
+ 
+   networking.hostName = "north"; 
++  networking.hostId = "deadbeef"; 
+   # Pick only one of the below networking options.
+   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
