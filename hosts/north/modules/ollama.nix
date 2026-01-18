@@ -6,7 +6,7 @@
   environment.systemPackages = [ 
     #pkgs.cudatoolkit
     #pkgs.aider-chat
-    #pkgs.gemini-cli
+    pkgs.gemini-cli
   ];
 
   #####  Ollama service  ######################################################

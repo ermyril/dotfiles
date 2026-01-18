@@ -20,7 +20,7 @@
   mySystem.deluge.enable = true;
 
   # Enable Reaper DAW with audio production environment
-  mySystem.reaper.enable = true;
+  #mySystem.reaper.enable = true;
 
 fileSystems = {
   "/".options = [ "compress=zstd" ];
@@ -166,6 +166,7 @@ systemd.services = builtins.listToAttrs (map (service: {
     packages = with pkgs; [];
   };
 
+   users.groups.nixos-admins.members = ["ermyril" "penguin"];
    security.sudo.wheelNeedsPassword = false;
 
 
@@ -187,7 +188,6 @@ systemd.services = builtins.listToAttrs (map (service: {
     curl
     kitty
     openrgb
-    flycast
     #kdePackages.kdenlive
     mesa-demos
     htop
@@ -236,33 +236,33 @@ vscode
   ];
 
 
-programs.obs-studio = {
-    enable = true;
+########programs.obs-studio = {
+########    enable = true;
 
-    # optional Nvidia hardware acceleration
-    package = (
-      pkgs.obs-studio.override {
-        cudaSupport = true;
-      }
-    );
+########    # optional Nvidia hardware acceleration
+########    package = (
+########      pkgs.obs-studio.override {
+########	cudaSupport = true;
+########      }
+########    );
 
-    plugins = with pkgs.obs-studio-plugins; [
-      # obs-backgroundremoval - dope one
-      input-overlay
-      obs-advanced-masks
-      wlrobs
-      #obs-vertical-canvas
-      obs-backgroundremoval
-      obs-pipewire-audio-capture
-      obs-gstreamer
-      obs-vkcapture
-      droidcam-obs
-      obs-source-record
-      #advanced-scene-switcher  # Temporarily disabled - build issue with CUDA toolkit
-      obs-text-pthread
-      obs-aitum-multistream
-    ];
-  };
+########    plugins = with pkgs.obs-studio-plugins; [
+########      # obs-backgroundremoval - dope one
+########      input-overlay
+########      obs-advanced-masks
+########      wlrobs
+########      #obs-vertical-canvas
+########      obs-backgroundremoval
+########      obs-pipewire-audio-capture
+########      obs-gstreamer
+########      obs-vkcapture
+########      droidcam-obs
+########      obs-source-record
+########      #advanced-scene-switcher  # Temporarily disabled - build issue with CUDA toolkit
+########      obs-text-pthread
+########      obs-aitum-multistream
+########    ];
+########  };
 
 xdg.portal = {
   enable = true;

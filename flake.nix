@@ -37,9 +37,15 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
+
+    streaming-setup = {
+      url = "path:/home/penguin/Projects/streaming-setup";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, nixos-generators, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, nixos-generators, streaming-setup, ... }@inputs:
     let
       inherit (nixpkgs.lib) nixosSystem;
 
@@ -48,7 +54,7 @@
       # expose selected flake inputs for host configs that do
       #   (import ../../flake.nix).inputs.<name>
       inputs = {
-        inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils stylix nixos-generators;
+        inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils stylix nixos-generators streaming-setup;
       };
 
       ############################################################
@@ -65,8 +71,17 @@
             ./modules/shared/keyboard.nix
             ./modules/nixos/packages.nix
             ./modules/nixos/deluge.nix
-            ./modules/nixos/reaper.nix
+            #./modules/nixos/reaper.nix
             #./modules/nixos/hyprland.nix
+             ({ pkgs, ... }: {
+               environment.systemPackages = with pkgs; [
+                 streaming-setup.packages.x86_64-linux.obs-cuda
+                 streaming-setup.packages.x86_64-linux.reaper
+                 streaming-setup.packages.x86_64-linux.audio-tools
+                 streaming-setup.packages.x86_64-linux.drivenbymoss-reaper
+               ];
+             })
+
             ({ nixpkgs.overlays = [
               nur.overlays.default
             ]; })
