@@ -48,21 +48,6 @@
 
   };
 
-  nixConfig = {
-    extra-substituters = [
-      "https://cache.nixos.org/"
-      "https://nur.cachix.org"
-      "https://nix-community.cachix.org"
-      "https://cuda-maintainers.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nur.cachix.org-1:F8+2oprcHLfsYyZBCsVJZJrPyGHwuE+EZBtukwalV7o="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-    ];
-    trusted-users = [ "root" "ermyril" "penguin" ];
-  };
-
   outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, nixos-generators, streaming-setup, ... }@inputs:
     let
       inherit (nixpkgs.lib) nixosSystem;
