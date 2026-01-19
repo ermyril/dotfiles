@@ -3,8 +3,11 @@
 
   inputs = {
     # Core channels
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     #nixpkgs.url = "github:NixOS/nixpkgs/5c724ed1388e53cc231ed98330a60eb2f7be4be3";
+
+    # Cachix for faster builds
+    cachix.url = "github:cachix/cachix";
 
     # Home-Manager (stand-alone + nixos module later)
     home-manager.url = "github:nix-community/home-manager";
@@ -43,6 +46,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+  };
+
+  nixConfig = {
+    extra-substituters = [
+      "https://cache.nixos.org/"
+      "https://nur.cachix.org"
+      "https://nix-community.cachix.org"
+      "https://cuda-maintainers.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nur.cachix.org-1:F8+2oprcHLfsYyZBCsVJZJrPyGHwuE+EZBtukwalV7o="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+    ];
+    trusted-users = [ "root" "ermyril" "penguin" ];
   };
 
   outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, nixos-generators, streaming-setup, ... }@inputs:

@@ -177,6 +177,15 @@ systemd.services = builtins.listToAttrs (map (service: {
   };
 
    programs.firefox.enable = true;
+   ## make firefox not build onnxruntime from source
+   nixpkgs.overlays = [
+    (self: super: {
+      onnxruntime = super.onnxruntime.override {
+        cudaSupport = false;
+      };
+    })
+  ];
+
 
 
   # List packages installed in system profile. To search, run:
