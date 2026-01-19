@@ -27,9 +27,14 @@
     wakeonlan
   ];
 
+
+  # https://github.com/dulli/caddy-wol/tree/v1.0.0
   services.caddy = {
     enable = true;
-    package = config.nixpkgs.overlays.caddy; # Use default caddy package
+    package = pkgs.caddy.withPlugins {
+      plugins = [ "github.com/dulli/caddy-wol@v1.0.0" ];
+      hash = "sha256-aXyA6Oqtbvok2ejI0f7aciy1Ud+4YIrzQnF5KXkayw4=";
+    };
 
     virtualHosts."chat.ermyril.com" = {
       # This will be the default host
@@ -44,14 +49,4 @@
   };
 
   system.stateVersion = "25.11";
-
-  nixpkgs.overlays = [
-    (self: super: {
-      caddy = super.caddy.override {
-        plugins = with super.caddy-plugins; [
-          exec
-        ];
-      };
-    })
-  ];
 }
