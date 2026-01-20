@@ -74,8 +74,7 @@
             ./modules/shared/keyboard.nix
             ./modules/nixos/packages.nix
             ./modules/nixos/deluge.nix
-            #./modules/nixos/reaper.nix
-            #./modules/nixos/hyprland.nix
+            ./modules/network/nas-nfs-mount.nix
              ({ pkgs, ... }: {
                environment.systemPackages = with pkgs; [
                  streaming-setup.packages.x86_64-linux.obs-cuda
@@ -106,6 +105,7 @@
                 imports = [ 
                   ./home-manager/modules/vim.nix
                   ./home-manager/modules/tmux.nix
+                  ./home-manager/modules/kitty.nix
                 ];
                 home.stateVersion = "25.05";
               };
@@ -123,7 +123,15 @@
             ./modules/shared/keyboard.nix
             ./modules/nixos/packages.nix
             ./modules/nixos/deluge.nix
-            ./modules/nixos/reaper.nix
+            ./modules/network/nas-nfs-mount.nix
+             ({ pkgs, ... }: {
+               environment.systemPackages = with pkgs; [
+                 streaming-setup.packages.x86_64-linux.obs
+                 streaming-setup.packages.x86_64-linux.reaper
+                 streaming-setup.packages.x86_64-linux.audio-tools
+                 streaming-setup.packages.x86_64-linux.drivenbymoss-reaper
+               ];
+             })
             ({ nixpkgs.overlays = [
               nur.overlays.default
             ]; })
@@ -160,7 +168,6 @@
           ./modules/shared/nix-settings.nix
           ./modules/shared/users.nix
           ./modules/shared/packages/common.nix
-          ./modules/darwin/packages.nix
           home-manager.darwinModules.home-manager
           {
             nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ];
