@@ -187,11 +187,12 @@
       };
 
 
-      # Run: nixos-rebuild switch --flake .#rukako --target-host root@192.168.88.88
-      # rukako is on 192.168.88.88
+      # Run: nixos-rebuild switch --flake .#rukako --target-host root@192.168.88.8
+      # rukako is on 192.168.88.8
       nixosConfigurations.rukako = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ 
+          ./modules/nixos/proxmox/bootstrap.nix
           ./hosts/rukako/configuration.nix
         ];
       };
@@ -207,6 +208,7 @@
           format = "proxmox-lxc";
           modules = [
             ./modules/nixos/proxmox/bootstrap.nix
+            ./hosts/rukako/configuration.nix # temporarily
           ];
         };
 

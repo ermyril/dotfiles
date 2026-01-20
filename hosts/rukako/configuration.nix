@@ -1,10 +1,6 @@
 { pkgs, lib, ... }:
 
 {
-  imports = [
-    ../../modules/nixos/proxmox/basic.nix
-  ];
-
   boot.isContainer = true;
 
   systemd.suppressedSystemUnits = [
@@ -25,6 +21,7 @@
 
   environment.systemPackages = with pkgs; [
     wakeonlan
+    caddy
   ];
 
 
@@ -36,14 +33,25 @@
       hash = "sha256-aXyA6Oqtbvok2ejI0f7aciy1Ud+4YIrzQnF5KXkayw4=";
     };
 
-    virtualHosts."chat.ermyril.com" = {
+    globalConfig = ''
+      order wake_on_lan before respond
+    '';
+
+    virtualHosts."192.168.88.8" = {
       # This will be the default host
-      hostName = "chat.ermyril.com";
+      hostName = "192.168.88.8";
+      listenAddresses = [ "0.0.0.0" ];
       extraConfig = ''
-        reverse_proxy 192.168.88.50:11434 {
-            lb_try_duration 60s
-            lb_try_interval 3s
-        }
+          reverse_proxy http://192.168.88.50:11434
+          handle_errors {
+                  @502 expression {err.status_code} == 502
+                  handle @502 {
+                          wake_on_lan 24:4b:fe:57:b1:f0
+                          reverse_proxy 192.168.88.50:11434 {
+                                  lb_try_duration 120s
+                          }
+                  }
+          }
       '';
     };
   };

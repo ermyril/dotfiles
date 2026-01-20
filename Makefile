@@ -35,8 +35,8 @@ deploy-%:
 
 # Special deploy target for rukako with a specific IP
 deploy-rukako:
-	@echo "Deploying to rukako (192.168.88.88)..."
-	nixos-rebuild switch --flake .#rukako --target-host root@192.168.88.88
+	@echo "Deploying to rukako (192.168.88.8)..."
+	nixos-rebuild switch --flake .#rukako --target-host root@192.168.88.8
 
 # Deploy to all Darwin hosts
 deploy-darwin: $(addprefix deploy-,$(DARWIN_HOSTS))
