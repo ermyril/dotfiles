@@ -17,7 +17,7 @@
     loadModels   = [ "llama3:8b" ];  # pre-pull models at boot (optional)
   };
 
-  #services.open-webui.enable = true; #triggers cuda build from source
+  services.open-webui.enable = true; #triggers cuda build from source
   networking.firewall.allowedTCPPorts = [ 11434 8080 ]; 
 
 }

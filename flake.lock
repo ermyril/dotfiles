@@ -383,11 +383,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768984719,
-        "narHash": "sha256-O6nXCW9FN39qw204e5Nl3qgaxKFcSvdpx0bULqfwyTA=",
+        "lastModified": 1769014333,
+        "narHash": "sha256-nr3NVA2PPd3WZsi3jQnmuIKpgGLn0HXjgqQ2E9ysTcs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d6e3935ec6e43c8f54cd0132276c82d951e1453e",
+        "rev": "2d7b64e32f9fcdf1046efd243da4659a6459d7ff",
         "type": "github"
       },
       "original": {
@@ -591,6 +591,22 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1762379490,
+        "narHash": "sha256-w7ejM/bWDPnMfutwVDNBmR0MMFogOimALfIh1uU5xtw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "146b74e1d3917da07c69c8a26cf8a4323b5bd900",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "146b74e1d3917da07c69c8a26cf8a4323b5bd900",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1767767207,
         "narHash": "sha256-Mj3d3PfwltLmukFal5i3fFt27L6NiKXdBezC1EBuZs4=",
         "owner": "NixOS",
@@ -613,11 +629,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768987531,
-        "narHash": "sha256-OUuPCbbpt2TScCThL4xPByL5U7gOXQ83aJvXbtcnV9Y=",
+        "lastModified": 1769012988,
+        "narHash": "sha256-3HUDnMv5TqwMkN4bcCHB/sraN6fDCq7wTO/XohsNAos=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "8e6425272de3f758a3b7103b49d6b7edbfb01b40",
+        "rev": "6f3dc98418be4d1d1aa2bfd3019fb29978e5cd4b",
         "type": "github"
       },
       "original": {
@@ -669,13 +685,11 @@
     "streaming-setup": {
       "inputs": {
         "flake-parts": "flake-parts_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1768709879,
-        "narHash": "sha256-O4et+VVBn7O5LwVx3LdV5R2G17AUsy6921lSkbjj9JU=",
+        "lastModified": 1769014375,
+        "narHash": "sha256-rgKyLStQW8yeHAJMR+4sEQBELidDUXiWdzOWkj2Te0c=",
         "path": "/home/penguin/Projects/streaming-setup",
         "type": "path"
       },
@@ -693,7 +707,7 @@
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-parts": "flake-parts_4",
         "gnome-shell": "gnome-shell",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "nur": "nur_2",
         "systems": "systems_2",
         "tinted-foot": "tinted-foot",

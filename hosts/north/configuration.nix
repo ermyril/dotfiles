@@ -251,34 +251,6 @@ vscode
   ];
 
 
-########programs.obs-studio = {
-########    enable = true;
-
-########    # optional Nvidia hardware acceleration
-########    package = (
-########      pkgs.obs-studio.override {
-########	cudaSupport = true;
-########      }
-########    );
-
-########    plugins = with pkgs.obs-studio-plugins; [
-########      # obs-backgroundremoval - dope one
-########      input-overlay
-########      obs-advanced-masks
-########      wlrobs
-########      #obs-vertical-canvas
-########      obs-backgroundremoval
-########      obs-pipewire-audio-capture
-########      obs-gstreamer
-########      obs-vkcapture
-########      droidcam-obs
-########      obs-source-record
-########      #advanced-scene-switcher  # Temporarily disabled - build issue with CUDA toolkit
-########      obs-text-pthread
-########      obs-aitum-multistream
-########    ];
-########  };
-
 xdg.portal = {
   enable = true;
 

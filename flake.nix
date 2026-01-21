@@ -43,7 +43,7 @@
 
     streaming-setup = {
       url = "path:/home/penguin/Projects/streaming-setup";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
