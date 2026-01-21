@@ -3,7 +3,7 @@
 {
 
   environment.systemPackages = [ 
-    #pkgs.cudatoolkit
+    pkgs.cudatoolkit
     pkgs.aider-chat
     #pkgs.gemini-cli
   ];

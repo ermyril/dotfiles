@@ -29,6 +29,12 @@ fileSystems = {
   #"/swap".options = [ "noatime" ];
 };
 
+zramSwap = {
+  enable = true;
+  algorithm = "zstd";
+  memoryPercent = 100; # Write up to 64GB of data to ZRAM (approx 20GB actual RAM usage)
+};
+
 ########nix.gc = {
 ########  automatic = true;
 ########  dates     = "weekly";
