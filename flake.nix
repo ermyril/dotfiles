@@ -44,7 +44,7 @@
     streaming-setup = {
       #url = "path:/home/penguin/Projects/streaming-setup";
       url = "github:/BurnedOutTech/streaming-setup-nix-flake";
-      #inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
@@ -76,11 +76,13 @@
             ./modules/nixos/packages.nix
             ./modules/nixos/deluge.nix
             ./modules/network/nas-nfs-mount.nix
+
+             # Audio setup and streaming environment
+             inputs.streaming-setup.nixosModules.pipewire
              ({ pkgs, ... }: {
                environment.systemPackages = with pkgs; [
                  streaming-setup.packages.x86_64-linux.obs-cuda
                  streaming-setup.packages.x86_64-linux.reaper
-                 streaming-setup.packages.x86_64-linux.audio-tools
                  streaming-setup.packages.x86_64-linux.drivenbymoss-reaper
                ];
              })
