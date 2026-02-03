@@ -241,11 +241,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765835352,
-        "narHash": "sha256-XswHlK/Qtjasvhd1nOa1e8MgZ8GS//jBoTqWtrS1Giw=",
+        "lastModified": 1768135262,
+        "narHash": "sha256-PVvu7OqHBGWN16zSi6tEmPwwHQ4rLPU9Plvs8/1TUBY=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "a34fae9c08a15ad73f295041fec82323541400a9",
+        "rev": "80daad04eddbbf5a4d883996a73f3f542fa437ac",
         "type": "github"
       },
       "original": {
@@ -591,17 +591,16 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1762379490,
-        "narHash": "sha256-w7ejM/bWDPnMfutwVDNBmR0MMFogOimALfIh1uU5xtw=",
+        "lastModified": 1769013800,
+        "narHash": "sha256-kfLPF657yLS58k2XsKhLwZWkqpuBNjsp1dtwm7idnuM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "146b74e1d3917da07c69c8a26cf8a4323b5bd900",
+        "rev": "c3024e0787984c77a2e06324b156626081578413",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "146b74e1d3917da07c69c8a26cf8a4323b5bd900",
         "type": "github"
       }
     },
@@ -688,14 +687,17 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1769014375,
-        "narHash": "sha256-rgKyLStQW8yeHAJMR+4sEQBELidDUXiWdzOWkj2Te0c=",
-        "path": "/home/penguin/Projects/streaming-setup",
-        "type": "path"
+        "lastModified": 1769907099,
+        "narHash": "sha256-JlMkWJFTHrR4Qw8A/OHCOSyzn+dYueLrfPZtnY/WwSk=",
+        "owner": "BurnedOutTech",
+        "repo": "streaming-setup-nix-flake",
+        "rev": "71738b70439f754213ff4e678cdbad9d848e4a65",
+        "type": "github"
       },
       "original": {
-        "path": "/home/penguin/Projects/streaming-setup",
-        "type": "path"
+        "owner": "BurnedOutTech",
+        "repo": "streaming-setup-nix-flake",
+        "type": "github"
       }
     },
     "stylix": {

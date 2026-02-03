@@ -42,7 +42,8 @@
     nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
 
     streaming-setup = {
-      url = "path:/home/penguin/Projects/streaming-setup";
+      #url = "path:/home/penguin/Projects/streaming-setup";
+      url = "github:/BurnedOutTech/streaming-setup-nix-flake";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
 

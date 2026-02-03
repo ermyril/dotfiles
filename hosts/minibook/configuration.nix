@@ -26,9 +26,6 @@ imports = [
   # Enable deluge service
   mySystem.deluge.enable = true;
 
-  # Enable Reaper DAW with audio production environment
-  mySystem.reaper.enable = true;
-
   hardware.sensor.iio.enable = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -70,6 +67,7 @@ imports = [
   # Enable Gnome Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+  services.desktopManager.cosmic.enable = true;
   services.xserver.autoRepeatDelay = 200;
   services.xserver.autoRepeatInterval = 30;
   
