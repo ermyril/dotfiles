@@ -40,6 +40,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
+    comfyui-nix.url = "github:utensils/comfyui-nix"; 
 
     streaming-setup = {
       #url = "path:/home/penguin/Projects/streaming-setup";
@@ -49,7 +50,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, nixos-generators, streaming-setup, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, nur, flake-utils, kmonad, stylix, nixos-generators, streaming-setup, comfyui-nix, ... }@inputs:
     let
       inherit (nixpkgs.lib) nixosSystem;
 
@@ -58,7 +59,7 @@
       # expose selected flake inputs for host configs that do
       #   (import ../../flake.nix).inputs.<name>
       inputs = {
-        inherit kmonad nur home-manager nix-darwin nixpkgs flake-utils stylix nixos-generators streaming-setup;
+        inherit inputs;
       };
 
       ############################################################
@@ -77,13 +78,20 @@
             ./modules/nixos/deluge.nix
             ./modules/network/nas-nfs-mount.nix
 
+            ## REPLACE WITH MODULE
+            # ({ pkgs, ...}: {
+            #    nixpkgs.overlays = [ comfyui-nix.overlays.default ];
+            #    environment.systemPackages = [ pkgs.comfy-ui-cuda ];
+            # })
+
              # Audio setup and streaming environment
              inputs.streaming-setup.nixosModules.pipewire
+
              ({ pkgs, ... }: {
                environment.systemPackages = with pkgs; [
                  streaming-setup.packages.x86_64-linux.obs-cuda
                  streaming-setup.packages.x86_64-linux.reaper
-                 streaming-setup.packages.x86_64-linux.drivenbymoss-reaper
+                 #streaming-setup.packages.x86_64-linux.drivenbymoss-reaper
                ];
              })
 

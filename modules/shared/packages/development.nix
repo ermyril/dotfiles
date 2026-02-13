@@ -18,5 +18,14 @@
     
     # Language servers and tools
     gopls
+    
+    gh
+
+    # LLM tools
+    claude-code
+    gemini-cli
+    aider-chat-full
+
   ];
 }
+
