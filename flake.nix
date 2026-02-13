@@ -40,7 +40,11 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     nixpkgs-firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
-    comfyui-nix.url = "github:utensils/comfyui-nix"; 
+
+    comfyui-nix = {
+      url = "github:utensils/comfyui-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     streaming-setup = {
       #url = "path:/home/penguin/Projects/streaming-setup";
@@ -68,6 +72,10 @@
       nixosConfigurations = {
         north = nixosSystem {
           system  = "x86_64-linux";
+          specialArgs = {
+            inherit comfyui-nix;  # Pass comfyui-nix to all modules
+            # You can also pass other flake inputs here if needed
+          };
           modules = [
             ./hosts/north/configuration.nix
             ./modules/shared/nix-settings.nix
@@ -77,12 +85,13 @@
             ./modules/nixos/packages.nix
             ./modules/nixos/deluge.nix
             ./modules/network/nas-nfs-mount.nix
+            ./modules/ai/comfyui.nix
 
-            ## REPLACE WITH MODULE
-            # ({ pkgs, ...}: {
-            #    nixpkgs.overlays = [ comfyui-nix.overlays.default ];
-            #    environment.systemPackages = [ pkgs.comfy-ui-cuda ];
-            # })
+             # REPLACE WITH MODULE
+            #({ pkgs, ...}: {
+            #   nixpkgs.overlays = [ comfyui-nix.overlays.default ];
+            #   environment.systemPackages = [ pkgs.comfy-ui-cuda ];
+            #})
 
              # Audio setup and streaming environment
              inputs.streaming-setup.nixosModules.pipewire

@@ -25,6 +25,7 @@
     claude-code
     gemini-cli
     aider-chat-full
+    github-copilot-cli
 
   ];
 }
